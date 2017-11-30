@@ -1,22 +1,29 @@
-# env. variable
+# init
 export ZSH=/home/krisan/.oh-my-zsh
-export GOPATH=/home/krisan/Documents/go
 
-# improve escape speed in vim
-KEYTIMEOUT=1
-
-# zsh's theme and plugins
+# theme
 ZSH_THEME="philips"
+
+# plugin
 plugins=(git)
 
-# vim color scheme
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+# delay timeout
+KEYTIMEOUT=1
+
+# utils
 source $ZSH/oh-my-zsh.sh
-
-# sourcing of other files
 source $HOME/zsh/aliases
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+# history
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_BEEP
+
+# path
+export GOPATH=$HOME/Documents/golang
+export PATH=$PATH:$HOME/.rvm/bin:$GOPATH/bin
