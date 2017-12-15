@@ -25,6 +25,9 @@ Plugin 'airblade/vim-gitgutter'
 " ruby
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
+
+" javascript
+Plugin 'pangloss/vim-javascript'
 call vundle#end()
 filetype plugin indent on
 
@@ -68,7 +71,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " emmet filetype filter
-autocmd Filetype html  imap <tab> <plug>(emmet-expand-abbr)
+let g:user_emmet_leader_key='<tab>'
 autocmd BufNewFile,Bufread *.html.erb set filetype=html
 
 " theme
@@ -84,6 +87,7 @@ set wildmenu
 
 " line number (relative)
 set relativenumber
+set number
 
 " search
 set ignorecase
@@ -102,14 +106,22 @@ set laststatus=2
 " font
 set guifont=Meslo\ LG\ M\ Bold\ for\ Powerline\ 20
 
-" delay key mapping and avoid delay when escape insert mode
-set timeoutlen=1000 ttimeoutlen=0
+" speed up escaping
+set timeoutlen=350 ttimeoutlen=0
 
-" indent and eol
+" eol
 set list listchars=eol:¬
+
+" window split
+set splitbelow
+set splitright
 
 " leader key
 let mapleader = ","
+
+" remove backup files
+set nobackup
+set nowritebackup
 
 " escape key
 ino jk <ESC>
@@ -147,3 +159,9 @@ map <leader>t :NERDTreeToggle<CR>
 
 " list files opened in buffer
 map <leader>b :CtrlPBuffer<CR>
+
+" open vimrc
+map <leader>vim :e $MYVIMRC<CR>
+
+" surround 'til end of words
+map <leader>ste ys$
