@@ -27,3 +27,6 @@ setopt HIST_BEEP
 # path
 export GOPATH=$HOME/Documents/golang
 export PATH=$PATH:$HOME/.rvm/bin:$GOPATH/bin
+
+# auto suggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
