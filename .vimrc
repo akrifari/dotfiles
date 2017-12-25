@@ -21,15 +21,18 @@ Plugin 'tpope/vim-commentary'
 Plugin 'godlygeek/tabular'
 Plugin 'mattn/emmet-vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'kana/vim-textobj-user'
 
 " ruby
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'nelstrom/vim-textobj-rubyblock'
 
 " javascript
 Plugin 'pangloss/vim-javascript'
 call vundle#end()
 filetype plugin indent on
+runtime macros/matchit.vim
 
 " remove unnecessary whitespace
 fun! TrimWhitespace()
@@ -165,3 +168,9 @@ map <leader>vim :e $MYVIMRC<CR>
 
 " surround 'til end of words
 map <leader>ste ys$
+
+" buffer list
+map <leader>ls :ls<CR>
+
+" update vim without close
+map <leader>sm :source $MYVIMRC<CR>
