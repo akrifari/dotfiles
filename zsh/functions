@@ -1,11 +1,6 @@
-# split tmux horizontally
-#   @param $1 any number between 0 and 100
-function tsh() {
-  tmux split-window -h -p $1
-}
-
-# split tmux vertically
-#  @param $1 any number between 0 and 100
-function tsv() {
-  tmux split-window -v -p $1
+# split tmux's window
+#   @param $1 -h (horizontally) or -v (vertically)
+#   @param $2 any number between 0 and 100
+function tsp() {
+  tmux split-window $1 -p $2
 }
