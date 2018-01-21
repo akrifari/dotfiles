@@ -1,8 +1,8 @@
 # init
-export ZSH=/home/krisan/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # theme
-ZSH_THEME="philips"
+ZSH_THEME="edvardm"
 
 # plugin
 plugins=(git)
@@ -12,7 +12,7 @@ KEYTIMEOUT=1
 
 # utils
 source $ZSH/oh-my-zsh.sh
-source $HOME/zsh/aliases
+source $HOME/zsh/*
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 # history
