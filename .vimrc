@@ -30,6 +30,9 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 
 " javascript
 Plugin 'pangloss/vim-javascript'
+"
+" go
+Plugin 'fatih/vim-go'
 call vundle#end()
 filetype plugin indent on
 runtime macros/matchit.vim
@@ -61,6 +64,12 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 
 " show hidden files
 let NERDTreeShowHidden=1
+
+" vim-go
+let g:go_fmt_autosave=1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
 
 " open nerdtree automatically if no files were specified
 autocmd StdinReadPre * let s:std_in=1
@@ -174,3 +183,6 @@ map <leader>ls :ls<CR>
 
 " update vim without close
 map <leader>sm :source $MYVIMRC<CR>
+
+" golang stuff
+map <leader>gr :GoRun<CR>
