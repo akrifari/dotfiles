@@ -7,6 +7,11 @@ Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-ragtag'
+Plug 'Valloric/MatchTagAlways'
+Plug 'enricobacis/paste.vim'
+
+Plug 'tpope/vim-endwise'
 call plug#end()
 
 autocmd! FileType fzf tnoremap <buffer> jk <c-c>
@@ -40,6 +45,7 @@ nno <c-l> <c-w><c-l>
 
 nno <leader>t :NERDTreeToggle<CR>
 map <c-p> :FZF<cr>
+map <leader>b :Buffer<cr>
 
 set encoding=utf-8
 set number
