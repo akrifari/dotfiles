@@ -14,6 +14,13 @@ Plug 'enricobacis/paste.vim'
 Plug 'tpope/vim-endwise'
 call plug#end()
 
+fun! TrimWhitespace()
+  let l:save = winsaveview()
+  %s/\s\+$//e
+  call winrestview(l:save)
+endfun
+
+autocmd BufWritePre * :call TrimWhitespace()
 autocmd! FileType fzf tnoremap <buffer> jk <c-c>
 
 let g:mapleader=','
