@@ -4,8 +4,12 @@ Plug 'morhetz/gruvbox'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
-Plug 'mattn/emmet-vim', { 'for' : ['html', 'erb'] }
+Plug 'mattn/emmet-vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
+
+autocmd! FileType fzf tnoremap <buffer> jk <c-c>
 
 let g:mapleader=','
 let g:user_emmet_leader_key='<leader>e'
@@ -35,6 +39,7 @@ nno <c-k> <c-w><c-k>
 nno <c-l> <c-w><c-l>
 
 nno <leader>t :NERDTreeToggle<CR>
+map <c-p> :FZF<cr>
 
 set encoding=utf-8
 set number
