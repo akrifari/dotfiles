@@ -15,6 +15,7 @@ Plug 'tpope/vim-endwise'
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'othree/javascript-libraries-syntax.vim'
 call plug#end()
 
 fun! TrimWhitespace()
