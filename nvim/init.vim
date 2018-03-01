@@ -12,6 +12,9 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'enricobacis/paste.vim'
 
 Plug 'tpope/vim-endwise'
+
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 fun! TrimWhitespace()
@@ -25,6 +28,8 @@ autocmd! FileType fzf tnoremap <buffer> jk <c-c>
 
 let g:mapleader=','
 let g:user_emmet_leader_key='<leader>e'
+let g:NERDTreeIgnore = ['node_modules']
+
 no <leader>r :source %<cr>
 
 no <silent> <cr> :nohl<cr>
