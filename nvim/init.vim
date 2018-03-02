@@ -12,6 +12,7 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'enricobacis/paste.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'henrik/vim-indexed-search'
 
 Plug 'tpope/vim-endwise'
 
@@ -29,10 +30,10 @@ endfun
 autocmd BufWritePre * :call TrimWhitespace()
 autocmd! FileType fzf tnoremap <buffer> jk <c-c>
 
-let g:mapleader=','
-let g:user_emmet_leader_key='<leader>e'
+let g:mapleader = ','
+let g:user_emmet_leader_key = '<leader>e'
 let g:NERDTreeIgnore = ['node_modules']
-let g:UltiSnipsListSnippets = "<leader>sl"
+let g:UltiSnipsListSnippets = '<leader>sl'
 
 no <leader>r :source %<cr>
 no <silent> <cr> :nohl<cr>
