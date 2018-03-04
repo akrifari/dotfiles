@@ -13,6 +13,7 @@ Plug 'enricobacis/paste.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'henrik/vim-indexed-search'
+Plug 'airblade/vim-gitgutter'
 
 Plug 'tpope/vim-endwise'
 
@@ -83,4 +84,5 @@ set nowritebackup
 set splitbelow
 set splitright
 set background=dark
+set updatetime=100
 colorscheme gruvbox
