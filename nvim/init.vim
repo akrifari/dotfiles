@@ -35,7 +35,7 @@ let g:mapleader = ','
 let g:user_emmet_leader_key = '<leader>e'
 let g:NERDTreeIgnore = ['node_modules']
 let g:UltiSnipsListSnippets = '<leader>sl'
-let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/snips', 'snips']
+let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/snips', 'snips', 'UltiSnips']
 
 no <leader>r :source %<cr>
 no <silent> <cr> :nohl<cr>
