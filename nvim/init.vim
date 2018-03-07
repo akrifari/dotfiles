@@ -14,8 +14,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'henrik/vim-indexed-search'
 Plug 'airblade/vim-gitgutter'
-
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-repeat'
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -27,8 +27,8 @@ fun! TrimWhitespace()
   %s/\s\+$//e
   call winrestview(l:save)
 endfun
-
 autocmd BufWritePre * :call TrimWhitespace()
+
 autocmd! FileType fzf tnoremap <buffer> jk <c-c>
 
 let g:mapleader = ','
