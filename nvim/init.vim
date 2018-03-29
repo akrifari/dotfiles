@@ -13,9 +13,9 @@ Plug 'enricobacis/paste.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'henrik/vim-indexed-search'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
+" Plug 'airblade/vim-gitgutter'
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -61,9 +61,13 @@ nno <c-j> <c-w><c-j>
 nno <c-k> <c-w><c-k>
 nno <c-l> <c-w><c-l>
 
-nno <leader>t :NERDTreeToggle<CR>
+nno <leader>t :NERDTreeToggle<cr>
 map <c-p> :FZF<cr>
 map <leader>b :Buffer<cr>
+
+if has('nvim') || has('termguicolors')
+  set termguicolors
+endif
 
 set encoding=utf-8
 set number
@@ -85,5 +89,4 @@ set nowritebackup
 set splitbelow
 set splitright
 set background=dark
-set updatetime=100
 colorscheme gruvbox
