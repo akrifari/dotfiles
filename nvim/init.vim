@@ -20,6 +20,8 @@ Plug 'tpope/vim-repeat'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'othree/javascript-libraries-syntax.vim'
+
+Plug 'chr4/nginx.vim'
 call plug#end()
 
 fun! TrimWhitespace()
