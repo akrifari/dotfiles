@@ -3,7 +3,7 @@ Plug 'morhetz/gruvbox'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -17,7 +17,10 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'lilydjwg/colorizer'
+Plug 'tpope/vim-obsession'
+Plug 'godlygeek/tabular'
+Plug 'w0rp/ale'
+Plug 'junegunn/vim-emoji'
 " Plug 'airblade/vim-gitgutter'
 
 if has('nvim')
@@ -31,6 +34,8 @@ endif
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'othree/javascript-libraries-syntax.vim'
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'chr4/nginx.vim'
 call plug#end()
@@ -67,10 +72,26 @@ let $FZF_DEFAULT_COMMAND = 'ag --ignore-dir "node_modules" -g ""'
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
-let g:colorizer_startup = 0
+" vim-go
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_fmt_command = "goimports"
+
+" ale
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_sign_error = emoji#for('x')
+let g:ale_sign_warning = emoji#for('large_orange_diamond')
+let g:ale_set_quickfix = 1
+let g:ale_set_loclist = 0
+let g:ale_set_highlights = 0
+let g:ale_echo_msg_format = '[%linter%] %s'
 
 " key mapping
-no <leader>r :source %<cr>
+no <silent> <leader>r :source %<cr>
 no <silent> <cr> :nohl<cr>
 
 no j gj
@@ -89,22 +110,23 @@ no <leader>v "+p
 vno <leader>c "+y
 vno <leader>v "+p
 
-no <leader>d /\.\.\.<cr>
-
 nno <c-h> <c-w><c-h>
 nno <c-j> <c-w><c-j>
 nno <c-k> <c-w><c-k>
 nno <c-l> <c-w><c-l>
 
-map J :bp<cr>
-map K :bn<cr>
+map <silent> J :bp<cr>
+map <silent> K :bn<cr>
 
-nno <leader>t :NERDTreeToggle<cr>
+nno <silent><leader>t :NERDTreeToggle<cr>
 
-map <c-p> :FZF<cr>
-map <leader>b :Buffer<cr>
+nmap <silent> <c-p> :FZF<cr>
+nmap <silent> <leader>b :Buffer<cr>
 
-map <leader>c :ColorToggle<cr>
+nmap <leader>gr :GoRun<cr>
+
+nmap <silent> <space>k :ALENextWrap<cr>
+nmap <silent> <space>j :ALEPreviousWrap<cr>
 
 " settings
 set encoding=utf-8
@@ -118,8 +140,8 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:›\ ,trail:•,eol:¬
 set ignorecase
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 set title
 set nobackup
 set noswapfile
@@ -127,5 +149,18 @@ set nowritebackup
 set splitbelow
 set splitright
 set background=dark
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}\ %(%l,%c%V%)
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}\ %{ObsessionStatus()}\ %(%l,%c%V%)
 colorscheme gruvbox
+
+" custom coloring
+highlight clear SignColumn
+highlight ALEErrorSign guibg=darkgrey
+highlight ALEWarningSign guibg=darkgrey
+highlight LineNr ctermfg=darkgrey ctermbg=NONE
+highlight CursorLineNr ctermfg=red ctermbg=NONE
+highlight StatusLine ctermfg=0 ctermbg=red
+highlight StatusLineNC ctermfg=0 ctermbg=darkgrey
+highlight WildMenu cterm=underline ctermfg=red ctermbg=0 gui=none guifg=blue guibg=blue
+highlight fzf1 ctermfg=red ctermbg=0
+highlight fzf2 ctermfg=white ctermbg=0
+highlight fzf3 ctermfg=white ctermbg=0
