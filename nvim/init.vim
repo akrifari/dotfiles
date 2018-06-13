@@ -30,10 +30,12 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
@@ -47,6 +49,20 @@ fun! TrimWhitespace()
   call winrestview(l:save)
 endfun
 autocmd BufWritePre * :call TrimWhitespace()
+
+" show lint status on statusline
+fun! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
 
 autocmd! FileType fzf tnoremap <buffer> jk <c-c>
 
@@ -71,6 +87,7 @@ let $FZF_DEFAULT_COMMAND = 'ag --ignore-dir "node_modules" -g ""'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " vim-go
 let g:go_highlight_types = 1
@@ -89,6 +106,11 @@ let g:ale_set_quickfix = 1
 let g:ale_set_loclist = 0
 let g:ale_set_highlights = 0
 let g:ale_echo_msg_format = '[%linter%] %s'
+
+" prettier
+let g:prettier#exec_cmd_async = 1
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 " key mapping
 no <silent> <leader>r :source %<cr>
@@ -149,18 +171,23 @@ set nowritebackup
 set splitbelow
 set splitright
 set background=dark
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}\ %{ObsessionStatus()}\ %(%l,%c%V%)
+set statusline=%<%f\ %h%m%r              " file
+set statusline+=%{fugitive#statusline()} " git branch
+set statusline+=\ %{LinterStatus()}      " lint status
+set statusline+=\ %{ObsessionStatus()}   " session tracking
+set statusline+=%(%l,%c%V%)              " current row and column
+set completeopt-=preview
 colorscheme gruvbox
 
 " custom coloring
 highlight clear SignColumn
 highlight ALEErrorSign guibg=darkgrey
 highlight ALEWarningSign guibg=darkgrey
-highlight LineNr ctermfg=darkgrey ctermbg=NONE
+highlight LineNr ctermfg=240 ctermbg=NONE
 highlight CursorLineNr ctermfg=red ctermbg=NONE
-highlight StatusLine ctermfg=0 ctermbg=red
-highlight StatusLineNC ctermfg=0 ctermbg=darkgrey
+highlight StatusLine ctermfg=234 ctermbg=white
+highlight StatusLineNC ctermfg=234 ctermbg=darkgrey
 highlight WildMenu cterm=underline ctermfg=red ctermbg=0 gui=none guifg=blue guibg=blue
-highlight fzf1 ctermfg=red ctermbg=0
-highlight fzf2 ctermfg=white ctermbg=0
-highlight fzf3 ctermfg=white ctermbg=0
+highlight fzf1 ctermfg=red ctermbg=234
+highlight fzf2 ctermfg=white ctermbg=234
+highlight fzf3 ctermfg=white ctermbg=234
