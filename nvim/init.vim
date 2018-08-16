@@ -19,9 +19,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-obsession'
 Plug 'godlygeek/tabular'
-Plug 'w0rp/ale'
 Plug 'junegunn/vim-emoji'
+Plug 'metakirby5/codi.vim'
+
 " Plug 'airblade/vim-gitgutter'
+
+Plug 'w0rp/ale'
+Plug 'janko-m/vim-test'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -36,6 +40,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+
+Plug 'HerringtonDarkholme/yats.vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
@@ -62,6 +68,12 @@ fun! LinterStatus() abort
     \   all_non_errors,
     \   all_errors
     \)
+endfunction
+
+" repeat last command on next pane (tmux)
+function! s:RepatLastTmuxCommand()
+  silent! exec "!tmux select-pane -l && tmux send up enter && tmux select-pane -l"
+  redraw!
 endfunction
 
 autocmd! FileType fzf tnoremap <buffer> jk <c-c>
@@ -106,10 +118,18 @@ let g:ale_set_quickfix = 1
 let g:ale_set_loclist = 0
 let g:ale_set_highlights = 0
 let g:ale_echo_msg_format = '[%linter%] %s'
+let g:ale_linters = {
+\ 'go': ['gofmt', 'golint'],
+\ 'javascript': ['eslint'],
+\ 'typescript': ['tslint', 'tsserver']
+\ }
 
 " prettier
 let g:prettier#exec_cmd_async = 1
 let g:prettier#autoformat = 0
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'false'
+let g:prettier#config#trailing_comma = 'es5'
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 " key mapping
@@ -140,6 +160,9 @@ nno <c-l> <c-w><c-l>
 map <silent> J :bp<cr>
 map <silent> K :bn<cr>
 
+vno < <gv
+vno > >gv
+
 nno <silent><leader>t :NERDTreeToggle<cr>
 
 nmap <silent> <c-p> :FZF<cr>
@@ -149,6 +172,11 @@ nmap <leader>gr :GoRun<cr>
 
 nmap <silent> <space>k :ALENextWrap<cr>
 nmap <silent> <space>j :ALEPreviousWrap<cr>
+
+nmap <leader>bl :set background=light<cr>
+nmap <leader>bd :set background=dark<cr>
+
+nnoremap <silent><Leader>rt :call <SID>RepatLastTmuxCommand()<CR>
 
 " settings
 set encoding=utf-8
@@ -177,6 +205,7 @@ set statusline+=\ %{LinterStatus()}      " lint status
 set statusline+=\ %{ObsessionStatus()}   " session tracking
 set statusline+=%(%l,%c%V%)              " current row and column
 set completeopt-=preview
+set autoread
 colorscheme gruvbox
 
 " custom coloring
@@ -191,3 +220,9 @@ highlight WildMenu cterm=underline ctermfg=red ctermbg=0 gui=none guifg=blue gui
 highlight fzf1 ctermfg=red ctermbg=234
 highlight fzf2 ctermfg=white ctermbg=234
 highlight fzf3 ctermfg=white ctermbg=234
+
+nmap <silent><leader>, :TestNearest<CR>
+nmap <silent><leader>. :TestFile<CR>
+nmap <silent><leader>z :TestLast<CR>
+nmap <silent><leader>v :TestVisit<CR>
+nmap <silent><leader>x :TestSuite<CR>
