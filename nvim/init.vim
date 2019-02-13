@@ -72,7 +72,7 @@ endfunction
 
 " repeat last command on next pane (tmux)
 function! s:RepatLastTmuxCommand()
-  silent! exec "!tmux select-pane -l && tmux send up enter && tmux select-pane -l"
+  silent! exec "&& !tmux select-pane -l && clear && tmux send up enter && tmux select-pane -l"
   redraw!
 endfunction
 
@@ -93,6 +93,8 @@ let g:NERDTreeIgnore = ['node_modules']
 " ultisnips
 let g:UltiSnipsListSnippets = '<leader>sl'
 let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/snips', 'snips', 'UltiSnips']
+let g:UltiSnipsJumpForwardTrigger = '<c-b>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
 " fzf
 let $FZF_DEFAULT_COMMAND = 'ag --ignore-dir "node_modules" -g ""'
@@ -170,8 +172,10 @@ nmap <silent> <leader>b :Buffer<cr>
 
 nmap <leader>gr :GoRun<cr>
 
-nmap <silent> <space>k :ALENextWrap<cr>
-nmap <silent> <space>j :ALEPreviousWrap<cr>
+nmap <silent> <space>j :ALENextWrap<cr>
+nmap <silent> <space>k :ALEPreviousWrap<cr>
+
+nmap <silent> <leader>lt :ALEToggle<cr>
 
 nmap <leader>bl :set background=light<cr>
 nmap <leader>bd :set background=dark<cr>
@@ -224,5 +228,5 @@ highlight fzf3 ctermfg=white ctermbg=234
 nmap <silent><leader>, :TestNearest<CR>
 nmap <silent><leader>. :TestFile<CR>
 nmap <silent><leader>z :TestLast<CR>
-nmap <silent><leader>v :TestVisit<CR>
 nmap <silent><leader>x :TestSuite<CR>
+" nmap <silent><leader>v :TestVisit<CR>
