@@ -23,7 +23,8 @@ URxvt.perl-ext-common: resize-font
 
 ! settings
 URxvt.scrollBar: false
-URxvt.font: xft:monospace:size=12
+URxvt.font:xft:Meslo LG S DZ for Powerline:pixelsize=13
+
 URxvt.transparent: true
 URxvt.shading: 60
 URXVT.background: [95]#000000
