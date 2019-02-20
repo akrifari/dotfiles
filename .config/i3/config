@@ -2,10 +2,11 @@
 
 set $mod Mod4
 set $browser firefox
-set $term urxvt
+set $term termite
 set $editor nvim
 
 font pango:monospace 10
+font pango:Meslo LG S DZ for Powerline 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -17,7 +18,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run
 
 # change focus
 bindsym $mod+h focus left
@@ -125,6 +126,15 @@ mode "resize" {
 }
 
 mode "screen" {
+        # primary monitor same as external monitor
+        bindsym s exec --no-startup-id xrandr --output eDP1 --mode 800x600 --output DP1 --same-as eDP1 --mode 800x600
+        # external monitor on the right side
+        bindsym l exec --no-startup-id xrandr --output DP1 --mode 800x600 --right-of eDP1
+        # external monitor on the left side
+        bindsym h exec --no-startup-id xrandr --output DP1 --mode 800x600 --left-of eDP1
+        # only display primary monitor
+        bindsym r exec --no-startup-id xrandr --output DP1 --off --output eDP1 --auto
+
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -134,7 +144,8 @@ mode "screen" {
 bindsym $mod+r mode "resize"
 
 # background
-exec --no-startup-id feh --bg-scale /home/krisan/Pictures/dracula.png
+# exec --no-startup-id feh --bg-scale /home/krisan/Pictures/dracula.png
+exec --no-startup-id xsetroot -solid "#3c4556"
 
 # window title
 title_align center
@@ -170,7 +181,8 @@ client.focused              $green     $green      $black
 
 bar {
         status_command i3status
-        font:pango: 11
+        font pango:monospace 10
+        font pango:Meslo LG S DZ for Powerline 9
         position top
 
         colors {
@@ -179,7 +191,7 @@ bar {
             separator $cyan
 
             focused_workspace              $green         $darkviolet       $green
-            active_workspace               $white         $black            $white
+            active_workspace               $gray          $black            $gray
             inactive_workspace             $darkviolet    $black            $darkviolet
             urgent_workspace               $cyan          $darkviolet       $cyan
         }
@@ -203,6 +215,7 @@ bindsym $mod+Shift+a          exec $term -e alsamixer -c 1
 
 bindsym $mod+backslash        split h
 bindsym $mod+minus            split v
+bindsym $mod+apostrophe       split toggle
 
 bindsym $mod+comma            gaps inner current set 0; gaps outer current set 0
 bindsym $mod+period           gaps inner current set 10; gaps outer current set 5
