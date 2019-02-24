@@ -144,7 +144,7 @@ mode "screen" {
 bindsym $mod+r mode "resize"
 
 # background
-exec --no-startup-id compton -b ~/.config/compton/compton.conf
+# exec --no-startup-id compton -b ~/.config/compton/compton.conf
 exec --no-startup-id feh --bg-scale ~/Pictures/dracula.png
 
 # window title
@@ -209,7 +209,6 @@ bindsym $mod+m                exec $term -e htop
 bindsym $mod+Shift+m          exec --no-startup-id $browser; workspace $ws2
 
 bindsym $mod+i                exec $term -e ranger
-bindsym $mod+p                exec $term -e ping google.com
 
 bindsym $mod+Shift+a          exec $term -e alsamixer -c 1
 
@@ -223,12 +222,13 @@ bindsym $mod+period           gaps inner current set 10; gaps outer current set 
 bindsym $mod+Tab              workspace back_and_forth
 bindsym Print                 exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Shift+Print           exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
-bindsym Control+Print         exec --no-startup-id maim ~/Pictures/$(date +%s).png
-bindsym Control+Shift+Print   exec --no-startup-id maim -s ~/Pictures/$(date +%s).png
+bindsym Control+Print         exec --no-startup-id maim ~/Pictures/full-$(date +%s).png
+bindsym Control+Shift+Print   exec --no-startup-id maim -s ~/Pictures/select-$(date +%s).png
+bindsym Mod1+Sys_Req          exec --no-startup-id maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 
 bindsym $mod+F3               gaps inner current minus 10; gaps outer current minus 5
 bindsym $mod+F4               gaps inner current plus 10; gaps outer current plus 5
-bindsym $mod+F7               exec --no-startup-id i3lock -c 282a36 -n
+bindsym $mod+F7               exec --no-startup-id i3lock -c "$darkviolet" -n
 bindsym $mod+F8               mode "screen"
 
 bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 20
