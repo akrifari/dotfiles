@@ -12,7 +12,7 @@ font pango:Meslo LG S DZ for Powerline 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return workspace $ws1; exec --no-startup-id i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -63,9 +63,9 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
+set $ws1 "1  "
+set $ws2 "2  "
+set $ws3 "3  "
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
@@ -108,16 +108,16 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink right 10px or 10ppt; resize grow left 10px or 10ppt
+        bindsym j resize shrink up 10px or 10ppt; resize grow down 10px or 10ppt
+        bindsym k resize grow up 10px or 10ppt; resize shrink down 10px or 10ppt
+        bindsym l resize grow right 10px or 10ppt; resize shrink left 10px or 10ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink right 10px or 10ppt; resize grow left 10px or 10ppt
+        bindsym Down resize shrink up 10px or 10ppt; resize grow down 10px or 10ppt
+        bindsym Up resize grow up 10px or 10ppt; resize shrink down 10px or 10ppt
+        bindsym Right resize grow right 10px or 10ppt; resize shrink left 10px or 10ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -180,7 +180,7 @@ client.focused              $green     $green      $black
 #client.urgent               $rd        $rd         $tx
 
 bar {
-        status_command i3status
+        status_command i3blocks
         font pango:monospace 10
         font pango:Meslo LG S DZ for Powerline 9
         position top
@@ -197,6 +197,7 @@ bar {
         }
 }
 
+for_window [class="URxvt"]      move workspace $ws1
 for_window [class="Firefox"]    move workspace $ws2
 for_window [title="Save Image"] fullscreen
 
@@ -205,10 +206,10 @@ bindsym $mod+t                border normal 0
 bindsym $mod+y                border pixel 3
 bindsym $mod+u                border none
 
-bindsym $mod+m                exec $term -e htop
-bindsym $mod+Shift+m          exec --no-startup-id $browser; workspace $ws2
+bindsym $mod+m                workspace $ws1; exec $term -e htop
+bindsym $mod+Shift+m          workspace $ws2; exec --no-startup-id $browser
 
-bindsym $mod+i                exec $term -e ranger
+bindsym $mod+i                workspace $ws1; exec $term -e ranger
 
 bindsym $mod+Shift+a          exec $term -e alsamixer -c 1
 
@@ -228,7 +229,7 @@ bindsym Mod1+Sys_Req          exec --no-startup-id maim -i $(xdotool getactivewi
 
 bindsym $mod+F3               gaps inner current minus 10; gaps outer current minus 5
 bindsym $mod+F4               gaps inner current plus 10; gaps outer current plus 5
-bindsym $mod+F7               exec --no-startup-id i3lock -c "$darkviolet" -n
+bindsym $mod+F7               exec --no-startup-id i3lock -c "$black" -n
 bindsym $mod+F8               mode "screen"
 
 bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 20
