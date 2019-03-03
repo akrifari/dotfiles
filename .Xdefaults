@@ -19,15 +19,23 @@
 *.color15:    #E6E6E6
 
 ! extensions
-URxvt.perl-ext-common: resize-font
+URxvt.perl-ext-common: url-select,keyboard-select,resize-font
 
 ! settings
 URxvt.scrollBar: false
+URxvt.letterSpace: 0
 URxvt.font:xft:Meslo LG S DZ for Powerline:pixelsize=13
-
 URxvt.transparent: true
 URxvt.shading: 60
-URXVT.background: [95]#000000
+URxvt.background: #000000
+
+! url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+
+! keyboard-select
+URxvt.keysym.M-i: perl:keyboard-select:activate
 
 ! disable ctrl + shift
 URxvt.iso14755: false
