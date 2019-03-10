@@ -1,5 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'morhetz/gruvbox'
+Plug 'dracula/vim'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
