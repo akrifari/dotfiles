@@ -33,7 +33,6 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -42,6 +41,7 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 Plug 'HerringtonDarkholme/yats.vim'
 
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'chr4/nginx.vim'
