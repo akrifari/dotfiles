@@ -1,0 +1,14 @@
+highlight clear SignColumn
+" highlight ALEErrorSign guibg=8
+" highlight ALEWarningSign guibg=8
+highlight LineNr ctermfg=8 ctermbg=NONE
+highlight CursorLineNr ctermfg=3 ctermbg=NONE
+highlight StatusLine ctermfg=7 ctermbg=NONE
+highlight StatusLineNC ctermfg=8 ctermbg=NONE
+" highlight WildMenu cterm=underline ctermfg=3 ctermbg=NONE gui=NONE guifg=6 guibg=6
+highlight fzf1 ctermfg=1 ctermbg=NONE
+highlight fzf2 ctermfg=7 ctermbg=NONE
+highlight fzf3 ctermfg=7 ctermbg=NONE
+
+" transparent background
+highlight Normal ctermbg=NONE
