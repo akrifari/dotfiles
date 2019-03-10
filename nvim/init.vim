@@ -19,8 +19,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-obsession'
 Plug 'godlygeek/tabular'
-Plug 'junegunn/vim-emoji'
-Plug 'metakirby5/codi.vim'
 
 " Plug 'airblade/vim-gitgutter'
 
@@ -114,8 +112,6 @@ let g:go_fmt_command = "goimports"
 " ale
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-let g:ale_sign_error = emoji#for('x')
-let g:ale_sign_warning = emoji#for('large_orange_diamond')
 let g:ale_set_quickfix = 1
 let g:ale_set_loclist = 0
 let g:ale_set_highlights = 0
