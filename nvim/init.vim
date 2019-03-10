@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 Plug 'morhetz/gruvbox'
 
 Plug 'jiangmiao/auto-pairs'
