@@ -95,7 +95,7 @@ let g:UltiSnipsJumpForwardTrigger = '<c-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
 " fzf
-let $FZF_DEFAULT_COMMAND = 'ag --ignore-dir "node_modules" -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore-dir "node_modules" --ignore-dir ".git" -g ""'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
