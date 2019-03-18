@@ -12,7 +12,7 @@ font pango:Meslo LG S DZ for Powerline 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return workspace $ws1; exec --no-startup-id i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -197,8 +197,8 @@ bar {
         }
 }
 
-for_window [class="URxvt"]      move workspace $ws1
-for_window [class="Firefox"]    move workspace $ws2
+for_window [class="URxvt"]      move workspace $ws1; workspace $ws1
+for_window [class="Firefox"]    move workspace $ws2; workspace $ws2
 for_window [title="Save Image"] fullscreen
 
 # personal preferences
@@ -206,10 +206,10 @@ bindsym $mod+t                border normal 0
 bindsym $mod+y                border pixel 3
 bindsym $mod+u                border none
 
-bindsym $mod+m                workspace $ws1; exec $term -e htop
-bindsym $mod+Shift+m          workspace $ws2; exec --no-startup-id $browser
+bindsym $mod+m                exec $term -e htop
+bindsym $mod+Shift+m          exec --no-startup-id $browser
 
-bindsym $mod+i                workspace $ws1; exec $term -e ranger
+bindsym $mod+i                exec $term -e ranger
 
 bindsym $mod+Shift+a          exec $term -e alsamixer -c 1
 
