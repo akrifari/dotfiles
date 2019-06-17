@@ -200,11 +200,15 @@ set nowritebackup
 set splitbelow
 set splitright
 set background=dark
-set statusline=%<%f\ %h%m%r              " file
-set statusline+=%{fugitive#statusline()} " git branch
-set statusline+=\ %{LinterStatus()}      " lint status
-set statusline+=\ %{ObsessionStatus()}   " session tracking
-set statusline+=%(%l,%c%V%)              " current row and column
+set statusline=%<%f                        " full path
+set statusline+=\ %h%m%r                   " help, modified, and readonly flag
+set statusline+=\ %{LinterStatus()}        " lint status
+set statusline+=\ %{fugitive#statusline()} " git branch
+set statusline+=\ %{ObsessionStatus()}     " session tracking
+set statusline+=%=%y                       " file type
+set statusline+=\ %l                       " current line
+set statusline+=/%L                        " total lines
+set statusline+=%4v                        " virtual column number
 set completeopt-=preview
 set autoread
 colorscheme gruvbox
