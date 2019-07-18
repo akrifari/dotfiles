@@ -2,7 +2,8 @@
 
 set $mod Mod4
 set $browser firefox
-set $term urxvt
+set $browser2 google-chrome-stable
+set $term termite
 set $editor nvim
 
 font pango:monospace 10
@@ -12,13 +13,14 @@ font pango:Meslo LG S DZ for Powerline 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id $term
 
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+# bindsym $mod+d exec --no-startup-id dmenu_run -i -p "Search:" -nb '#282a36' -nf '#bd93f9' -sb '#bd93f9' -sf '#282a36' -fn 'Meslo LG S DZ for Powerline:pixelsize=15'
+bindsym $mod+d exec --no-startup-id rofi -show run
 
 # change focus
 bindsym $mod+h focus left
@@ -63,9 +65,9 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1  "
-set $ws2 "2  "
-set $ws3 "3  "
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
@@ -126,14 +128,26 @@ mode "resize" {
 }
 
 mode "screen" {
+        # # Projector
+        # # # primary monitor same as external monitor
+        # bindsym s exec --no-startup-id xrandr --output eDP1 --mode 800x600 --output DP1 --same-as eDP1 --mode 800x600
+        # # external monitor on the right side
+        # bindsym l exec --no-startup-id xrandr --output DP1 --mode 800x600 --right-of eDP1
+        # # external monitor on the left side
+        # bindsym h exec --no-startup-id xrandr --output DP1 --mode 800x600 --left-of eDP1
+        # # only display primary monitor
+        # bindsym r exec --no-startup-id xrandr --output DP1 --off --output eDP1 --auto
+
+        # # HDMI
         # primary monitor same as external monitor
-        bindsym s exec --no-startup-id xrandr --output eDP1 --mode 800x600 --output DP1 --same-as eDP1 --mode 800x600
+        # bindsym s exec --no-startup-id xrandr --output eDP1 --mode 800x600 --output HDMI1 --same-as eDP1 --mode 800x600
+        bindsym s exec --no-startup-id xrandr --output eDP1 --mode 1280x720 --output HDMI1 --same-as eDP1 --mode 1280x720
         # external monitor on the right side
-        bindsym l exec --no-startup-id xrandr --output DP1 --mode 800x600 --right-of eDP1
+        bindsym l exec --no-startup-id xrandr --output HDMI1 --mode 1280x720 --right-of eDP1
         # external monitor on the left side
-        bindsym h exec --no-startup-id xrandr --output DP1 --mode 800x600 --left-of eDP1
+        bindsym h exec --no-startup-id xrandr --output HDMI1 --mode 800x600 --left-of eDP1
         # only display primary monitor
-        bindsym r exec --no-startup-id xrandr --output DP1 --off --output eDP1 --auto
+        bindsym r exec --no-startup-id xrandr --output HDMI1 --off --output eDP1 --auto
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -143,13 +157,16 @@ mode "screen" {
 
 bindsym $mod+r mode "resize"
 
+# polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # background
-# exec --no-startup-id compton -b ~/.config/compton/compton.conf
-exec --no-startup-id feh --bg-scale ~/Pictures/dracula.png
+# exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper/flat-mountain.jpg
 
 # window title
 title_align center
-for_window [class=".*"] title_format "<b>%title</b>"
+for_window [class=".*"] title_format "<b>%class</b>"
 
 # i3gaps
 gaps inner 10
@@ -173,45 +190,52 @@ set   $pink                 #ff79c6
 set   $cyan                 #8be9fd
 set   $gray                 #bfbfbf
 
-# set some nice colors      border     background  text
-client.focused              $green     $green      $black
-#client.unfocused            $gray      $black      $white
-#client.focused_inactive     $gray      $black      $white
-#client.urgent               $rd        $rd         $tx
+# set some nice colors      border      background    text        indicator
+client.focused              $violet     $violet       $black      $green
+#client.unfocused           $gray       $black        $white
+#client.focused_inactive    $gray       $black        $white
+#client.urgent              $rd         $rd           $tx
 
-bar {
-        status_command i3blocks
-        font pango:monospace 10
-        font pango:Meslo LG S DZ for Powerline 9
-        position top
+# bar {
+#         status_command i3blocks
+#         font pango:monospace 10
+#         font pango:Meslo LG S DZ for Powerline 9
+#         position top
 
-        colors {
-            background $darkviolet
-            statusline $red
-            separator $cyan
+#         colors {
+#             background $darkviolet
+#             statusline $red
+#             separator $cyan
 
-            focused_workspace              $green         $darkviolet       $green
-            active_workspace               $gray          $black            $gray
-            inactive_workspace             $darkviolet    $black            $darkviolet
-            urgent_workspace               $cyan          $darkviolet       $cyan
-        }
-}
+#             focused_workspace              $green         $darkviolet       $green
+#             active_workspace               $gray          $black            $gray
+#             inactive_workspace             $darkviolet    $black            $darkviolet
+#             urgent_workspace               $cyan          $darkviolet       $cyan
+#         }
+# }
 
-for_window [class="URxvt"]      move workspace $ws1; workspace $ws1
-for_window [class="Firefox"]    move workspace $ws2; workspace $ws2
-for_window [title="Save Image"] fullscreen
+for_window [class="URxvt"]          move workspace $ws1; workspace $ws1
+for_window [class="Termite"]        move workspace $ws1; workspace $ws1
+for_window [class="kitty"]          move workspace $ws1; workspace $ws1
+for_window [class="Firefox"]        move workspace $ws2; workspace $ws2
+for_window [class="Google-chrome"]  move workspace $ws3; workspace $ws3
+for_window [title="Save Image"]     fullscreen
+
+workspace 4 output HDMI1
 
 # personal preferences
 bindsym $mod+t                border normal 0
 bindsym $mod+y                border pixel 3
 bindsym $mod+u                border none
 
-bindsym $mod+m                exec $term -e htop
+bindsym $mod+m                exec $term -e gotop
 bindsym $mod+Shift+m          exec --no-startup-id $browser
+
+bindsym $mod+g                exec --no-startup-id $browser2
 
 bindsym $mod+i                exec $term -e ranger
 
-bindsym $mod+Shift+a          exec $term -e alsamixer -c 1
+bindsym $mod+Shift+a          exec --no-startup-id $term -e alsamixer -c 1
 
 bindsym $mod+backslash        split h
 bindsym $mod+minus            split v
@@ -235,5 +259,5 @@ bindsym $mod+F8               mode "screen"
 bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20
 bindsym XF86AudioMute         exec --no-startup-id pactl set-sink-mute 0 toggle
-bindsym XF86AudioRaiseVolume  exec --no-startup-id pactl set-sink-volume 0 +20%
-bindsym XF86AudioLowerVolume  exec --no-startup-id pactl set-sink-volume 0 -20%
+bindsym XF86AudioRaiseVolume  exec --no-startup-id pactl set-sink-volume 0 +10%
+bindsym XF86AudioLowerVolume  exec --no-startup-id pactl set-sink-volume 0 -10%
