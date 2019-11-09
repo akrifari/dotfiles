@@ -12,3 +12,6 @@ highlight fzf3 ctermfg=7 ctermbg=NONE
 
 " transparent background
 highlight Normal ctermbg=NONE
+
+" visual selection
+highlight Visual ctermbg=4 ctermfg=0
