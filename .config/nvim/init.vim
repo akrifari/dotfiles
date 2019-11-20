@@ -20,6 +20,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-obsession'
 Plug 'godlygeek/tabular'
+Plug 'luochen1990/rainbow'
+Plug 'dkarter/bullets.vim'
 
 " Plug 'airblade/vim-gitgutter'
 
@@ -114,6 +116,16 @@ let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
 let g:prettier#config#trailing_comma = 'es5'
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+" rainbow parenthesis
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+      \   'separately': {
+      \     'html': 0,
+      \     'markdown': 0,
+      \     'css': 0
+      \   }
+      \ }
 
 " key mapping
 no <silent> <leader>r :source %<cr>
