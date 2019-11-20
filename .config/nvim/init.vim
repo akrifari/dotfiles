@@ -23,7 +23,7 @@ Plug 'godlygeek/tabular'
 Plug 'luochen1990/rainbow'
 Plug 'dkarter/bullets.vim'
 
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 Plug 'w0rp/ale'
 Plug 'janko-m/vim-test'
@@ -164,6 +164,10 @@ nmap <leader>gr :GoRun<cr>
 
 nmap <silent> <space>j :ALENextWrap<cr>
 nmap <silent> <space>k :ALEPreviousWrap<cr>
+
+nmap <silent> <space>J :GitGutterNextHunk<cr>
+nmap <silent> <space>K :GitGutterPrevHunk<cr>
+nmap <silent> <space>gp :GitGutterPreviewHunk<cr>
 
 " settings
 set encoding=utf-8
