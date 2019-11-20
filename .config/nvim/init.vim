@@ -165,6 +165,8 @@ nmap <leader>gr :GoRun<cr>
 nmap <silent> <space>j :ALENextWrap<cr>
 nmap <silent> <space>k :ALEPreviousWrap<cr>
 
+vno <leader>hr :<C-U>%s/\%V
+
 nmap <silent> <space>J :GitGutterNextHunk<cr>
 nmap <silent> <space>K :GitGutterPrevHunk<cr>
 nmap <silent> <space>gp :GitGutterPreviewHunk<cr>
