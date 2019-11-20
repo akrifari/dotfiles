@@ -57,22 +57,16 @@ autocmd BufWritePre * :call TrimWhitespace()
 
 " show lint status on statusline
 fun! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
+  let l:counts = ale#statusline#Count(bufnr(''))
 
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
 
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
-
-" repeat last command on next pane (tmux)
-function! s:RepatLastTmuxCommand()
-  silent! exec "&& !tmux select-pane -l && clear && tmux send up enter && tmux select-pane -l"
-  redraw!
+  return l:counts.total == 0 ? 'OK' : printf(
+        \   '%dW %dE',
+        \   all_non_errors,
+        \   all_errors
+        \)
 endfunction
 
 autocmd! FileType fzf tnoremap <buffer> jk <c-c>
@@ -96,7 +90,7 @@ let g:UltiSnipsJumpForwardTrigger = '<c-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
 " fzf
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore-dir "node_modules" --ignore-dir ".git" -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore-dir "node_modules" --ignore-dir ".git" --ignore-dir "__pycache__" -g ""'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -118,10 +112,10 @@ let g:ale_set_loclist = 0
 let g:ale_set_highlights = 0
 let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_linters = {
-\ 'go': ['gofmt', 'golint'],
-\ 'javascript': ['eslint'],
-\ 'typescript': ['tslint', 'tsserver']
-\ }
+      \ 'go': ['gofmt', 'golint'],
+      \ 'javascript': ['eslint'],
+      \ 'typescript': ['tslint', 'tsserver']
+      \ }
 
 " prettier
 let g:prettier#exec_cmd_async = 1
@@ -134,9 +128,6 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 " key mapping
 no <silent> <leader>r :source %<cr>
 no <silent> <cr> :nohl<cr>
-
-no j gj
-no k gk
 
 ino jk <esc>
 cno jk <esc>
@@ -172,19 +163,12 @@ nmap <leader>gr :GoRun<cr>
 nmap <silent> <space>j :ALENextWrap<cr>
 nmap <silent> <space>k :ALEPreviousWrap<cr>
 
-nmap <silent> <leader>lt :ALEToggle<cr>
-
-nmap <leader>bl :set background=light<cr>
-nmap <leader>bd :set background=dark<cr>
-
-nnoremap <silent><Leader>rt :call <SID>RepatLastTmuxCommand()<CR>
-
 " settings
 set encoding=utf-8
 set number
 set relativenumber
 set pastetoggle=<F3>
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -210,12 +194,16 @@ set statusline+=\ %l                       " current line
 set statusline+=/%L                        " total lines
 set statusline+=%4v                        " virtual column number
 set completeopt-=preview
+set colorcolumn=80
 set autoread
-colorscheme gruvbox
+set updatetime=100
+set timeoutlen=350
+colorscheme dracula
 
 " custom coloring
-source ~/.config/nvim/color/gruvbox
+source ~/.config/nvim/color/dracula
 
+" vim test
 nmap <silent><leader>, :TestNearest<CR>
 nmap <silent><leader>. :TestFile<CR>
 nmap <silent><leader>z :TestLast<CR>
