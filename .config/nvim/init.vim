@@ -26,13 +26,7 @@ Plug 'godlygeek/tabular'
 Plug 'w0rp/ale'
 Plug 'janko-m/vim-test'
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -41,7 +35,6 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 Plug 'HerringtonDarkholme/yats.vim'
 
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'chr4/nginx.vim'
@@ -84,17 +77,14 @@ let g:user_emmet_leader_key = '<leader>e'
 let g:NERDTreeIgnore = ['node_modules']
 
 " ultisnips
-let g:UltiSnipsListSnippets = '<leader>sl'
+let g:UltiSnipsListSnippets = '<leader>l'
 let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/snips', 'snips', 'UltiSnips']
+let g:UltiSnipsExpandTrigger = '<c-j>'
 let g:UltiSnipsJumpForwardTrigger = '<c-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
 " fzf
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore-dir "node_modules" --ignore-dir ".git" --ignore-dir "__pycache__" -g ""'
-
-" deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " vim-go
 let g:go_highlight_types = 1
