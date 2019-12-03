@@ -86,7 +86,7 @@ let g:UltiSnipsJumpForwardTrigger = '<c-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
 " fzf
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore-dir "node_modules" --ignore-dir ".git" --ignore-dir "__pycache__" -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --path-to-ignore ~/.ignore -g ""'
 
 " vim-go
 let g:go_highlight_types = 1
