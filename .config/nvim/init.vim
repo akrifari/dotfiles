@@ -61,7 +61,7 @@ fun! LinterStatus() abort
         \   '%dW %dE',
         \   all_non_errors,
         \   all_errors
-        \)
+        \ )
 endfunction
 
 autocmd! FileType fzf tnoremap <buffer> jk <c-c>
@@ -80,7 +80,11 @@ let g:NERDTreeIgnore = ['node_modules']
 
 " ultisnips
 let g:UltiSnipsListSnippets = '<leader>l'
-let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/snips', 'snips', 'UltiSnips']
+let g:UltiSnipsSnippetDirectories = [
+      \   '~/.config/nvim/snips',
+      \   'snips',
+      \   'UltiSnips'
+      \ ]
 let g:UltiSnipsExpandTrigger = '<c-j>'
 let g:UltiSnipsJumpForwardTrigger = '<c-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
@@ -104,9 +108,9 @@ let g:ale_set_loclist = 0
 let g:ale_set_highlights = 0
 let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_linters = {
-      \ 'go': ['gofmt', 'golint'],
-      \ 'javascript': ['eslint'],
-      \ 'typescript': ['tslint', 'tsserver']
+      \   'go': ['gofmt', 'golint'],
+      \   'javascript': ['eslint'],
+      \   'typescript': ['tslint', 'tsserver']
       \ }
 
 " prettier
@@ -115,7 +119,9 @@ let g:prettier#autoformat = 0
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
 let g:prettier#config#trailing_comma = 'es5'
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx PrettierAsync
+autocmd BufWritePre *.css,*.less,*.scss PrettierAsync
+autocmd BufWritePre *.json,*.graphql,*.vue,*.md PrettierAsync
 
 " rainbow parenthesis
 let g:rainbow_active = 1
