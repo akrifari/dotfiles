@@ -22,6 +22,7 @@ Plug 'tpope/vim-obsession'
 Plug 'godlygeek/tabular'
 Plug 'luochen1990/rainbow'
 Plug 'dkarter/bullets.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 Plug 'airblade/vim-gitgutter'
 
