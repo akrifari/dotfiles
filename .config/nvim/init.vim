@@ -171,6 +171,7 @@ nmap <silent> <c-p> :FZF<cr>
 nmap <silent> <leader>b :Buffer<cr>
 
 nmap <leader>gr :GoRun<cr>
+nmap <leader>gc :GoCoverageToggle<cr>
 
 nmap <silent> <space>j :ALENextWrap<cr>
 nmap <silent> <space>k :ALEPreviousWrap<cr>
@@ -180,6 +181,12 @@ vno <leader>hr :<C-U>%s/\%V
 nmap <silent> <space>J :GitGutterNextHunk<cr>
 nmap <silent> <space>K :GitGutterPrevHunk<cr>
 nmap <silent> <space>gp :GitGutterPreviewHunk<cr>
+
+nmap <silent><leader>, :TestNearest<CR>
+nmap <silent><leader>. :TestFile<CR>
+nmap <silent><leader>z :TestLast<CR>
+nmap <silent><leader>x :TestSuite<CR>
+nmap <silent><leader><space> :TestVisit<CR>
 
 " settings
 set encoding=utf-8
@@ -220,10 +227,3 @@ colorscheme dracula
 
 " custom coloring
 source ~/.config/nvim/color/dracula
-
-" vim test
-nmap <silent><leader>, :TestNearest<CR>
-nmap <silent><leader>. :TestFile<CR>
-nmap <silent><leader>z :TestLast<CR>
-nmap <silent><leader>x :TestSuite<CR>
-" nmap <silent><leader>v :TestVisit<CR>
