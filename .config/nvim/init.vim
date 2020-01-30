@@ -13,7 +13,7 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'enricobacis/paste.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'henrik/vim-indexed-search'
+Plug 'google/vim-searchindex'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
@@ -133,6 +133,9 @@ let g:rainbow_conf = {
       \     'css': 0
       \   }
       \ }
+
+" vim-searchindex
+let g:searchindex_star_case = 0
 
 " key mapping
 no <silent> <leader>r :source %<cr>
