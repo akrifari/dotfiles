@@ -64,7 +64,12 @@ fun! LinterStatus() abort
         \ )
 endfunction
 
-autocmd! FileType fzf tnoremap <buffer> jk <c-c>
+" hide fzf statusline
+autocmd FileType fzf
+      \ set laststatus=0 noshowmode noruler signcolumn=no nonumber
+        \ norelativenumber
+      \| autocmd BufLeave <buffer>
+        \ set laststatus=2 showmode ruler signcolumn=yes number relativenumber
 
 let g:mapleader = ','
 
@@ -86,6 +91,24 @@ let g:UltiSnipsJumpForwardTrigger = '<c-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
 " fzf
+" DraculaDarc, denotes default background color (#282a36)
+let g:fzf_colors = {
+      \   'fg': ['fg', 'Normal'],
+      \   'fg+': ['fg', 'Normal'],
+      \   'bg': ['bg', 'Normal'],
+      \   'bg+': ['bg', 'DraculaBgDarc'],
+      \   'hl': ['fg', 'Search'],
+      \   'hl+': ['fg', 'DraculaOrange'],
+      \   'border': ['fg', 'Ignore'],
+      \   'spinner': ['fg', 'Label'],
+      \   'marker': ['fg', 'Keyword'],
+      \   'header': ['fg', 'Comment'],
+      \   'info': ['fg', 'DraculaPurple'],
+      \   'prompt': ['fg', 'DraculaGreen'],
+      \   'gutter': ['bg', 'DraculaBgDarc'],
+      \   'pointer': ['fg', 'DraculaPink']
+      \ }
+let g:fzf_layout = { 'down': '~30%' }
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --path-to-ignore ~/.ignore -g ""'
 
 " vim-go
@@ -140,6 +163,7 @@ ino jk <esc>
 cno jk <esc>
 vno ;; <esc>
 tno jk <c-\><c-n>
+tno <silent> jj <c-\><c-n>:q<cr>
 
 ino <c-a> <c-o>^
 ino <c-e> <c-o>$
