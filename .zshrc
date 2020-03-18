@@ -14,7 +14,6 @@ KEYTIMEOUT=1
 source $ZSH/oh-my-zsh.sh
 source $HOME/zsh/functions
 source $HOME/zsh/aliases
-source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 
 # history
 setopt HIST_EXPIRE_DUPS_FIRST

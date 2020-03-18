@@ -1,5 +1,4 @@
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'morhetz/gruvbox'
 Plug 'dracula/vim'
 
 Plug 'jiangmiao/auto-pairs'
@@ -68,10 +67,6 @@ endfunction
 autocmd! FileType fzf tnoremap <buffer> jk <c-c>
 
 let g:mapleader = ','
-
-" gruvbox
-let g:gruvbox_italic = 1
-let g:gruvbox_contrast_dark = 'hard'
 
 " emmet
 let g:user_emmet_leader_key = '<leader>e'
@@ -200,8 +195,6 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:›\ ,trail:•,eol:¬
 set ignorecase
-" set cursorline
-" set cursorcolumn
 set title
 set nobackup
 set noswapfile
