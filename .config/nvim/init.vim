@@ -226,4 +226,4 @@ set timeoutlen=350
 colorscheme dracula
 
 " custom coloring
-source ~/.config/nvim/color/dracula
+source ~/.config/nvim/color/dracula.vim
