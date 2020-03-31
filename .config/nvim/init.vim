@@ -91,7 +91,7 @@ let g:UltiSnipsJumpForwardTrigger = '<c-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
 " fzf
-" DraculaDarc, denotes default background color (#282a36)
+" DraculaBgDarc, denotes default background color (#282a36)
 let g:fzf_colors = {
       \   'fg': ['fg', 'Normal'],
       \   'fg+': ['fg', 'Normal'],
@@ -226,15 +226,15 @@ set nowritebackup
 set splitbelow
 set splitright
 set background=dark
-set statusline=%<%f                        " full path
-set statusline+=\ %h%m%r                   " help, modified, and readonly flag
-set statusline+=\ %{LinterStatus()}        " lint status
-set statusline+=\ %{fugitive#statusline()} " git branch
-set statusline+=\ %{ObsessionStatus()}     " session tracking
-set statusline+=%=%y                       " file type
-set statusline+=\ %l                       " current line
-set statusline+=/%L                        " total lines
-set statusline+=%4v                        " virtual column number
+set statusline=%<%1*%f%*                        " full path
+set statusline+=%(\ %7*%m%*%2*%h%r%*%)          " modified, help, and readonly flag
+set statusline+=%(\ %4*%{LinterStatus()}%*%)    " lint status
+set statusline+=%(\ %3*%{FugitiveHead()}%*%)    " git branch
+set statusline+=%(\ %5*%{ObsessionStatus()}%*%) " session tracking
+set statusline+=%=%6*%y%*                       " file type
+set statusline+=\ %3*%l%*                       " current line
+set statusline+=/%L                             " total lines
+set statusline+=%3*%4v%*                        " virtual column number
 set completeopt-=preview
 set colorcolumn=80
 set autoread
@@ -242,5 +242,5 @@ set updatetime=100
 set timeoutlen=350
 colorscheme dracula
 
-" custom coloring
+" customize colors
 source ~/.config/nvim/color/dracula.vim

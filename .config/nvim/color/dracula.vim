@@ -3,8 +3,15 @@ highlight LineNr ctermfg=8 ctermbg=NONE
 highlight CursorLineNr ctermfg=3 ctermbg=NONE
 
 " statusline
-highlight StatusLine ctermfg=7 ctermbg=NONE
-highlight StatusLineNC ctermfg=8 ctermbg=NONE
+highlight! link StatusLine DraculaComment
+highlight! link StatusLineNC DraculaSubtle
+highlight link User1 DraculaGreen
+highlight link User2 DraculaPurple
+highlight link User3 DraculaCyan
+highlight link User4 DraculaRed
+highlight link User5 DraculaOrange
+highlight link User6 DraculaPink
+highlight link User7 DraculaYellow
 
 " transparent background
 highlight Normal ctermbg=NONE
