@@ -19,7 +19,9 @@ bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d        exec --no-startup-id rofi -show run
+bindsym $mod+Shift+d  exec --no-startup-id rofimoji -c
+bindsym $mod+c        exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort
 
 # change focus
 bindsym $mod+h focus left
