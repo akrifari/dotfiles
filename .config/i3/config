@@ -2,14 +2,11 @@
 
 set $mod Mod4
 set $browser firefox
-set $browser2 google-chrome-stable
 set $term termite
-set $editor nvim
 
-font pango:monospace 10
 font pango:Meslo LG S DZ for Powerline 10
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
@@ -29,23 +26,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -64,8 +49,8 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# define names for default workspaces for which we configure key bindings later on.
+# we use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -110,17 +95,11 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+        # these bindings trigger as soon as you enter the resize mode
         bindsym h resize shrink right 10px or 10ppt; resize grow left 10px or 10ppt
         bindsym j resize shrink up 10px or 10ppt; resize grow down 10px or 10ppt
         bindsym k resize grow up 10px or 10ppt; resize shrink down 10px or 10ppt
         bindsym l resize grow right 10px or 10ppt; resize shrink left 10px or 10ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink right 10px or 10ppt; resize grow left 10px or 10ppt
-        bindsym Down resize shrink up 10px or 10ppt; resize grow down 10px or 10ppt
-        bindsym Up resize grow up 10px or 10ppt; resize shrink down 10px or 10ppt
-        bindsym Right resize grow right 10px or 10ppt; resize shrink left 10px or 10ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -138,7 +117,7 @@ mode "screen" {
         # only display primary monitor
         bindsym r exec --no-startup-id $HOME/.local/bin/external-monitor.sh -r
 
-        # back to normal: Enter or Escape or $mod+r
+        # back to normal: Enter or Escape or $mod+F8
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+F8 mode "default"
@@ -162,45 +141,38 @@ gaps outer 5
 
 default_border pixel 3
 default_floating_border pixel 3
-
 hide_edge_borders smart
 
 # color defines for dracula styled i3
-set   $white                #f8f8f2
-set   $black                #000000
-set   $darkviolet           #282a36
-set   $red                  #ff5555
-set   $green                #50fa8b
-set   $yellow               #f1fa8c
-set   $violet               #caa9fa
-set   $pink                 #ff79c6
-set   $cyan                 #8be9fd
-set   $gray                 #bfbfbf
+set $white                          #f8f8f2
+set $black                          #000000
+set $darkviolet                     #282a36
+set $red                            #ff5555
+set $green                          #50fa8b
+set $yellow                         #f1fa8c
+set $violet                         #caa9fa
+set $pink                           #ff79c6
+set $cyan                           #8be9fd
+set $gray                           #bfbfbf
 
-# set some nice colors      border      background    text        indicator
-client.focused              $violet     $violet       $black      $green
-client.unfocused            $darkviolet $darkviolet   $white
-client.focused_inactive     $darkviolet $darkviolet   $white
+# set some nice colors              border        background    text     indicator
+client.focused                      $violet       $violet       $black   $green
+client.unfocused                    $darkviolet   $darkviolet   $white
+client.focused_inactive             $darkviolet   $darkviolet   $white
 
-for_window [class="URxvt"]          move workspace $ws1; workspace $ws1
 for_window [class="Termite"]        move workspace $ws1; workspace $ws1
-for_window [class="kitty"]          move workspace $ws1; workspace $ws1
-for_window [class="Emacs"]          move workspace $ws1; workspace $ws1
 for_window [class="firefox"]        move workspace $ws2; workspace $ws2
 for_window [class="Google-chrome"]  move workspace $ws3; workspace $ws3
 for_window [title="Save Image"]     fullscreen
 
 workspace 4 output HDMI1
 
-# personal preferences
 bindsym $mod+t                border normal 0
 bindsym $mod+y                border pixel 3
 bindsym $mod+u                border none
 
 bindsym $mod+m                exec $term -e gotop
 bindsym $mod+Shift+m          exec --no-startup-id $browser
-
-bindsym $mod+g                exec --no-startup-id $browser2
 
 bindsym $mod+i                exec $term -e ranger
 
@@ -214,6 +186,7 @@ bindsym $mod+comma            gaps inner current set 0; gaps outer current set 0
 bindsym $mod+period           gaps inner current set 10; gaps outer current set 5
 
 bindsym $mod+Tab              workspace back_and_forth
+
 bindsym Print                 exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Shift+Print           exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 bindsym Control+Print         exec --no-startup-id maim $HOME/Pictures/full-$(date +%s).png
