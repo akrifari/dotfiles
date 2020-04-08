@@ -202,7 +202,7 @@ bindsym $mod+g                exec --no-startup-id $browser2
 
 bindsym $mod+i                exec $term -e ranger
 
-bindsym $mod+Shift+a          exec --no-startup-id $term -e alsamixer -c 1
+bindsym $mod+Shift+a          exec --no-startup-id $term -e "alsamixer -c 1"
 
 bindsym $mod+backslash        split h
 bindsym $mod+minus            split v
