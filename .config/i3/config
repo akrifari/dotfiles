@@ -148,19 +148,19 @@ hide_edge_borders smart
 # color defines for dracula styled i3
 set $white                          #f8f8f2
 set $black                          #000000
-set $darkviolet                     #282a36
+set $navyblue                       #282a36
 set $red                            #ff5555
 set $green                          #50fa8b
 set $yellow                         #f1fa8c
-set $violet                         #caa9fa
+set $violet                         #bd93f9
 set $pink                           #ff79c6
 set $cyan                           #8be9fd
 set $gray                           #bfbfbf
 
 # set some nice colors              border        background    text     indicator
 client.focused                      $violet       $violet       $black   $green
-client.unfocused                    $darkviolet   $darkviolet   $white
-client.focused_inactive             $darkviolet   $darkviolet   $white
+client.unfocused                    $navyblue     $navyblue     $white
+client.focused_inactive             $navyblue     $navyblue     $white
 
 for_window [class="Termite"]        move workspace $ws1; workspace $ws1
 for_window [class="firefox"]        move workspace $ws2; workspace $ws2
