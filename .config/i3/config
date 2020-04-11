@@ -1,8 +1,10 @@
 # i3 config file
 
 set $mod Mod4
-set $browser firefox
-set $term termite
+
+# loaded from $HOME/.zprofile
+set $browser $BROWSER
+set $term $TERMINAL
 
 font pango:Meslo LG S DZ for Powerline 10
 
