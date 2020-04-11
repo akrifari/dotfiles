@@ -174,8 +174,6 @@ bindsym $mod+u                border none
 bindsym $mod+m                exec $term -e gotop
 bindsym $mod+Shift+m          exec --no-startup-id $browser
 
-bindsym $mod+i                exec $term -e ranger
-
 bindsym $mod+Shift+a          exec --no-startup-id $term -e "alsamixer -c 1"
 
 bindsym $mod+backslash        split h
