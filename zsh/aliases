@@ -1,5 +1,6 @@
 alias boruto="ruby $HOME/Documents/ruby/prac/07-too-lazy-to-open.rb"
 alias c="clear"
+alias f="nnn -e"
 alias ga="git add"
 alias gcm="git commit"
 alias gi="git init"
