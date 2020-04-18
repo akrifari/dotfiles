@@ -91,23 +91,6 @@ let g:UltiSnipsJumpForwardTrigger = '<c-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
 " fzf
-" DraculaBgDarc, denotes default background color (#282a36)
-let g:fzf_colors = {
-      \   'fg': ['fg', 'Normal'],
-      \   'fg+': ['fg', 'Normal'],
-      \   'bg': ['bg', 'Normal'],
-      \   'bg+': ['bg', 'DraculaBgDarc'],
-      \   'hl': ['fg', 'Search'],
-      \   'hl+': ['fg', 'DraculaOrange'],
-      \   'border': ['fg', 'Ignore'],
-      \   'spinner': ['fg', 'Label'],
-      \   'marker': ['fg', 'Keyword'],
-      \   'header': ['fg', 'Comment'],
-      \   'info': ['fg', 'DraculaPurple'],
-      \   'prompt': ['fg', 'DraculaGreen'],
-      \   'gutter': ['bg', 'DraculaBgDarc'],
-      \   'pointer': ['fg', 'DraculaPink']
-      \ }
 let g:fzf_layout = { 'down': '~30%' }
 
 " vim-go
