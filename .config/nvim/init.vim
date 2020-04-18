@@ -109,7 +109,6 @@ let g:fzf_colors = {
       \   'pointer': ['fg', 'DraculaPink']
       \ }
 let g:fzf_layout = { 'down': '~30%' }
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --path-to-ignore ~/.ignore -g ""'
 
 " vim-go
 let g:go_highlight_types = 1

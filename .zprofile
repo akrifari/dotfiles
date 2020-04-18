@@ -16,6 +16,7 @@ export EDITOR="nvim"
 export READER="zathura"
 export NNN_PLUG='f:fzopen;v:imgview'
 export NNN_BMS='h:~;p:~/Pictures'
+export FZF_DEFAULT_COMMAND="ag --hidden --path-to-ignore $HOME/.ignore -g ''"
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=dark
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
