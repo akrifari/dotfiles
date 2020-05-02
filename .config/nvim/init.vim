@@ -145,56 +145,59 @@ let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
 
 " key mapping
-no <silent> <leader>r :source %<cr>
+no <silent> <leader>r :source $MYVIMRC<cr>
 no <silent> <cr> :nohl<cr>
 
 ino jk <esc>
 cno jk <esc>
-vno ;; <esc>
+vn ;; <esc>
 tno jk <c-\><c-n>
 tno <silent> jj <c-\><c-n>:q<cr>
+nno <silent> <leader>q :q<cr>
 
 ino <c-a> <c-o>^
 ino <c-e> <c-o>$
 
-no <leader>c "+y
-no <leader>v "+p
-vno <leader>c "+y
-vno <leader>v "+p
+nn <c-h> <c-w><c-h>
+nn <c-j> <c-w><c-j>
+nn <c-k> <c-w><c-k>
+nn <c-l> <c-w><c-l>
 
-nno <c-h> <c-w><c-h>
-nno <c-j> <c-w><c-j>
-nno <c-k> <c-w><c-k>
-nno <c-l> <c-w><c-l>
+nn <silent> <space>h :bp<cr>
+nn <silent> <space>l :bn<cr>
+nn <silent> `h :tabp<cr>
+nn <silent> `l :tabn<cr>
 
-map <silent> J :bp<cr>
-map <silent> K :bn<cr>
+vn < <gv
+vn > >gv
+vn K dkPV`]
+vn J dpV`]
 
-vno < <gv
-vno > >gv
+nn <silent> <leader>t :NERDTreeToggle<cr>
 
-nno <silent><leader>t :NERDTreeToggle<cr>
+nn <silent> <c-p> :FZF<cr>
+nn <silent> <space>p :Ag<cr>
+nn <silent> <leader>b :Buffer<cr>
+nn <silent> <leader>w :Windows<cr>
+nn <silent> q: :History:<cr>
 
-nmap <silent> <c-p> :FZF<cr>
-nmap <silent> <leader>b :Buffer<cr>
+nn <leader>gr :GoRun<cr>
+nn <leader>gc :GoCoverageToggle<cr>
 
-nmap <leader>gr :GoRun<cr>
-nmap <leader>gc :GoCoverageToggle<cr>
+nn <silent> <space>j :ALENextWrap<cr>
+nn <silent> <space>k :ALEPreviousWrap<cr>
 
-nmap <silent> <space>j :ALENextWrap<cr>
-nmap <silent> <space>k :ALEPreviousWrap<cr>
+vn <leader>hr :<C-U>%s/\%V
 
-vno <leader>hr :<C-U>%s/\%V
+nn <silent> gl :GitGutterNextHunk<cr>
+nn <silent> gh :GitGutterPrevHunk<cr>
+nn <silent> gp :GitGutterPreviewHunk<cr>
 
-nmap <silent> <space>J :GitGutterNextHunk<cr>
-nmap <silent> <space>K :GitGutterPrevHunk<cr>
-nmap <silent> <space>gp :GitGutterPreviewHunk<cr>
-
-nmap <silent><leader>, :TestNearest<CR>
-nmap <silent><leader>. :TestFile<CR>
-nmap <silent><leader>z :TestLast<CR>
-nmap <silent><leader>x :TestSuite<CR>
-nmap <silent><leader><space> :TestVisit<CR>
+nn <silent> <leader>, :TestNearest<cr>
+nn <silent> <leader>. :TestFile<cr>
+nn <silent> <leader>z :TestLast<cr>
+nn <silent> <leader>x :TestSuite<cr>
+nn <silent> <leader><space> :TestVisit<cr>
 
 nn <silent> K :call <sid>ShowDocumentation()<cr>
 nmap <f2> <plug>(coc-rename)
