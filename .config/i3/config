@@ -123,6 +123,9 @@ mode "screen" {
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# dunst
+exec_always --no-startup-id $HOME/.config/dunst/launch.sh
+
 # background
 exec --no-startup-id feh --bg-fill $HOME/Pictures/wallpaper/flat-mountain.jpg
 
