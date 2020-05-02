@@ -222,6 +222,7 @@ set colorcolumn=80
 set autoread
 set updatetime=100
 set timeoutlen=350
+set termguicolors
 colorscheme dracula
 
 " customize colors
