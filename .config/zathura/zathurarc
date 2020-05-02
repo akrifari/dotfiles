@@ -1,1 +1,39 @@
-set selection-clipboard clipboard
+set font                      "monospace 11"
+set selection-clipboard       clipboard
+set statusbar-home-tilde      true
+set show-scrollbars           true
+
+set default-bg                "#44475a"
+set default-fg                "#f8f8f2"
+
+set inputbar-bg               "#282a36"
+set inputbar-fg               "#f8f8f2"
+
+# table of contents
+set index-bg                  "#282a36"
+set index-fg                  "#f8f8f2"
+set index-active-bg           "#bd93f9"
+set index-active-fg           "#282a36"
+
+set statusbar-bg              "#2b2b2b"
+set statusbar-fg              "#50fa7b"
+
+set completion-bg             "#282a36"
+set completion-group-bg       "#282a36"
+set completion-group-fg       "#50fa7b"
+set completion-highlight-bg   "#bd93f9"
+set completion-highlight-fg   "#282a36"
+
+# notification message
+set notification-bg           "#282a36"
+set notification-fg           "#f1fa8c"
+set notification-warning-bg   "#282a36"
+set notification-warning-fg   "#f1fa8c"
+set notification-error-bg     "#282a36"
+set notification-error-fg     "#ff5555"
+
+set highlight-active-color    "#bd93f9"
+set highlight-color           "#50fa7b"
+set highlight-transparency    0.5
+
+# vim: ft=conf
