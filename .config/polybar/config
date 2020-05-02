@@ -7,13 +7,11 @@ fixed-center = true
 background = ${xrdb:background}
 foreground = ${xrdb:foreground}
 
-line-size = 3
-line-color = #f00
+line-size = 2
 
-border-size = 4
+border-top-size = 4
 border-color = ${xrdb:background}
 
-padding-left = 1
 padding-right = 2
 
 module-margin-left = 1
@@ -63,7 +61,7 @@ label-focused-padding = 2
 
 ; unfocused = inactive workspace on any monitor
 label-unfocused = %name%
-label-unfocused-padding = 2
+label-unfocused-padding = ${self.label-focused-padding}
 
 ; visible = active workspace on unfocused monitor
 label-visible = %index%
@@ -71,12 +69,12 @@ label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${xrdb:color2}
 label-visible-padding = ${self.label-focused-padding}
 
-; urgent = Workspace with urgency hint set
+; urgent = workspace with urgency hint set
 label-urgent = %name%
 label-urgent-background = ${xrdb:background}
 label-urgent-foreground = ${xrdb:color1}
 label-urgent-underline = ${xrdb:color1}
-label-urgent-padding = 2
+label-urgent-padding = ${self.label-focused-padding}
 
 [module/wlan]
 type = internal/network
