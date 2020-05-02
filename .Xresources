@@ -23,3 +23,20 @@
 Sxiv.font:              Meslo LG S DZ for Powerline:size=9
 Sxiv.foreground:        BLUE
 Sxiv.background:        BACKGROUND
+
+!!! ROFI !!!
+rofi.font:              Meslo LG S DZ for Powerline 10
+rofi.color-enabled:     true
+rofi.padding:           30
+rofi.disable-history:   true
+rofi.hide-scrollbar:    true
+rofi.lines:             5
+rofi.bw:                3
+
+! property name         bg          border      separator
+rofi.color-window:      BACKGROUND, BLUE,       BLUE
+
+! property name         bg          fg          bg-alt      head-bg     head-fg
+rofi.color-normal:      BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, BLUE
+rofi.color-active:      BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, BLUE
+rofi.color-urgent:      BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, BLUE
