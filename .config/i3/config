@@ -138,22 +138,21 @@ default_border pixel 3
 default_floating_border pixel 3
 hide_edge_borders smart
 
-# color defines for dracula styled i3
-set $white                          #f8f8f2
-set $black                          #000000
-set $navyblue                       #282a36
-set $red                            #ff5555
-set $green                          #50fa8b
-set $yellow                         #f1fa8c
-set $violet                         #bd93f9
-set $pink                           #ff79c6
-set $cyan                           #8be9fd
-set $gray                           #bfbfbf
+# dracula theme, loaded from $HOME/.Xresources
+set_from_resource $fg               foreground
+set_from_resource $bg               background
+set_from_resource $black            color0
+set_from_resource $red              color1
+set_from_resource $green            color2
+set_from_resource $yellow           color3
+set_from_resource $blue             color4
+set_from_resource $magenta          color5
+set_from_resource $cyan             color7
 
-# set some nice colors              border        background    text     indicator
-client.focused                      $violet       $violet       $black   $green
-client.unfocused                    $navyblue     $navyblue     $white
-client.focused_inactive             $navyblue     $navyblue     $white
+# property name                     border    bg        text      indicator
+client.focused                      $blue     $blue     $black    $green
+client.unfocused                    $bg       $bg       $fg
+client.focused_inactive             $bg       $bg       $fg
 
 for_window [class="Termite"]        move workspace $ws1; workspace $ws1
 for_window [class="firefox"]        move workspace $ws2; workspace $ws2
@@ -166,8 +165,8 @@ bindsym $mod+t                      border normal 0
 bindsym $mod+y                      border pixel 3
 bindsym $mod+u                      border none
 
-bindsym $mod+m                      exec $term -e htop
-bindsym $mod+i                      exec $term -e "nnn -e"
+bindsym $mod+m                      exec --no-startup-id $term -e htop
+bindsym $mod+i                      exec --no-startup-id $term -e nnn
 
 bindsym $mod+Shift+m                exec --no-startup-id $browser
 bindsym $mod+Shift+a                exec --no-startup-id $term -e "alsamixer -c 1"
