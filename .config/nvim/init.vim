@@ -8,9 +8,7 @@ Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-ragtag'
-Plug 'Valloric/MatchTagAlways'
 Plug 'enricobacis/paste.vim'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'google/vim-searchindex'
 Plug 'tpope/vim-endwise'
@@ -22,19 +20,15 @@ Plug 'godlygeek/tabular'
 Plug 'luochen1990/rainbow'
 Plug 'dkarter/bullets.vim'
 Plug 'editorconfig/editorconfig-vim'
-
 Plug 'airblade/vim-gitgutter'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 Plug 'w0rp/ale'
 Plug 'janko-m/vim-test'
 
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
-
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-
 Plug 'HerringtonDarkholme/yats.vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -43,7 +37,7 @@ Plug 'chr4/nginx.vim'
 call plug#end()
 
 " space trailing
-fun! TrimWhitespace()
+fu! TrimWhitespace()
   let l:save = winsaveview()
   %s/\s\+$//e
   call winrestview(l:save)
@@ -51,17 +45,26 @@ endfun
 autocmd BufWritePre * :call TrimWhitespace()
 
 " show lint status on statusline
-fun! LinterStatus() abort
+fu! LinterStatus() abort
   let l:counts = ale#statusline#Count(bufnr(''))
 
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
 
-  return l:counts.total == 0 ? 'OK' : printf(
+  return l:counts.total == 0 ? '' : printf(
         \   '%dW %dE',
         \   all_non_errors,
         \   all_errors
         \ )
+endfunction
+
+" documentation popup
+fu! s:ShowDocumentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
 endfunction
 
 " hide fzf statusline
@@ -78,17 +81,6 @@ let g:user_emmet_leader_key = '<leader>e'
 
 " nerdtree
 let g:NERDTreeIgnore = ['node_modules']
-
-" ultisnips
-let g:UltiSnipsListSnippets = '<leader>l'
-let g:UltiSnipsSnippetDirectories = [
-      \   '~/.config/nvim/snips',
-      \   'snips',
-      \   'UltiSnips'
-      \ ]
-let g:UltiSnipsExpandTrigger = '<c-j>'
-let g:UltiSnipsJumpForwardTrigger = '<c-b>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
 " fzf
 let g:fzf_layout = { 'down': '~30%' }
@@ -114,16 +106,6 @@ let g:ale_linters = {
       \   'typescript': ['tslint', 'tsserver']
       \ }
 
-" prettier
-let g:prettier#exec_cmd_async = 1
-let g:prettier#autoformat = 0
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#jsx_bracket_same_line = 'false'
-let g:prettier#config#trailing_comma = 'es5'
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx PrettierAsync
-autocmd BufWritePre *.css,*.less,*.scss PrettierAsync
-autocmd BufWritePre *.json,*.graphql,*.vue,*.md PrettierAsync
-
 " rainbow parenthesis
 let g:rainbow_active = 1
 let g:rainbow_conf = {
@@ -136,6 +118,21 @@ let g:rainbow_conf = {
 
 " vim-searchindex
 let g:searchindex_star_case = 0
+
+" coc
+let g:coc_global_extensions = [
+      \   "coc-json",
+      \   "coc-tsserver",
+      \   "coc-css",
+      \   "coc-prettier",
+      \   "coc-go",
+      \   "coc-emmet",
+      \   "coc-html",
+      \   "coc-snippets",
+      \   "coc-eslint",
+      \ ]
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
 
 " key mapping
 no <silent> <leader>r :source %<cr>
@@ -189,6 +186,18 @@ nmap <silent><leader>z :TestLast<CR>
 nmap <silent><leader>x :TestSuite<CR>
 nmap <silent><leader><space> :TestVisit<CR>
 
+nn <silent> K :call <sid>ShowDocumentation()<cr>
+nmap <f2> <plug>(coc-rename)
+nmap <silent> gd <plug>(coc-definition)
+nmap <silent> gy <plug>(coc-type-definition)
+nmap <silent> gi <plug>(coc-implementation)
+nmap <silent> gr <plug>(coc-references)
+nmap <silent> [g <plug>(coc-diagnostic-prev)
+nmap <silent> ]g <plug>(coc-diagnostic-next)
+vmap <c-j> <plug>(coc-snippets-select)
+imap <c-l> <plug>(coc-snippets-expand)
+imap <c-j> <plug>(coc-snippets-expand-jump)
+
 " settings
 set encoding=utf-8
 set number
@@ -223,6 +232,9 @@ set autoread
 set updatetime=100
 set timeoutlen=350
 set termguicolors
+set hidden
+set shortmess+=c
+set signcolumn=yes
 colorscheme dracula
 
 " customize colors
