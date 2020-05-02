@@ -239,7 +239,7 @@ set statusline+=%(\ %3*%{FugitiveHead()}%*%)    " git branch
 set statusline+=%(\ %5*%{ObsessionStatus()}%*%) " session tracking
 set statusline+=%=%6*%y%*                       " file type
 set statusline+=\ %3*%l%*                       " current line
-set statusline+=/%L                             " total lines
+set statusline+=%8*/%L%*                        " total lines
 set statusline+=%3*%4v%*                        " virtual column number
 set completeopt-=preview
 set colorcolumn=80
