@@ -36,3 +36,5 @@ alias vim="nvim"
 alias z="nvim $HOME/.zshrc"
 alias zc="vim $HOME/zsh/aliases"
 alias zf="vim $HOME/zsh/functions"
+
+# vim: ft=zsh
