@@ -31,10 +31,10 @@ Plug 'w0rp/ale'
 Plug 'janko-m/vim-test'
 
 " javascript
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'yuezk/vim-js'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'heavenshell/vim-jsdoc'
 
 " golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -143,6 +143,9 @@ let g:coc_global_extensions = [
       \ ]
 let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
+
+" vim-jsx-pretty
+let g:vim_jsx_pretty_colorful_config = 1
 
 " key mapping
 no <silent> <leader>r :source $MYVIMRC<cr>
