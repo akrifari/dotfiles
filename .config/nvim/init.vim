@@ -1,17 +1,18 @@
 call plug#begin('~/.local/share/nvim/plugged')
+" colorscheme
 Plug 'dracula/vim'
 
+" misc
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-ragtag'
 Plug 'enricobacis/paste.vim'
 Plug 'honza/vim-snippets'
 Plug 'google/vim-searchindex'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -22,17 +23,26 @@ Plug 'dkarter/bullets.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'chrisbra/Colorizer'
 
+" linting & testing
 Plug 'w0rp/ale'
 Plug 'janko-m/vim-test'
 
+" javascript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 
+" golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+" ruby
+Plug 'tpope/vim-endwise'
+
+" nginx
 Plug 'chr4/nginx.vim'
 call plug#end()
 
@@ -197,6 +207,8 @@ nmap <silent> ]g <plug>(coc-diagnostic-next)
 vmap <c-j> <plug>(coc-snippets-select)
 imap <c-l> <plug>(coc-snippets-expand)
 imap <c-j> <plug>(coc-snippets-expand-jump)
+
+nn <leader>1 :ColorToggle<cr>
 
 " settings
 set encoding=utf-8
