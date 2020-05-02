@@ -1,0 +1,25 @@
+#include ".config/xcolors/dracula"
+
+*.foreground:           FOREGROUND
+*.background:           BACKGROUND
+*.color0:               BLACK
+*.color8:               BLACK_ALT
+*.color1:               RED
+*.color9:               RED_ALT
+*.color2:               GREEN
+*.color10:              GREEN_ALT
+*.color3:               YELLOW
+*.color11:              YELLOW_ALT
+*.color4:               BLUE
+*.color12:              BLUE_ALT
+*.color5:               MAGENTA
+*.color13:              MAGENTA_ALT
+*.color6:               CYAN
+*.color14:              CYAN_ALT
+*.color7:               WHITE
+*.color15:              WHITE_ALT
+
+!!! SXIV !!!
+Sxiv.font:              Meslo LG S DZ for Powerline:size=9
+Sxiv.foreground:        BLUE
+Sxiv.background:        BACKGROUND
