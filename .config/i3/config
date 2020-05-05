@@ -196,6 +196,8 @@ bindsym $mod+F4                     gaps inner current plus 10; gaps outer curre
 bindsym $mod+r                      mode "resize"
 bindsym $mod+F8                     mode "screen"
 
+bindsym $mod+Print                  exec --no-startup-id $HOME/.local/bin/creategif
+bindsym $mod+Shift+f                exec --no-startup-id $HOME/.local/bin/editconfig
 bindsym $mod+Shift+e                exec --no-startup-id $HOME/.local/bin/i3exit
 bindsym $mod+Shift+p                exec --no-startup-id $HOME/.local/bin/i3power
 

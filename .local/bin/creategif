@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# Taken from https://redd.it/7ahbvv with a few modifications
+
+# stop recording
+pidof ffmpeg >/dev/null 2>&1 && killall -q ffmpeg && exit 0
+
+tmpfile="$(mktemp -t gif-XXXXXXXX).mkv"
+output="$HOME/Pictures/gif/$(date +%y%m%d%H%M%S)"
+
+# get recording area
+read -r X Y W H < <(slop -f "%x %y %w %h")
+
+[ -z "$X" ] && notify-send "Please select recording area" && exit 0
+
+# record selected area
+notify-send 'Start recording'
+ffmpeg -f x11grab -s "$W"x"$H" -i :0.0+"$X","$Y" "$tmpfile"
+
+# create gif pallete
+notify-send 'Generating palette'
+ffmpeg -y -i "$tmpfile" -vf fps=10,palettegen /tmp/palette.png
+
+# convert .mkv to .gif
+notify-send 'Generating GIF'
+ffmpeg -i "$tmpfile" -i /tmp/palette.png -filter_complex "paletteuse" "$output".gif
+
+notify-send "GIF size $(du -h "$output".gif | awk '{print $1}')"
+mv "$tmpfile" "$output".mkv
+
+# open final gif
+sxiv -a "$output".gif
+
+# remove temporary file
+trap 'rm -f "${tmpfile%.*}"' 0

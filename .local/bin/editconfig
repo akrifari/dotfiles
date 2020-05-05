@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+configfiles="
+dunst           $HOME/.config/dunst/dunstrc
+i3              $HOME/.config/i3/config
+mpv             $HOME/.config/mpv
+nvim            $HOME/.config/nvim/init.vim
+polybar         $HOME/.config/polybar/config
+scripts         $HOME/.local/bin
+termite         $HOME/.config/termite/config
+tmux            $HOME/.tmux.conf
+xinitrc         $HOME/.xinitrc
+xresources      $HOME/.Xresources
+zathura         $HOME/.config/zathura/zathurarc
+zprofile        $HOME/.zprofile
+zsh             $HOME/.zshrc
+zshalias        $HOME/zsh/aliases
+zshfuncs        $HOME/zsh/functions
+"
+
+chosen=$(echo "$configfiles" \
+  | awk 'NF {print $1}' \
+  | rofi -sep '\n' -dmenu -p "Choose file" -no-custom)
+
+filepath=$(echo "$configfiles" \
+  | grep "$chosen" \
+  | head -n 1 \
+  | tr -s ' ' \
+  | cut -d ' ' -f 2)
+
+[ ! -e "$filepath" ] && exit 0
+
+# for any other TERMINAL except termite, please split up $EDITOR and $filepath
+# in different quoted strings
+"$TERMINAL" -e "$EDITOR $filepath"
