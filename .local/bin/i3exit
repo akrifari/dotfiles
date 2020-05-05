@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+selection=$(echo -e "yes\nno" | rofi -sep '\n' -dmenu -p 'Exit i3' -no-custom)
+
+case $selection in
+  yes) killall i3 ;;
+  *) exit 0 ;;
+esac
