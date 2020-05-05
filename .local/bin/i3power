@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+action=$(echo -e "poweroff\nreboot" \
+  | rofi -sep '\n' -dmenu -p 'System please' -no-custom)
+[ -z "$action" ] && exit 0
+
+confirm=$(echo -e "yes\nno" | rofi -sep '\n' -dmenu -p "Are you sure")
+case $confirm in
+  yes) $action ;;
+  *) exit 0 ;;
+esac
