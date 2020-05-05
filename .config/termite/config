@@ -1,5 +1,5 @@
 [options]
-font = Meslo LG S DZ for Powerline 9.5
+font = Meslo LG S DZ for Powerline 10
 
 # Length of the scrollback buffer, 0 disabled the scrollback buffer
 # and setting it to a negative value means "infinite scrollback"
@@ -11,7 +11,7 @@ scrollback_lines = 10000
 foreground      = #f8f8f2
 foreground_bold = #f8f8f2
 cursor          = #93a1a1
-background = rgba(40, 42, 54, 0.95)
+background      = rgba(40, 42, 54, 0.95)
 
 # black
 color0  = #000000
