@@ -127,18 +127,14 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id $HOME/.config/dunst/launch.sh
 
 # background
-exec --no-startup-id feh --bg-fill $HOME/Pictures/wallpaper/flat-mountain.jpg
+exec --no-startup-id feh --bg-fill $HOME/Pictures/wallpaper/spaceman.jpg
 
 # window title
 title_align center
 for_window [class=".*"] title_format "<b>%class</b>"
 
-# i3gaps
-gaps inner 10
-gaps outer 5
-
-default_border pixel 3
-default_floating_border pixel 3
+default_border pixel 2
+default_floating_border pixel 2
 hide_edge_borders smart
 
 # dracula theme, loaded from $HOME/.Xresources
@@ -170,9 +166,9 @@ bindsym $mod+u                      border none
 
 bindsym $mod+m                      exec --no-startup-id $term -e htop
 bindsym $mod+i                      exec --no-startup-id $term -e nnn
+bindsym $mod+Shift+a                exec --no-startup-id $term -e "alsamixer -c 1"
 
 bindsym $mod+Shift+m                exec --no-startup-id $browser
-bindsym $mod+Shift+a                exec --no-startup-id $term -e "alsamixer -c 1"
 
 bindsym $mod+d                      exec --no-startup-id rofi -show run
 bindsym $mod+p                      exec --no-startup-id rofimoji -p
