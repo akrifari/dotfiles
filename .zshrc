@@ -9,9 +9,6 @@ export ZSH=$HOME/.oh-my-zsh
 # theme
 ZSH_THEME="fwalch"
 
-# delay timeout
-KEYTIMEOUT=1
-
 # utils
 source $ZSH/oh-my-zsh.sh
 source $HOME/zsh/functions
