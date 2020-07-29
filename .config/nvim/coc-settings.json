@@ -12,10 +12,7 @@
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",
   "prettier.disableSuccessMessage": true,
-  "snippets.ultisnips.directories": [
-    "UltiSnips",
-    "gosnippets/UltiSnips"
-  ],
+  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
   "snippets.extends": {
     "javascriptreact": ["javascript"],
     "typescriptreact": ["javascript"],
@@ -24,5 +21,5 @@
   "eslint.autoFixOnSave": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
-  },
+  }
 }
