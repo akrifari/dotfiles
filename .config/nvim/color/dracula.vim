@@ -28,6 +28,10 @@ highlight Comment ctermfg=61 guifg=#6272a4 cterm=italic gui=italic
 
 " error message
 highlight! link ErrorMsg DraculaError
+highlight! link CocErrorSign DraculaError
+highlight! link CocErrorFloat DraculaError
 
 " warning message
 highlight! link WarningMsg DraculaOrange
+highlight! link CocInfoSign DraculaOrange
+highlight! link CocInfoFloat DraculaOrange
