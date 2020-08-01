@@ -90,32 +90,32 @@ bindsym $mod+Shift+r restart
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # these bindings trigger as soon as you enter the resize mode
-        bindsym h resize shrink right 10px or 10ppt; resize grow left 10px or 10ppt
-        bindsym j resize shrink up 10px or 10ppt; resize grow down 10px or 10ppt
-        bindsym k resize grow up 10px or 10ppt; resize shrink down 10px or 10ppt
-        bindsym l resize grow right 10px or 10ppt; resize shrink left 10px or 10ppt
+  # these bindings trigger as soon as you enter the resize mode
+  bindsym h resize shrink right 10px or 10ppt; resize grow left 10px or 10ppt
+  bindsym j resize shrink up 10px or 10ppt; resize grow down 10px or 10ppt
+  bindsym k resize grow up 10px or 10ppt; resize shrink down 10px or 10ppt
+  bindsym l resize grow right 10px or 10ppt; resize shrink left 10px or 10ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+  # back to normal: Enter or Escape or $mod+r
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
 }
 
 mode "screen" {
-        # primary monitor same as external monitor
-        bindsym s exec --no-startup-id $HOME/.local/bin/external-monitor.sh -s
-        # external monitor on the right side
-        bindsym l exec --no-startup-id $HOME/.local/bin/external-monitor.sh -l
-        # external monitor on the left side
-        bindsym h exec --no-startup-id $HOME/.local/bin/external-monitor.sh -h
-        # only display primary monitor
-        bindsym r exec --no-startup-id $HOME/.local/bin/external-monitor.sh -r
+  # primary monitor same as external monitor
+  bindsym s exec --no-startup-id $HOME/.local/bin/external-monitor.sh -s
+  # external monitor on the right side
+  bindsym l exec --no-startup-id $HOME/.local/bin/external-monitor.sh -l
+  # external monitor on the left side
+  bindsym h exec --no-startup-id $HOME/.local/bin/external-monitor.sh -h
+  # only display primary monitor
+  bindsym r exec --no-startup-id $HOME/.local/bin/external-monitor.sh -r
 
-        # back to normal: Enter or Escape or $mod+F8
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+F8 mode "default"
+  # back to normal: Enter or Escape or $mod+F8
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+F8 mode "default"
 }
 
 # polybar

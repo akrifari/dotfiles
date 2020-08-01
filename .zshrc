@@ -1,6 +1,6 @@
 # start i3
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-	pgrep i3 || exec startx
+  pgrep i3 || exec startx
 fi
 
 # init
