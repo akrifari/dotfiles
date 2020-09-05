@@ -124,6 +124,9 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # dunst
 exec_always --no-startup-id $HOME/.config/dunst/launch.sh
 
+# display locker
+exec_always --no-startup-id xautolock -time 10 -locker slock
+
 # background
 exec --no-startup-id feh --bg-fill $HOME/Pictures/wallpaper/spaceman.jpg
 
