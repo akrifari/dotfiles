@@ -35,7 +35,10 @@ Plug 'janko-m/vim-test'
 Plug 'yuezk/vim-js'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'heavenshell/vim-jsdoc'
+Plug 'heavenshell/vim-jsdoc', {
+      \   'for': ['javascript', 'javascript.jsx','typescript'],
+      \   'do': 'make install'
+      \ }
 
 " golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
