@@ -183,7 +183,7 @@ vn J dpV`]
 nn <silent> <leader>t :NERDTreeToggle<cr>
 
 nn <silent> <c-p> :FZF<cr>
-nn <silent> <space>p :Ag<cr>
+nn <silent> <space>p :Rg<cr>
 nn <silent> <leader>b :Buffer<cr>
 nn <silent> <leader>w :Windows<cr>
 nn <silent> q: :History:<cr>
@@ -217,6 +217,7 @@ nmap <silent> ]g <plug>(coc-diagnostic-next)
 vmap <c-j> <plug>(coc-snippets-select)
 imap <c-l> <plug>(coc-snippets-expand)
 imap <c-j> <plug>(coc-snippets-expand-jump)
+nn <leader>fw :CocSearch <c-r><c-w><cr>
 
 nn <leader>1 :ColorToggle<cr>
 

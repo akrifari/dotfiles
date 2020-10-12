@@ -20,9 +20,10 @@ export NNN_OPTS="ex"
 export NNN_COLORS="4321"
 export NNN_PLUG='f:fzopen;v:imgview'
 export NNN_BMS='h:~;p:~/Pictures'
-export FZF_DEFAULT_COMMAND="ag --hidden --path-to-ignore $HOME/.ignore -g ''"
+export FZF_DEFAULT_COMMAND="rg --files"
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=dark
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
 --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
 '
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
