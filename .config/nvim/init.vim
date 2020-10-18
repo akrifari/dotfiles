@@ -81,6 +81,12 @@ fu! s:ShowDocumentation()
   endif
 endfunction
 
+" git hunk status (added, modified, and replaced)
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return a == 0 && m == 0 && r == 0 ? '' : printf('+%d ~%d -%d', a, m, r)
+endfunction
+
 " hide fzf statusline
 autocmd FileType fzf
       \ set laststatus=0 noshowmode noruler signcolumn=no nonumber
@@ -244,6 +250,7 @@ set statusline=%<%1*%f%*                        " full path
 set statusline+=%(\ %7*%m%*%2*%h%r%*%)          " modified, help, and readonly flag
 set statusline+=%(\ %4*%{LinterStatus()}%*%)    " lint status
 set statusline+=%(\ %3*%{FugitiveHead()}%*%)    " git branch
+set statusline+=%(\ %6*%{GitStatus()}%*%)       " git hunk status
 set statusline+=%(\ %5*%{ObsessionStatus()}%*%) " session tracking
 set statusline+=%=%6*%y%*                       " file type
 set statusline+=\ %3*%l%*                       " current line
