@@ -26,6 +26,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'chrisbra/Colorizer'
+Plug 'tpope/vim-unimpaired'
 
 " linting & testing
 Plug 'w0rp/ale'
@@ -177,16 +178,14 @@ nn <c-j> <c-w><c-j>
 nn <c-k> <c-w><c-k>
 nn <c-l> <c-w><c-l>
 
-nn <silent> <space>h :bp<cr>
-nn <silent> <space>l :bn<cr>
 nn <silent> `h :tabp<cr>
 nn <silent> `l :tabn<cr>
 nn <silent> `` :tabc<cr>
 
 vn < <gv
 vn > >gv
-vn K dkPV`]
-vn J dpV`]
+vmap K [egv
+vmap J ]egv
 
 nn <silent> <leader>t :NERDTreeToggle<cr>
 
