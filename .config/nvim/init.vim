@@ -158,15 +158,16 @@ let g:coc_snippet_prev = '<c-k>'
 let g:vim_jsx_pretty_colorful_config = 1
 
 " key mapping
-no <silent> <leader>r :source $MYVIMRC<cr>
-no <silent> <cr> :nohl<cr>
+nn <silent> <leader>r :source $MYVIMRC<cr>
+nn <silent> <cr> :nohl<cr>
 
 ino jk <esc>
 cno jk <esc>
 vn ;; <esc>
 tno jk <c-\><c-n>
 tno <silent> jj <c-\><c-n>:q<cr>
-nno <silent> <leader>q :q<cr>
+nn <silent> <leader>q :q<cr>
+nn <silent> <leader>Q :q!<cr>
 
 ino <c-a> <c-o>^
 ino <c-e> <c-o>$
@@ -180,6 +181,7 @@ nn <silent> <space>h :bp<cr>
 nn <silent> <space>l :bn<cr>
 nn <silent> `h :tabp<cr>
 nn <silent> `l :tabn<cr>
+nn <silent> `` :tabc<cr>
 
 vn < <gv
 vn > >gv
@@ -200,11 +202,13 @@ nn <leader>gc :GoCoverageToggle<cr>
 nn <silent> <space>j :ALENextWrap<cr>
 nn <silent> <space>k :ALEPreviousWrap<cr>
 
-vn <leader>hr :<C-U>%s/\%V
+vn <leader>hr :<c-u>%s/\%V
 
-nn <silent> gl :GitGutterNextHunk<cr>
-nn <silent> gh :GitGutterPrevHunk<cr>
+nn <silent> <leader>gg :Git<cr>
+
 nn <silent> gp :GitGutterPreviewHunk<cr>
+nn <silent> <leader>gs :GitGutterStageHunk<cr>
+nn <silent> <leader>gu :GitGutterUndoHunk<cr>
 
 nn <silent> <leader>, :TestNearest<cr>
 nn <silent> <leader>. :TestFile<cr>
@@ -223,6 +227,7 @@ nmap <silent> ]g <plug>(coc-diagnostic-next)
 vmap <c-j> <plug>(coc-snippets-select)
 imap <c-l> <plug>(coc-snippets-expand)
 imap <c-j> <plug>(coc-snippets-expand-jump)
+ino <silent> <expr> <c-space> coc#refresh()
 nn <leader>fw :CocSearch <c-r><c-w><cr>
 
 nn <leader>1 :ColorToggle<cr>
