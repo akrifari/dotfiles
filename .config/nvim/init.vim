@@ -51,15 +51,15 @@ Plug 'chr4/nginx.vim'
 call plug#end()
 
 " space trailing
-fu! TrimWhitespace()
+function! TrimWhitespace()
   let l:save = winsaveview()
   %s/\s\+$//e
   call winrestview(l:save)
-endfun
+endfunction
 autocmd BufWritePre * :call TrimWhitespace()
 
 " show lint status on statusline
-fu! LinterStatus() abort
+function! LinterStatus() abort
   let l:counts = ale#statusline#Count(bufnr(''))
 
   let l:all_errors = l:counts.error + l:counts.style_error
@@ -73,7 +73,7 @@ fu! LinterStatus() abort
 endfunction
 
 " documentation popup
-fu! s:ShowDocumentation()
+function! s:ShowDocumentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else
