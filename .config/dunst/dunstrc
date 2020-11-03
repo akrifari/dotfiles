@@ -45,7 +45,7 @@
   ### Text ###
 
   # notification font
-  font = Monospace 11
+  font = Meslo LG S DZ for Powerline 9
 
   # allow a small subset of html markup in notifications:
   markup = full

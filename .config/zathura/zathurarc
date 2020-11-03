@@ -1,4 +1,4 @@
-set font                      "monospace 11"
+set font                      "Meslo LG S DZ for Powerline 9"
 set selection-clipboard       clipboard
 set statusbar-home-tilde      true
 set show-scrollbars           true
