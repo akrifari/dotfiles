@@ -173,7 +173,7 @@ bindsym $mod+Shift+m                exec --no-startup-id $browser
 
 bindsym $mod+d                      exec --no-startup-id rofi -show run
 bindsym $mod+p                      exec --no-startup-id rofimoji -p
-bindsym $mod+Shift+d                exec --no-startup-id rofimoji -c
+bindsym $mod+Shift+d                exec --no-startup-id rofi -show window
 bindsym $mod+c                      exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort
 
 bindsym $mod+backslash              split h
