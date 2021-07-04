@@ -189,7 +189,7 @@ vmap J ]egv
 
 nn <silent> <leader>t :NERDTreeToggle<cr>
 
-nn <silent> <c-p> :FZF<cr>
+nn <silent> <c-p> :Files<cr>
 nn <silent> <space>p :Rg<cr>
 nn <silent> <leader>b :Buffer<cr>
 nn <silent> <leader>w :Windows<cr>
