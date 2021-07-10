@@ -269,6 +269,7 @@ set termguicolors
 set hidden
 set shortmess+=c
 set signcolumn=yes
+set inccommand=split
 colorscheme dracula
 
 " customize colors
