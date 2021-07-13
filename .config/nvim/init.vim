@@ -201,7 +201,7 @@ nn <leader>gc :GoCoverageToggle<cr>
 nn <silent> <space>j :ALENextWrap<cr>
 nn <silent> <space>k :ALEPreviousWrap<cr>
 
-vn <leader>hr :<c-u>%s/\%V
+vn <leader>hr :<c-u>%s/\%V/g<left><left>
 
 nn <silent> <leader>gg :Git<cr>
 
