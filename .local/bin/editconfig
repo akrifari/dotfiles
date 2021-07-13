@@ -7,7 +7,6 @@ mpv             $HOME/.config/mpv
 nvim            $HOME/.config/nvim/init.vim
 polybar         $HOME/.config/polybar/config
 scripts         $HOME/.local/bin
-termite         $HOME/.config/termite/config
 tmux            $HOME/.tmux.conf
 xinitrc         $HOME/.xinitrc
 xresources      $HOME/.Xresources
@@ -30,6 +29,4 @@ filepath=$(echo "$configfiles" \
 
 [ ! -e "$filepath" ] && exit 0
 
-# for any other TERMINAL except termite, please split up $EDITOR and $filepath
-# in different quoted strings
-"$TERMINAL" -e "$EDITOR $filepath"
+"$TERMINAL" -e "$EDITOR" "$filepath"

@@ -10,7 +10,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 # environment variables
 export GOPATH=$HOME/Documents/golang
 export PATH=$PATH:$GOPATH/bin
-export TERMINAL="termite"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export EDITOR="nvim"
 export READER="zathura"

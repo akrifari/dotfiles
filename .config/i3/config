@@ -154,7 +154,7 @@ client.focused                      $blue     $blue     $black    $green
 client.unfocused                    $bg       $bg       $fg
 client.focused_inactive             $bg       $bg       $fg
 
-for_window [class="Termite"]        move workspace $ws1; workspace $ws1
+for_window [class="Alacritty"]      move workspace $ws1; workspace $ws1
 for_window [class="firefox"]        move workspace $ws2; workspace $ws2
 for_window [class="Google-chrome"]  move workspace $ws3; workspace $ws3
 for_window [title="Save Image"]     fullscreen
