@@ -104,7 +104,7 @@ let g:user_emmet_leader_key = '<leader>e'
 let g:NERDTreeIgnore = ['node_modules']
 
 " fzf
-let g:fzf_layout = { 'down': '~30%' }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 
 " vim-go
 let g:go_highlight_types = 1
