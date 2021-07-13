@@ -228,6 +228,10 @@ imap <c-l> <plug>(coc-snippets-expand)
 imap <c-j> <plug>(coc-snippets-expand-jump)
 ino <silent> <expr> <c-space> coc#refresh()
 nn <leader>fw :CocSearch <c-r><c-w><cr>
+nn <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nn <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+ino <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+ino <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 
 nn <leader>1 :ColorToggle<cr>
 
