@@ -195,7 +195,7 @@ nn <silent> <leader>t :NERDTreeToggle<cr>
 
 nn <silent> <c-p> :Files<cr>
 nn <silent> <space>p :Rg<cr>
-nn <silent> <leader>b :Buffer<cr>
+nn <silent> <leader>b :Buffers<cr>
 nn <silent> <leader>w :Windows<cr>
 nn <silent> q: :History:<cr>
 
