@@ -95,6 +95,10 @@ autocmd FileType fzf
       \| autocmd BufLeave <buffer>
         \ set laststatus=2 showmode ruler signcolumn=yes number relativenumber
 
+" force quit if the only active buffer is nerdtree
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") &&
+      \ b:NERDTree.isTabTree()) | q | endif
+
 let g:mapleader = ','
 
 " emmet
