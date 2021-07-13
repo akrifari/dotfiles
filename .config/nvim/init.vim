@@ -88,13 +88,6 @@ function! GitStatus()
   return a == 0 && m == 0 && r == 0 ? '' : printf('+%d ~%d -%d', a, m, r)
 endfunction
 
-" hide fzf statusline
-autocmd FileType fzf
-      \ set laststatus=0 noshowmode noruler signcolumn=no nonumber
-        \ norelativenumber
-      \| autocmd BufLeave <buffer>
-        \ set laststatus=2 showmode ruler signcolumn=yes number relativenumber
-
 " force quit if the only active buffer is nerdtree
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") &&
       \ b:NERDTree.isTabTree()) | q | endif
@@ -240,10 +233,8 @@ ino <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<c
 nn <leader>1 :ColorToggle<cr>
 
 " settings
-set encoding=utf-8
 set number
 set relativenumber
-set pastetoggle=<F3>
 set clipboard+=unnamedplus
 set tabstop=2
 set shiftwidth=2
@@ -251,7 +242,6 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:›\ ,trail:•,eol:¬
 set ignorecase
-set title
 set nobackup
 set noswapfile
 set nowritebackup
@@ -268,7 +258,6 @@ set statusline+=%=%6*%y%*                       " file type
 set statusline+=\ %3*%l%*                       " current line
 set statusline+=%8*/%L%*                        " total lines
 set statusline+=%3*%4v%*                        " virtual column number
-set completeopt-=preview
 set colorcolumn=80
 set autoread
 set updatetime=100
