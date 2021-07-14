@@ -1,3 +1,4 @@
+vim.cmd [[
 " statusline
 highlight clear StatusLine
 highlight clear StatusLineNC
@@ -35,3 +36,4 @@ highlight! link CocErrorFloat DraculaError
 highlight! link WarningMsg DraculaOrange
 highlight! link CocInfoSign DraculaOrange
 highlight! link CocInfoFloat DraculaOrange
+]]

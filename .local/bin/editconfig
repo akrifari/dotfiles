@@ -4,7 +4,7 @@ configfiles="
 dunst           $HOME/.config/dunst/dunstrc
 i3              $HOME/.config/i3/config
 mpv             $HOME/.config/mpv
-nvim            $HOME/.config/nvim/init.vim
+nvim            $HOME/.config/nvim/init.lua
 polybar         $HOME/.config/polybar/config
 scripts         $HOME/.local/bin
 tmux            $HOME/.tmux.conf
