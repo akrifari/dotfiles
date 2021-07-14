@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 configfiles="
+alacritty       $HOME/.config/alacritty/alacritty.yml
 dunst           $HOME/.config/dunst/dunstrc
 i3              $HOME/.config/i3/config
 mpv             $HOME/.config/mpv
