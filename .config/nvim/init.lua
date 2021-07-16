@@ -5,7 +5,7 @@ vim.cmd [[Plug 'dracula/vim']]
 -- misc
 vim.cmd [[Plug 'jiangmiao/auto-pairs']]
 vim.cmd [[Plug 'tpope/vim-surround']]
-vim.cmd [[Plug 'scrooloose/nerdtree']]
+vim.cmd [[Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }]]
 vim.cmd [[Plug 'Xuyuanp/nerdtree-git-plugin']]
 vim.cmd [[Plug 'mattn/emmet-vim']]
 vim.cmd [[Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }]]
