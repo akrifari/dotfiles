@@ -24,7 +24,7 @@ vim.cmd [[Plug 'dkarter/bullets.vim']]
 vim.cmd [[Plug 'editorconfig/editorconfig-vim']]
 vim.cmd [[Plug 'airblade/vim-gitgutter']]
 vim.cmd [[Plug 'neoclide/coc.nvim', { 'branch': 'release' }]]
-vim.cmd [[Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }]]
+vim.cmd [[Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }]]
 vim.cmd [[Plug 'chrisbra/Colorizer']]
 vim.cmd [[Plug 'tpope/vim-unimpaired']]
 
@@ -36,7 +36,7 @@ vim.cmd [[Plug 'janko-m/vim-test']]
 vim.cmd [[Plug 'yuezk/vim-js']]
 vim.cmd [[Plug 'MaxMEllon/vim-jsx-pretty']]
 vim.cmd [[Plug 'HerringtonDarkholme/yats.vim']]
-vim.cmd [[Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx','typescript'], 'do': 'make install'}]]
+vim.cmd [[Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx', 'typescript'], 'do': 'make install'}]]
 
 -- golang
 vim.cmd [[Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }]]
@@ -156,7 +156,7 @@ vim.g.ale_echo_msg_format = '[%linter%] %s'
 vim.g.ale_linters = {
   go = {'gofmt', 'golint'},
   javascript = {'eslint'},
-  typescript =  {'tslint', 'tsserver'}
+  typescript = {'tslint', 'tsserver'}
 }
 
 -- rainbow
