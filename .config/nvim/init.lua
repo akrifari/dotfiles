@@ -13,7 +13,6 @@ vim.cmd [[Plug 'junegunn/fzf.vim']]
 vim.cmd [[Plug 'tpope/vim-ragtag']]
 vim.cmd [[Plug 'enricobacis/paste.vim']]
 vim.cmd [[Plug 'honza/vim-snippets']]
-vim.cmd [[Plug 'google/vim-searchindex']]
 vim.cmd [[Plug 'tpope/vim-repeat']]
 vim.cmd [[Plug 'tpope/vim-fugitive']]
 vim.cmd [[Plug 'tpope/vim-commentary']]
@@ -164,9 +163,6 @@ vim.g.rainbow_active = 1
 vim.g.rainbow_conf = {
   separately = { html = 0, markdown = 0, css = 0 }
 }
-
--- vim-searchindex
-vim.g.searchindex_star_case = 0
 
 -- coc
 vim.g.coc_global_extensions = {
