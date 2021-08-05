@@ -167,7 +167,7 @@ bindsym $mod+u                      border none
 
 bindsym $mod+m                      exec --no-startup-id $term -e htop
 bindsym $mod+i                      exec --no-startup-id $term -e nnn
-bindsym $mod+Shift+a                exec --no-startup-id $term -e "alsamixer -c 1"
+bindsym $mod+Shift+a                exec --no-startup-id $term -e alsamixer -c 1
 
 bindsym $mod+Shift+m                exec --no-startup-id $browser
 
