@@ -36,4 +36,7 @@ highlight! link CocErrorFloat DraculaError
 highlight! link WarningMsg DraculaOrange
 highlight! link CocInfoSign DraculaOrange
 highlight! link CocInfoFloat DraculaOrange
+
+" gitsigns
+highlight! link DiffDelete DraculaRed
 ]]

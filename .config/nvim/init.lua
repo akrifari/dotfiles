@@ -21,11 +21,13 @@ vim.cmd [[Plug 'godlygeek/tabular']]
 vim.cmd [[Plug 'luochen1990/rainbow']]
 vim.cmd [[Plug 'dkarter/bullets.vim']]
 vim.cmd [[Plug 'editorconfig/editorconfig-vim']]
-vim.cmd [[Plug 'airblade/vim-gitgutter']]
 vim.cmd [[Plug 'neoclide/coc.nvim', { 'branch': 'release' }]]
 vim.cmd [[Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }]]
 vim.cmd [[Plug 'chrisbra/Colorizer']]
 vim.cmd [[Plug 'tpope/vim-unimpaired']]
+
+vim.cmd [[Plug 'nvim-lua/plenary.nvim']]
+vim.cmd [[Plug 'lewis6991/gitsigns.nvim']]
 
 -- linting & testing
 vim.cmd [[Plug 'w0rp/ale']]
@@ -60,12 +62,6 @@ function _G.linter_status()
   local warning_count = ale_summary['total'] - error_count
   if ale_summary['total'] == 0 then return '' end
   return vim.fn.printf('%dW %dE', warning_count, error_count)
-end
-
-function _G.git_status()
-  local added, modified, removed = unpack(vim.fn.GitGutterGetHunkSummary())
-  if added == 0 and modified == 0 and removed == 0 then return '' end
-  return vim.fn.printf('+%d ~%d -%d', added, modified, removed)
 end
 
 function show_documentation()
@@ -104,7 +100,7 @@ vim.opt.statusline = '%<%1*%f%*'                                       -- full p
 vim.opt.statusline:append('%( %7*%m%*%2*%h%r%*%)')                     -- modified, help, and readonly flag
 vim.opt.statusline:append('%( %4*%{v:lua.linter_status()}%*%)')        -- lint status
 vim.opt.statusline:append('%( %3*%{FugitiveHead()}%*%)')               -- git branch
-vim.opt.statusline:append('%( %6*%{v:lua.git_status()}%*%)')           -- git hunk status
+vim.opt.statusline:append('%( %6*%{get(b:,"gitsigns_status","")}%*%)') -- git hunk status
 vim.opt.statusline:append('%( %5*%{ObsessionStatus()}%*%)')            -- session tracking
 vim.opt.statusline:append('%=%6*%y%*')                                 -- file type
 vim.opt.statusline:append(' %3*%l%*')                                  -- current line
@@ -234,11 +230,6 @@ vim.api.nvim_set_keymap('v', '<leader>hr', ':<c-u>%s/\\%V/g<left><left>', { nore
 -- vim-fugitive
 vim.api.nvim_set_keymap('n', '<leader>gg', ':Git<cr>', { noremap = true, silent = true })
 
--- vim-gitgutter
-vim.api.nvim_set_keymap('n', 'gp', ':GitGutterPreviewHunk<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>gs', ':GitGutterStageHunk<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>gu', ':GitGutterUndoHunk<cr>', { noremap = true, silent = true })
-
 -- vim-test
 vim.api.nvim_set_keymap('n', '<leader>,', ':TestNearest<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>.', ':TestFile<cr>', { noremap = true, silent = true })
@@ -267,3 +258,27 @@ vim.api.nvim_set_keymap('i', '<c-b>', 'coc#float#has_scroll() ? "<c-r>=coc#float
 
 -- colorizer
 vim.api.nvim_set_keymap('n', '<leader>1', ':ColorToggle<cr>', { noremap = true, silent = true })
+
+require('gitsigns').setup {
+  keymaps = {
+    noremap = true,
+    buffer = true,
+    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<cr>'" },
+    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<cr>'" },
+
+    ['n gp'] = '<cmd>lua require"gitsigns".preview_hunk()<cr>',
+    ['n <leader>gs'] = '<cmd>lua require"gitsigns".stage_hunk()<cr>',
+    ['n <leader>gu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<cr>',
+    ['n <leader>gr'] = '<cmd>lua require"gitsigns".reset_hunk()<cr>',
+    ['n <leader>gR'] = '<cmd>lua require"gitsigns".reset_buffer()<cr>',
+    ['n <leader>gb'] = '<cmd>lua require"gitsigns".blame_line(true)<cr>',
+    ['n <leader>gB'] = '<cmd>Gitsigns toggle_current_line_blame<cr>',
+
+    -- text objects
+    ['o ih'] = ':<c-u>lua require"gitsigns.actions".select_hunk()<cr>',
+    ['x ih'] = ':<c-u>lua require"gitsigns.actions".select_hunk()<cr>',
+  },
+  current_line_blame_opts = {
+    delay = 100
+  }
+}
