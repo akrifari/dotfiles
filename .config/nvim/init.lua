@@ -240,7 +240,7 @@ vim.api.nvim_set_keymap('n', '<leader><space>', ':TestVisit<cr>', { noremap = tr
 -- coc
 vim.api.nvim_set_keymap('n', 'K', ':lua show_documentation()<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<f2>', '<plug>(coc-rename)', { silent = true })
-vim.api.nvim_set_keymap('n', 'gd', 'gd <plug>(coc-definition)', { silent = true })
+vim.api.nvim_set_keymap('n', 'gd', '<plug>(coc-definition)', { silent = true })
 vim.api.nvim_set_keymap('n', 'gy', '<plug>(coc-type-definition)', { silent = true })
 vim.api.nvim_set_keymap('n', 'gi', '<plug>(coc-implementation)', { silent = true })
 vim.api.nvim_set_keymap('n', 'gr', '<plug>(coc-references)', { silent = true })
