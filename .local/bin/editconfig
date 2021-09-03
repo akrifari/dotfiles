@@ -7,6 +7,7 @@ i3              $HOME/.config/i3/config
 mpv             $HOME/.config/mpv
 nvim            $HOME/.config/nvim/init.lua
 polybar         $HOME/.config/polybar/config
+rofi            $HOME/.config/rofi/config.rasi
 scripts         $HOME/.local/bin
 tmux            $HOME/.tmux.conf
 xinitrc         $HOME/.xinitrc
