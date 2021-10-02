@@ -5,7 +5,7 @@ vim.cmd [[Plug 'dracula/vim']]
 -- misc
 vim.cmd [[Plug 'jiangmiao/auto-pairs']]
 vim.cmd [[Plug 'tpope/vim-surround']]
-vim.cmd [[Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }]]
+vim.cmd [[Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }]]
 vim.cmd [[Plug 'Xuyuanp/nerdtree-git-plugin']]
 vim.cmd [[Plug 'mattn/emmet-vim']]
 vim.cmd [[Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }]]
@@ -214,6 +214,7 @@ vim.api.nvim_set_keymap('v', 'J', ']egv', { noremap = false, silent = true })
 
 -- nerdtree
 vim.api.nvim_set_keymap('n', '<leader>t', ':NERDTreeToggle<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ff', ':NERDTreeFind<cr>', { noremap = true, silent = true })
 
 -- fzf
 vim.api.nvim_set_keymap('n', '<c-p>', ':Files<cr>', { noremap = true, silent = true })
