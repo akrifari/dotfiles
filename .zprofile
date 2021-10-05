@@ -28,5 +28,10 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
 --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
 --bind ctrl-b:preview-half-page-up,ctrl-f:preview-half-page-down
+--bind ctrl-/:toggle-preview,ctrl-]:toggle-preview-wrap
 '
+export FZF_PREVIEW_OPTS="(bat {} || tree -C {}) 2> /dev/null"
+export FZF_ALT_C_OPTS="--preview '$FZF_PREVIEW_OPTS'"
+export FZF_CTRL_T_OPTS="--preview '$FZF_PREVIEW_OPTS'"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:hidden:wrap"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
