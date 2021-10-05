@@ -131,7 +131,7 @@ vim.api.nvim_command('autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTr
 
 -- fzf
 vim.g.fzf_layout = {
-  window = { height = 0.9, width = 0.9 }
+  window = { height = 1, width = 1 }
 }
 
 -- vim-go
