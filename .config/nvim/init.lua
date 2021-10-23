@@ -29,8 +29,7 @@ vim.cmd [[Plug 'tpope/vim-unimpaired']]
 vim.cmd [[Plug 'nvim-lua/plenary.nvim']]
 vim.cmd [[Plug 'lewis6991/gitsigns.nvim']]
 
--- linting & testing
-vim.cmd [[Plug 'w0rp/ale']]
+-- testing
 vim.cmd [[Plug 'janko-m/vim-test']]
 
 -- javascript
@@ -55,14 +54,6 @@ function trim_white_space()
   vim.fn.winrestview(save)
 end
 vim.api.nvim_command('autocmd BufWritePre * lua trim_white_space()')
-
-function _G.linter_status()
-  local ale_summary = vim.fn['ale#statusline#Count'](vim.fn.bufnr(''))
-  local error_count = ale_summary['error'] + ale_summary['style_error']
-  local warning_count = ale_summary['total'] - error_count
-  if ale_summary['total'] == 0 then return '' end
-  return vim.fn.printf('%dW %dE', warning_count, error_count)
-end
 
 function show_documentation()
   local filetype = vim.bo.filetype
@@ -98,7 +89,6 @@ vim.opt.splitright = true
 vim.opt.background = 'dark'
 vim.opt.statusline = '%<%1*%f%*'                                       -- full path
 vim.opt.statusline:append('%( %7*%m%*%2*%h%r%*%)')                     -- modified, help, and readonly flag
-vim.opt.statusline:append('%( %4*%{v:lua.linter_status()}%*%)')        -- lint status
 vim.opt.statusline:append('%( %3*%{FugitiveHead()}%*%)')               -- git branch
 vim.opt.statusline:append('%( %6*%{get(b:,"gitsigns_status","")}%*%)') -- git hunk status
 vim.opt.statusline:append('%( %5*%{ObsessionStatus()}%*%)')            -- session tracking
@@ -141,19 +131,6 @@ vim.g.go_highlight_methods = 1
 vim.g.go_highlight_functions = 1
 vim.g.go_highlight_function_calls = 1
 vim.g.go_fmt_command = "goimports"
-
--- ale
-vim.g.ale_echo_msg_error_str = 'E'
-vim.g.ale_echo_msg_warning_str = 'W'
-vim.g.ale_set_quickfix = 1
-vim.g.ale_set_loclist = 0
-vim.g.ale_set_highlights = 0
-vim.g.ale_echo_msg_format = '[%linter%] %s'
-vim.g.ale_linters = {
-  go = {'gofmt', 'golint'},
-  javascript = {'eslint'},
-  typescript = {'tslint', 'tsserver'}
-}
 
 -- rainbow
 vim.g.rainbow_active = 1
@@ -222,10 +199,6 @@ vim.api.nvim_set_keymap('n', '<space>p', ':Rg<cr>', { noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<leader>b', ':Buffers<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>w', ':Windows<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'q:', ':History:<cr>', { noremap = true, silent = true })
-
--- ale
-vim.api.nvim_set_keymap('n', '<space>j', ':ALENextWrap<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>k', ':ALEPreviousWrap<cr>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('v', '<leader>hr', ':<c-u>%s/\\%V/g<left><left>', { noremap = true, silent = true })
 
