@@ -234,26 +234,4 @@ vim.api.nvim_set_keymap('i', '<c-b>', 'coc#float#has_scroll() ? "<c-r>=coc#float
 -- colorizer
 vim.api.nvim_set_keymap('n', '<leader>1', ':ColorToggle<cr>', { noremap = true, silent = true })
 
-require('gitsigns').setup {
-  keymaps = {
-    noremap = true,
-    buffer = true,
-    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<cr>'" },
-    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<cr>'" },
-
-    ['n gp'] = '<cmd>lua require"gitsigns".preview_hunk()<cr>',
-    ['n <leader>gs'] = '<cmd>lua require"gitsigns".stage_hunk()<cr>',
-    ['n <leader>gu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<cr>',
-    ['n <leader>gr'] = '<cmd>lua require"gitsigns".reset_hunk()<cr>',
-    ['n <leader>gR'] = '<cmd>lua require"gitsigns".reset_buffer()<cr>',
-    ['n <leader>gb'] = '<cmd>lua require"gitsigns".blame_line(true)<cr>',
-    ['n <leader>gB'] = '<cmd>Gitsigns toggle_current_line_blame<cr>',
-
-    -- text objects
-    ['o ih'] = ':<c-u>lua require"gitsigns.actions".select_hunk()<cr>',
-    ['x ih'] = ':<c-u>lua require"gitsigns.actions".select_hunk()<cr>',
-  },
-  current_line_blame_opts = {
-    delay = 100
-  }
-}
+require('modules.gitsigns')
