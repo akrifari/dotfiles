@@ -66,6 +66,27 @@ function show_documentation()
   end
 end
 
+function _G.coc_status(key)
+  local bufnr = vim.fn.bufnr("")
+  local ok, coc_info = pcall(vim.api.nvim_buf_get_var, bufnr, "coc_diagnostic_info")
+  if not ok then return "" end
+  if coc_info[key] == 0 then return "" end
+  return " " .. coc_info[key]
+end
+
+function _G.gitsigns_status(key, symbol)
+  local summary = vim.b.gitsigns_status_dict or {
+    head = "",
+    added = 0,
+    changed = 0,
+    removed = 0
+  }
+  if summary[key] == nil then return "" end -- if gitsigns is not ready
+  if summary[key] == ""  then return "" end -- if the file is not in a git repo
+  if summary[key] == 0 then return "" end   -- if there are no changes
+  return symbol .. summary[key]
+end
+
 vim.g.mapleader = ','
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -87,15 +108,22 @@ vim.opt.writebackup = false
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.background = 'dark'
-vim.opt.statusline = '%<%1*%f%*'                                       -- full path
-vim.opt.statusline:append('%( %7*%m%*%2*%h%r%*%)')                     -- modified, help, and readonly flag
-vim.opt.statusline:append('%( %3*%{FugitiveHead()}%*%)')               -- git branch
-vim.opt.statusline:append('%( %6*%{get(b:,"gitsigns_status","")}%*%)') -- git hunk status
-vim.opt.statusline:append('%( %5*%{ObsessionStatus()}%*%)')            -- session tracking
-vim.opt.statusline:append('%=%6*%y%*')                                 -- file type
-vim.opt.statusline:append(' %3*%l%*')                                  -- current line
-vim.opt.statusline:append('%8*/%L%*')                                  -- total lines
-vim.opt.statusline:append('%3*%4v%*')                                  -- virtual column number
+vim.opt.statusline = '%<%1*%f%*'                                                -- full path
+vim.opt.statusline:append('%( %7*%m%*%2*%h%r%*%)')                              -- modified, help, and readonly flag
+vim.opt.statusline:append('%( %2*%{ObsessionStatus()}%*%)')                     -- session tracking
+vim.opt.statusline:append('%( %3*%{v:lua.coc_status("hint")}%*%)')
+vim.opt.statusline:append('%( %7*%{v:lua.coc_status("information")}%*%)')
+vim.opt.statusline:append('%( %5*%{v:lua.coc_status("warning")}%*%)')
+vim.opt.statusline:append('%( %4*%{v:lua.coc_status("error")}%*%)')
+vim.opt.statusline:append('%=')                                                 -- push section to the right
+vim.opt.statusline:append('%( %1*%{v:lua.gitsigns_status("added", " ")}%*%)')
+vim.opt.statusline:append('%( %5*%{v:lua.gitsigns_status("changed", " ")}%*%)')
+vim.opt.statusline:append('%( %4*%{v:lua.gitsigns_status("removed", " ")}%*%)')
+vim.opt.statusline:append('%( %2*%{v:lua.gitsigns_status("head", " ")}%*%)')
+vim.opt.statusline:append(' %6*%y%*')                                           -- file type
+vim.opt.statusline:append(' %3*%l%*')                                           -- current line
+vim.opt.statusline:append('%8*/%L%*')                                           -- total lines
+vim.opt.statusline:append('%3*%4v%*')                                           -- virtual column number
 vim.opt.colorcolumn = '80'
 vim.opt.autoread = true
 vim.opt.updatetime = 100
