@@ -21,5 +21,9 @@
   "eslint.autoFixOnSave": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
-  }
+  },
+  "diagnostic.hintSign": " ",
+  "diagnostic.infoSign": " ",
+  "diagnostic.warningSign": " ",
+  "diagnostic.errorSign": " "
 }

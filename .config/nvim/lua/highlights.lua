@@ -28,15 +28,23 @@ function! MyHighlights() abort
   " comment
   highlight Comment ctermfg=61 guifg=#6272a4 cterm=italic gui=italic
 
-  " error message
+  " hint
+  highlight! link CocHintSign DraculaCyan
+  highlight! link CocHintFloat DraculaCyan
+
+  " info
+  highlight! link CocInfoSign DraculaYellow
+  highlight! link CocInfoFloat DraculaYellow
+
+  " warning
+  highlight! link WarningMsg DraculaOrange
+  highlight! link CocWarningSign DraculaOrange
+  highlight! link CocWarningFloat DraculaOrange
+
+  " error
   highlight! link ErrorMsg DraculaError
   highlight! link CocErrorSign DraculaError
   highlight! link CocErrorFloat DraculaError
-
-  " warning message
-  highlight! link WarningMsg DraculaOrange
-  highlight! link CocInfoSign DraculaOrange
-  highlight! link CocInfoFloat DraculaOrange
 
   " gitsigns
   highlight! link DiffDelete DraculaRed
