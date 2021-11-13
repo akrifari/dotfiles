@@ -101,19 +101,6 @@
   # define the class of the windows spawned by dunst
   class = Dunst
 
-[shortcuts]
-  # close notification
-  close = ctrl+space
-
-  # close all notifications
-  close_all = ctrl+shift+space
-
-  # redisplay last message(s)
-  history = ctrl+grave
-
-  # context menu
-  context = ctrl+shift+period
-
 [urgency_low]
   background = "#282a36"
   foreground = "#f1fa8c"
