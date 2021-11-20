@@ -29,13 +29,14 @@ vim.cmd [[Plug 'tpope/vim-unimpaired']]
 vim.cmd [[Plug 'nvim-lua/plenary.nvim']]
 vim.cmd [[Plug 'lewis6991/gitsigns.nvim']]
 
+-- syntax highlighting
+vim.cmd [[Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]]
+vim.cmd [[Plug 'nvim-treesitter/playground']]
+
 -- testing
 vim.cmd [[Plug 'janko-m/vim-test']]
 
 -- javascript
-vim.cmd [[Plug 'yuezk/vim-js']]
-vim.cmd [[Plug 'MaxMEllon/vim-jsx-pretty']]
-vim.cmd [[Plug 'HerringtonDarkholme/yats.vim']]
 vim.cmd [[Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx', 'typescript'], 'do': 'make install'}]]
 
 -- golang
@@ -263,3 +264,4 @@ vim.api.nvim_set_keymap('i', '<c-b>', 'coc#float#has_scroll() ? "<c-r>=coc#float
 vim.api.nvim_set_keymap('n', '<leader>1', ':ColorToggle<cr>', { noremap = true, silent = true })
 
 require('modules.gitsigns')
+require('modules.treesitter')
