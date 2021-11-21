@@ -11,6 +11,7 @@ require('nvim-treesitter.configs').setup {
     persist_queries = false,
   },
   indent = { enable = true },
+  context_commentstring = { enable = true },
   incremental_selection = {
     enable = true,
     keymaps = {

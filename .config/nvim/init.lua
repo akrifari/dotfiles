@@ -32,6 +32,7 @@ vim.cmd [[Plug 'lewis6991/gitsigns.nvim']]
 -- syntax highlighting
 vim.cmd [[Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]]
 vim.cmd [[Plug 'nvim-treesitter/playground']]
+vim.cmd [[Plug 'JoosepAlviste/nvim-ts-context-commentstring']]
 
 -- testing
 vim.cmd [[Plug 'janko-m/vim-test']]
