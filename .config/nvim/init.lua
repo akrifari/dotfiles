@@ -153,6 +153,20 @@ vim.api.nvim_command('autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTr
 vim.g.fzf_layout = {
   window = { height = 1, width = 1 }
 }
+vim.g.fzf_action = {
+  ['ctrl-q'] = function(lines)
+    local qf_entries = {}
+    for _, entry in pairs(lines) do
+      table.insert(qf_entries, { filename = entry, lnum = 0, col = 0 })
+    end
+    vim.fn.setqflist(qf_entries, 'r')
+    vim.cmd 'copen'
+    vim.cmd 'cc'
+  end,
+  ['ctrl-t'] = 'tab split',
+  ['ctrl-x'] = 'split',
+  ['ctrl-v'] = 'vsplit'
+}
 
 -- vim-go
 vim.g.go_highlight_types = 1
