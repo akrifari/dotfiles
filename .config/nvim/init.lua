@@ -18,7 +18,6 @@ vim.cmd [[Plug 'tpope/vim-fugitive']]
 vim.cmd [[Plug 'tpope/vim-commentary']]
 vim.cmd [[Plug 'tpope/vim-obsession']]
 vim.cmd [[Plug 'godlygeek/tabular']]
-vim.cmd [[Plug 'luochen1990/rainbow']]
 vim.cmd [[Plug 'dkarter/bullets.vim']]
 vim.cmd [[Plug 'editorconfig/editorconfig-vim']]
 vim.cmd [[Plug 'neoclide/coc.nvim', { 'branch': 'release' }]]
@@ -33,6 +32,7 @@ vim.cmd [[Plug 'lewis6991/gitsigns.nvim']]
 vim.cmd [[Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]]
 vim.cmd [[Plug 'nvim-treesitter/playground']]
 vim.cmd [[Plug 'JoosepAlviste/nvim-ts-context-commentstring']]
+vim.cmd [[Plug 'p00f/nvim-ts-rainbow']]
 
 -- testing
 vim.cmd [[Plug 'janko-m/vim-test']]
@@ -175,12 +175,6 @@ vim.g.go_highlight_methods = 1
 vim.g.go_highlight_functions = 1
 vim.g.go_highlight_function_calls = 1
 vim.g.go_fmt_command = "goimports"
-
--- rainbow
-vim.g.rainbow_active = 1
-vim.g.rainbow_conf = {
-  separately = { html = 0, markdown = 0, css = 0 }
-}
 
 -- coc
 vim.g.coc_global_extensions = {
