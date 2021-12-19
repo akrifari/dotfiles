@@ -278,5 +278,4 @@ vim.api.nvim_set_keymap('i', '<c-b>', 'coc#float#has_scroll() ? "<c-r>=coc#float
 -- colorizer
 vim.api.nvim_set_keymap('n', '<leader>1', ':ColorToggle<cr>', { noremap = true, silent = true })
 
-require('modules.gitsigns')
-require('modules.treesitter')
+require('modules')
