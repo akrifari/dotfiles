@@ -191,9 +191,6 @@ vim.g.coc_global_extensions = {
 vim.g.coc_snippet_next = '<c-j>'
 vim.g.coc_snippet_prev = '<c-k>'
 
--- vim-jsx-pretty
-vim.g.vim_jsx_pretty_colorful_config = 1
-
 vim.api.nvim_set_keymap('n', '<leader>r', ':source $MYVIMRC<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<cr>', ':nohl<cr>', { noremap = true, silent = true })
 
