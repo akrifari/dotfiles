@@ -10,7 +10,6 @@ vim.cmd [[Plug 'Xuyuanp/nerdtree-git-plugin']]
 vim.cmd [[Plug 'mattn/emmet-vim']]
 vim.cmd [[Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }]]
 vim.cmd [[Plug 'junegunn/fzf.vim']]
-vim.cmd [[Plug 'tpope/vim-ragtag']]
 vim.cmd [[Plug 'enricobacis/paste.vim']]
 vim.cmd [[Plug 'honza/vim-snippets']]
 vim.cmd [[Plug 'tpope/vim-repeat']]
@@ -42,12 +41,6 @@ vim.cmd [[Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'
 
 -- golang
 vim.cmd [[Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }]]
-
--- ruby
-vim.cmd [[Plug 'tpope/vim-endwise']]
-
--- nginx
-vim.cmd [[Plug 'chr4/nginx.vim']]
 vim.fn['plug#end']()
 
 function trim_white_space()
