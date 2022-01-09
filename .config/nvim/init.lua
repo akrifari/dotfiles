@@ -124,7 +124,6 @@ vim.opt.autoread = true
 vim.opt.updatetime = 100
 vim.opt.timeoutlen = 350
 vim.opt.termguicolors = true
-vim.opt.hidden = true
 vim.opt.shortmess:append('c')
 vim.opt.signcolumn = 'yes'
 vim.opt.inccommand = 'split'
