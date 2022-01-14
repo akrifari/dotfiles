@@ -25,18 +25,23 @@ font-3 = Font Awesome 6 Brands:pixelsize=10;1
 
 modules-left = i3
 modules-center = date
-modules-right = filesystem alsa pulseaudio wlan eth battery
+modules-right = fs-root fs-home alsa pulseaudio wlan eth battery
 
-[module/filesystem]
+[fs-base]
 type = internal/fs
 interval = 25
 
+format-mounted-prefix = ${self.mount-0}
+format-mounted-prefix-foreground = ${xrdb:color4}
+label-mounted = " %percentage_used%%"
+
+[module/fs-root]
+inherit = fs-base
 mount-0 = /
 
-; #bd93f9 same as xrdb:color4
-label-mounted = %{F#bd93f9}%mountpoint%%{F-} %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${xrdb:foreground}
+[module/fs-home]
+inherit = fs-base
+mount-0 = /home
 
 [module/i3]
 type = internal/i3
