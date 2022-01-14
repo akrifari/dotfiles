@@ -23,7 +23,7 @@ font-1 = Font Awesome 6 Free Regular:pixelsize=10;1
 font-2 = Font Awesome 6 Free Solid:pixelsize=10;1
 font-3 = Font Awesome 6 Brands:pixelsize=10;1
 
-modules-left = wlan eth
+modules-left = cpu memory temperature wlan eth xkeyboard
 modules-center = i3
 modules-right = fs-root fs-home pulseaudio battery date
 
@@ -153,6 +153,66 @@ animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-foreground = ${xrdb:color1}
 animation-discharging-framerate = 700
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+
+format = <ramp-load> <label>
+label = %percentage:2%%
+
+ramp-load-0 = 
+ramp-load-1 = 
+ramp-load-2 = 
+
+ramp-load-0-foreground = ${xrdb:color2}
+ramp-load-1-foreground = ${xrdb:color3}
+ramp-load-2-foreground = ${xrdb:color1}
+
+[module/memory]
+type = internal/memory
+interval = 1
+
+format = <ramp-used> <label>
+label = %percentage_used:2%%
+
+ramp-used-0 = 
+ramp-used-1 = 
+ramp-used-2 = 
+
+ramp-used-0-foreground = ${xrdb:color2}
+ramp-used-1-foreground = ${xrdb:color3}
+ramp-used-2-foreground = ${xrdb:color1}
+
+[module/temperature]
+type = internal/temperature
+interval = 1
+base-temperature = 40
+warn-temperature = 70
+
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+label = %temperature-c:2%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+
+ramp-0-foreground = ${xrdb:color2}
+ramp-1-foreground = ${xrdb:color2}
+ramp-2-foreground = ${xrdb:color3}
+ramp-3-foreground = ${xrdb:color3}
+ramp-4-foreground = ${xrdb:color1}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+format = <label-indicator>
+format-foreground = ${xrdb:color4}
+label-indicator-on-capslock = %name%
+label-indicator-off-capslock =
 
 [settings]
 screenchange-reload = true
