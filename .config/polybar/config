@@ -85,11 +85,18 @@ type = internal/network
 interface = wlp3s0
 interval = 3.0
 
-format-connected-prefix-foreground = ${xrdb:foreground}
-format-connected = <label-connected>
-label-connected = %essid%
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid:0:5:%
 
 format-disconnected =
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+
+ramp-signal-0-foreground = ${xrdb:color1}
+ramp-signal-1-foreground = ${xrdb:color3}
+ramp-signal-2-foreground = ${xrdb:color2}
 
 [module/eth]
 type = internal/network
