@@ -25,7 +25,7 @@ font-3 = Font Awesome 6 Brands:pixelsize=10;1
 
 modules-left = i3
 modules-center = date
-modules-right = fs-root fs-home alsa pulseaudio wlan eth battery
+modules-right = fs-root fs-home pulseaudio wlan eth battery
 
 [fs-base]
 type = internal/fs
