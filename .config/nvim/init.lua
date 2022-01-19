@@ -184,7 +184,6 @@ vim.g.coc_snippet_next = '<c-j>'
 vim.g.coc_snippet_prev = '<c-k>'
 
 vim.api.nvim_set_keymap('n', '<leader>r', ':source $MYVIMRC<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<cr>', ':nohl<cr>', { noremap = true, silent = true })
 
 -- escape in various mode
 vim.api.nvim_set_keymap('i', 'jk', '<esc>', { noremap = true, silent = true })
@@ -200,10 +199,10 @@ vim.api.nvim_set_keymap('i', '<c-a>', '<c-o>^', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('i', '<c-e>', '<c-o>$', { noremap = true, silent = true })
 
 -- window navigation
-vim.api.nvim_set_keymap('n', '<c-h>', '<c-w><c-h>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<c-j>', '<c-w><c-j>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<c-k>', '<c-w><c-k>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<c-l>', '<c-w><c-l>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<m-H>', '<c-w><c-h>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<m-J>', '<c-w><c-j>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<m-K>', '<c-w><c-k>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<m-L>', '<c-w><c-l>', { noremap = true, silent = true })
 
 -- tab navigation
 vim.api.nvim_set_keymap('n', '`h', ':tabp<cr>', { noremap = true, silent = true })
