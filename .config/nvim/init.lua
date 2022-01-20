@@ -168,6 +168,14 @@ vim.g.go_highlight_functions = 1
 vim.g.go_highlight_function_calls = 1
 vim.g.go_fmt_command = "goimports"
 
+-- bullets
+vim.g.bullets_enabled_file_types = {
+  'markdown',
+  'text',
+  'gitcommit',
+  'scratch',
+}
+
 -- coc
 vim.g.coc_global_extensions = {
   'coc-json',
