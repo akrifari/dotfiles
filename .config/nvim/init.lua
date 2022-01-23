@@ -14,7 +14,6 @@ vim.cmd [[Plug 'enricobacis/paste.vim']]
 vim.cmd [[Plug 'honza/vim-snippets']]
 vim.cmd [[Plug 'tpope/vim-repeat']]
 vim.cmd [[Plug 'tpope/vim-fugitive']]
-vim.cmd [[Plug 'tpope/vim-commentary']]
 vim.cmd [[Plug 'tpope/vim-obsession']]
 vim.cmd [[Plug 'godlygeek/tabular']]
 vim.cmd [[Plug 'dkarter/bullets.vim']]
@@ -26,6 +25,7 @@ vim.cmd [[Plug 'tpope/vim-unimpaired']]
 
 vim.cmd [[Plug 'nvim-lua/plenary.nvim']]
 vim.cmd [[Plug 'lewis6991/gitsigns.nvim']]
+vim.cmd [[Plug 'numToStr/Comment.nvim']]
 
 -- syntax highlighting
 vim.cmd [[Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]]
