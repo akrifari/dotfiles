@@ -258,7 +258,7 @@ vim.api.nvim_set_keymap('n', ']g', '<plug>(coc-diagnostic-next)', { silent = tru
 vim.api.nvim_set_keymap('v', '<c-j>', '<plug>(coc-snippets-select)', { silent = true })
 vim.api.nvim_set_keymap('i', '<c-l>', '<plug>(coc-snippets-expand)', { silent = true })
 vim.api.nvim_set_keymap('i', '<c-j>', '<plug>(coc-snippets-expand-jump)', { silent = true })
-vim.api.nvim_set_keymap('i', '<c-space>', 'coc#refresh()', { expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<c-y>', 'coc#refresh()', { expr = true, noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>fw', ':CocSearch <c-r><c-w><cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-f>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "<c-f>"', { noremap = true, silent = true, expr = true })
 vim.api.nvim_set_keymap('n', '<c-b>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "<c-b>"', { noremap = true, silent = true, expr = true })
