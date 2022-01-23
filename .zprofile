@@ -20,6 +20,7 @@ export NNN_OPTS="dex"
 export NNN_COLORS="4321"
 export NNN_PLUG='f:fzopen;v:imgview'
 export NNN_BMS='h:~;p:~/Pictures'
+export NNN_TRASH=1
 export FZF_DEFAULT_COMMAND="rg --files"
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --no-height
