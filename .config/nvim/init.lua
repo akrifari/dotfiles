@@ -66,7 +66,7 @@ function _G.coc_status(key)
   local ok, coc_info = pcall(vim.api.nvim_buf_get_var, bufnr, "coc_diagnostic_info")
   if not ok then return "" end
   if coc_info[key] == 0 then return "" end
-  return " " .. coc_info[key]
+  return " " .. coc_info[key]
 end
 
 function _G.gitsigns_status(key, symbol)
