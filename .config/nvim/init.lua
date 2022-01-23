@@ -26,6 +26,7 @@ vim.cmd [[Plug 'tpope/vim-unimpaired']]
 vim.cmd [[Plug 'nvim-lua/plenary.nvim']]
 vim.cmd [[Plug 'lewis6991/gitsigns.nvim']]
 vim.cmd [[Plug 'numToStr/Comment.nvim']]
+vim.cmd [[Plug 'kevinhwang91/nvim-bqf', { 'for': 'qf' }]]
 
 -- syntax highlighting
 vim.cmd [[Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]]
