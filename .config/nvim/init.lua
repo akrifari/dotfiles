@@ -8,8 +8,6 @@ vim.cmd [[Plug 'tpope/vim-surround']]
 vim.cmd [[Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }]]
 vim.cmd [[Plug 'Xuyuanp/nerdtree-git-plugin']]
 vim.cmd [[Plug 'mattn/emmet-vim']]
-vim.cmd [[Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }]]
-vim.cmd [[Plug 'junegunn/fzf.vim']]
 vim.cmd [[Plug 'enricobacis/paste.vim']]
 vim.cmd [[Plug 'honza/vim-snippets']]
 vim.cmd [[Plug 'tpope/vim-repeat']]
@@ -27,6 +25,7 @@ vim.cmd [[Plug 'nvim-lua/plenary.nvim']]
 vim.cmd [[Plug 'lewis6991/gitsigns.nvim']]
 vim.cmd [[Plug 'numToStr/Comment.nvim']]
 vim.cmd [[Plug 'kevinhwang91/nvim-bqf', { 'for': 'qf' }]]
+vim.cmd [[Plug 'ibhagwan/fzf-lua']]
 
 -- syntax highlighting
 vim.cmd [[Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]]
@@ -142,24 +141,6 @@ vim.g.NERDTreeIgnore = {'node_modules'}
 --    force quit if the only active buffer is nerdtree
 vim.api.nvim_command('autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif')
 
--- fzf
-vim.g.fzf_layout = {
-  window = { height = 1, width = 1 }
-}
-vim.g.fzf_action = {
-  ['ctrl-q'] = function(lines)
-    local qf_entries = {}
-    for _, entry in pairs(lines) do
-      table.insert(qf_entries, { filename = entry, lnum = 0, col = 0 })
-    end
-    vim.fn.setqflist(qf_entries, 'r')
-    vim.cmd 'copen'
-    vim.cmd 'cc'
-  end,
-  ['ctrl-t'] = 'tab split',
-  ['ctrl-x'] = 'split',
-  ['ctrl-v'] = 'vsplit'
-}
 
 -- vim-go
 vim.g.go_highlight_types = 1
@@ -192,7 +173,8 @@ vim.g.coc_global_extensions = {
 vim.g.coc_snippet_next = '<c-j>'
 vim.g.coc_snippet_prev = '<c-k>'
 
-vim.api.nvim_set_keymap('n', '<leader>r', ':source $MYVIMRC<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<space>', '<nop>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>rv', ':source $MYVIMRC<cr>', { noremap = true })
 
 -- escape in various mode
 vim.api.nvim_set_keymap('i', 'jk', '<esc>', { noremap = true, silent = true })
@@ -228,12 +210,17 @@ vim.api.nvim_set_keymap('v', 'J', ']egv', { noremap = false, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>t', ':NERDTreeToggle<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ff', ':NERDTreeFind<cr>', { noremap = true, silent = true })
 
--- fzf
-vim.api.nvim_set_keymap('n', '<c-p>', ':Files<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>p', ':Rg<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>b', ':Buffers<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>w', ':Windows<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'q:', ':History:<cr>', { noremap = true, silent = true })
+-- fzf-lua
+vim.api.nvim_set_keymap('n', '<c-p>', ':FzfLua files<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<space>p', ':FzfLua grep<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>rg', ':FzfLua live_grep_native<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>bf', ':FzfLua buffers<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gfl', ':FzfLua git_files<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gfm', ':FzfLua git_status<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'q:', ':FzfLua command_history<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>bl', ':FzfLua<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>df', ":lua require('modules.fzf').dotfiles()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fw', ":FzfLua grep_cword<cr>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('v', '<leader>hr', ':<c-u>%s/\\%V/g<left><left>', { noremap = true, silent = true })
 
@@ -260,7 +247,6 @@ vim.api.nvim_set_keymap('v', '<c-j>', '<plug>(coc-snippets-select)', { silent = 
 vim.api.nvim_set_keymap('i', '<c-l>', '<plug>(coc-snippets-expand)', { silent = true })
 vim.api.nvim_set_keymap('i', '<c-j>', '<plug>(coc-snippets-expand-jump)', { silent = true })
 vim.api.nvim_set_keymap('i', '<c-y>', 'coc#refresh()', { expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fw', ':CocSearch <c-r><c-w><cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-f>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "<c-f>"', { noremap = true, silent = true, expr = true })
 vim.api.nvim_set_keymap('n', '<c-b>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "<c-b>"', { noremap = true, silent = true, expr = true })
 vim.api.nvim_set_keymap('i', '<c-f>', 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>" : "<right>"', { noremap = true, silent = true, expr = true })
