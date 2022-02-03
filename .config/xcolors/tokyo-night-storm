@@ -1,0 +1,21 @@
+! tokyo night Xresources palette
+#define FOREGROUND      #c0caf5
+#define BACKGROUND      #24283b
+#define BLACK           #1d202f
+#define BLACK_ALT       #414868
+#define RED             #f7768e
+#define RED_ALT         #f7768e
+#define GREEN           #9ece6a
+#define GREEN_ALT       #9ece6a
+#define YELLOW          #e0af68
+#define YELLOW_ALT      #e0af68
+#define BLUE            #7aa2f7
+#define BLUE_ALT        #7aa2f7
+#define MAGENTA         #bb9af7
+#define MAGENTA_ALT     #bb9af7
+#define CYAN            #7dcfff
+#define CYAN_ALT        #7dcfff
+#define WHITE           #a9b1d6
+#define WHITE_ALT       #c0caf5
+
+! vim: ft=xdefaults

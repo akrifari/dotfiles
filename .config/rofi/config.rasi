@@ -3,12 +3,12 @@ configuration {
 }
 
 * {
-  bg:    #282a36;
-  fg0:   #282a36;
-  fg1:   #f8f8f2;
-  red:   #ff5555;
-  green: #50fa7b;
-  blue:  #bd93f9;
+  bg:    #24283b;
+  fg0:   #24283b;
+  fg1:   #c0caf5;
+  red:   #f7768e;
+  green: #9ece6a;
+  blue:  #7aa2f7;
 
   background:       @bg;
   foreground:       @fg1;

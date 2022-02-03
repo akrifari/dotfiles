@@ -1,4 +1,4 @@
-#include ".config/xcolors/dracula"
+#include ".config/xcolors/tokyo-night-storm"
 
 *.foreground:           FOREGROUND
 *.background:           BACKGROUND

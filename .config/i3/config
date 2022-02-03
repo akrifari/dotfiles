@@ -138,7 +138,7 @@ default_border pixel 2
 default_floating_border pixel 2
 hide_edge_borders smart
 
-# dracula theme, loaded from $HOME/.Xresources
+# loaded from $HOME/.Xresources
 set_from_resource $fg               foreground
 set_from_resource $bg               background
 set_from_resource $black            color0

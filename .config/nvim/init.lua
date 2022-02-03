@@ -128,10 +128,7 @@ vim.opt.shortmess:append('c')
 vim.opt.signcolumn = 'yes'
 vim.opt.inccommand = 'split'
 
--- colorscheme & color preference
--- note: order matters here, otherwise it will mess up
 require('highlights')
-vim.cmd [[colorscheme dracula]]
 
 -- emmet
 vim.g.user_emmet_leader_key = '<leader>e'

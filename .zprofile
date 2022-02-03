@@ -20,14 +20,16 @@ export NNN_OPTS="dex"
 export NNN_COLORS="4321"
 export NNN_PLUG='f:fzopen;v:imgview'
 export NNN_BMS='h:~;p:~/Pictures'
+BLK="03" CHR="03" DIR="04" EXE="02" REG="00" HARDLINK="06" SYMLINK="06" MISSING="07" ORPHAN="08" FIFO="06" SOCK="05" OTHER="07"
+export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
 export NNN_TRASH=1
 export FZF_DEFAULT_COMMAND="rg --files"
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --no-height
 --no-reverse
 --color=dark
---color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
---color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
+--color=fg:-1,bg:-1,hl:#9ece6a,fg+:-1,bg+:-1,hl+:#e0af68
+--color=info:#7aa2f7,prompt:#9ece6a,pointer:#f7768e,marker:#f7768e,spinner:#f7768e
 --bind ctrl-b:preview-half-page-up,ctrl-f:preview-half-page-down
 --bind ctrl-/:toggle-preview,ctrl-]:toggle-preview-wrap
 '

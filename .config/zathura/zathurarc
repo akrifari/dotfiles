@@ -3,37 +3,37 @@ set selection-clipboard       clipboard
 set statusbar-home-tilde      true
 set show-scrollbars           true
 
-set default-bg                "#44475a"
-set default-fg                "#f8f8f2"
+set default-bg                "#24283b"
+set default-fg                "#c0caf5"
 
-set inputbar-bg               "#282a36"
-set inputbar-fg               "#f8f8f2"
+set inputbar-bg               "#24283b"
+set inputbar-fg               "#c0caf5"
 
 # table of contents
-set index-bg                  "#282a36"
-set index-fg                  "#f8f8f2"
-set index-active-bg           "#bd93f9"
-set index-active-fg           "#282a36"
+set index-bg                  "#24283b"
+set index-fg                  "#c0caf5"
+set index-active-bg           "#7aa2f7"
+set index-active-fg           "#24283b"
 
-set statusbar-bg              "#2b2b2b"
-set statusbar-fg              "#50fa7b"
+set statusbar-bg              "#1d202f"
+set statusbar-fg              "#7aa2f7"
 
-set completion-bg             "#282a36"
-set completion-group-bg       "#282a36"
-set completion-group-fg       "#50fa7b"
-set completion-highlight-bg   "#bd93f9"
-set completion-highlight-fg   "#282a36"
+set completion-bg             "#24283b"
+set completion-group-bg       "#24283b"
+set completion-group-fg       "#9ece6a"
+set completion-highlight-bg   "#7aa2f7"
+set completion-highlight-fg   "#24283b"
 
 # notification message
-set notification-bg           "#282a36"
-set notification-fg           "#f1fa8c"
-set notification-warning-bg   "#282a36"
-set notification-warning-fg   "#f1fa8c"
-set notification-error-bg     "#282a36"
-set notification-error-fg     "#ff5555"
+set notification-bg           "#24283b"
+set notification-fg           "#e0af68"
+set notification-warning-bg   "#24283b"
+set notification-warning-fg   "#e0af68"
+set notification-error-bg     "#24283b"
+set notification-error-fg     "#f7768e"
 
-set highlight-active-color    "#bd93f9"
-set highlight-color           "#50fa7b"
+set highlight-active-color    "#7aa2f7"
+set highlight-color           "#9ece6a"
 set highlight-transparency    0.5
 
 # vim: ft=conf
