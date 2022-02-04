@@ -6,17 +6,9 @@ function! MyHighlights() abort
   highlight StatusLine ctermbg=NONE
   highlight StatusLineNC ctermbg=NONE ctermfg=238 guifg=#424450
 
-  highlight link User1 TNGreen
-  highlight link User2 TNBlue
-  highlight link User3 TNCyan
-  highlight link User4 TNRed
-  highlight link User5 TNOrange
-  highlight link User6 TNMagenta
-  highlight link User7 TNYellow
-  highlight link User8 TNGray
-
   " tokyonight color pallete
   highlight TNRed guifg=#f7768e
+  highlight TNRed1 guifg=#db4b4b
   highlight TNGreen guifg=#9ece6a
   highlight TNYellow guifg=#e0af68
   highlight TNBlue guifg=#7aa2f7
@@ -24,6 +16,8 @@ function! MyHighlights() abort
   highlight TNCyan guifg=#7dcfff
   highlight TNGray guifg=#565f89
   highlight TNOrange guifg=#ff9e64
+  highlight TNTeal guifg=#1abc9c
+  highlight TNBlue2 guifg=#0db9d7
 
   " hint
   highlight! link CocHintSign DiagnosticHint
