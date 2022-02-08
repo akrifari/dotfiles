@@ -13,11 +13,11 @@ vim.cmd [[Plug 'honza/vim-snippets']]
 vim.cmd [[Plug 'tpope/vim-repeat']]
 vim.cmd [[Plug 'tpope/vim-fugitive']]
 vim.cmd [[Plug 'tpope/vim-obsession']]
-vim.cmd [[Plug 'godlygeek/tabular']]
+vim.cmd [[Plug 'godlygeek/tabular', { 'on': 'Tabularize' }]]
 vim.cmd [[Plug 'dkarter/bullets.vim']]
 vim.cmd [[Plug 'editorconfig/editorconfig-vim']]
 vim.cmd [[Plug 'neoclide/coc.nvim', { 'branch': 'release' }]]
-vim.cmd [[Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }]]
+vim.cmd [[Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown', 'do': 'cd app & yarn install' }]]
 vim.cmd [[Plug 'chrisbra/Colorizer']]
 vim.cmd [[Plug 'tpope/vim-unimpaired']]
 
@@ -29,7 +29,7 @@ vim.cmd [[Plug 'ibhagwan/fzf-lua']]
 
 -- syntax highlighting
 vim.cmd [[Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]]
-vim.cmd [[Plug 'nvim-treesitter/playground']]
+vim.cmd [[Plug 'nvim-treesitter/playground', { 'on': ['TSHighlightCapturesUnderCursor', 'TSPlaygroundToggle'] }]]
 vim.cmd [[Plug 'JoosepAlviste/nvim-ts-context-commentstring']]
 vim.cmd [[Plug 'p00f/nvim-ts-rainbow']]
 
