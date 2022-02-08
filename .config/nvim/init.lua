@@ -1,6 +1,6 @@
 vim.fn['plug#begin']('~/.local/share/nvim/plugged')
 -- colorscheme
-vim.cmd [[Plug 'dracula/vim']]
+vim.cmd [[Plug 'folke/tokyonight.nvim', { 'branch': 'main' }]]
 
 -- misc
 vim.cmd [[Plug 'jiangmiao/auto-pairs']]
