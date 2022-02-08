@@ -37,7 +37,7 @@ vim.cmd [[Plug 'p00f/nvim-ts-rainbow']]
 vim.cmd [[Plug 'janko-m/vim-test']]
 
 -- javascript
-vim.cmd [[Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx', 'typescript'], 'do': 'make install'}]]
+vim.cmd [[Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx', 'typescript'], 'do': 'make install' }]]
 
 -- golang
 vim.cmd [[Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }]]
