@@ -16,6 +16,8 @@ nvim_treesitter.setup {
     persist_queries = false,
   },
   indent = { enable = true },
+  autotag = { enable = true },
+  matchup = { enable = true },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,

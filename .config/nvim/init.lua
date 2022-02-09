@@ -32,6 +32,8 @@ vim.cmd [[Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]]
 vim.cmd [[Plug 'nvim-treesitter/playground', { 'on': ['TSHighlightCapturesUnderCursor', 'TSPlaygroundToggle'] }]]
 vim.cmd [[Plug 'JoosepAlviste/nvim-ts-context-commentstring']]
 vim.cmd [[Plug 'p00f/nvim-ts-rainbow']]
+vim.cmd [[Plug 'andymass/vim-matchup']]
+vim.cmd [[Plug 'windwp/nvim-ts-autotag']]
 
 -- testing
 vim.cmd [[Plug 'janko-m/vim-test']]
