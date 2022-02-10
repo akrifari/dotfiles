@@ -104,15 +104,6 @@ vim.g.NERDTreeIgnore = {'node_modules'}
 --    force quit if the only active buffer is nerdtree
 vim.api.nvim_command('autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif')
 
-
--- vim-go
-vim.g.go_highlight_types = 1
-vim.g.go_highlight_fields = 1
-vim.g.go_highlight_methods = 1
-vim.g.go_highlight_functions = 1
-vim.g.go_highlight_function_calls = 1
-vim.g.go_fmt_command = "goimports"
-
 -- bullets
 vim.g.bullets_enabled_file_types = {
   'markdown',
