@@ -1,50 +1,8 @@
-vim.fn['plug#begin']('~/.local/share/nvim/plugged')
--- colorscheme
-vim.cmd [[Plug 'folke/tokyonight.nvim', { 'branch': 'main' }]]
-
--- misc
-vim.cmd [[Plug 'jiangmiao/auto-pairs']]
-vim.cmd [[Plug 'tpope/vim-surround']]
-vim.cmd [[Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }]]
-vim.cmd [[Plug 'Xuyuanp/nerdtree-git-plugin']]
-vim.cmd [[Plug 'mattn/emmet-vim']]
-vim.cmd [[Plug 'enricobacis/paste.vim']]
-vim.cmd [[Plug 'honza/vim-snippets']]
-vim.cmd [[Plug 'google/vim-searchindex']]
-vim.cmd [[Plug 'tpope/vim-repeat']]
-vim.cmd [[Plug 'tpope/vim-fugitive']]
-vim.cmd [[Plug 'tpope/vim-obsession']]
-vim.cmd [[Plug 'godlygeek/tabular', { 'on': 'Tabularize' }]]
-vim.cmd [[Plug 'dkarter/bullets.vim']]
-vim.cmd [[Plug 'editorconfig/editorconfig-vim']]
-vim.cmd [[Plug 'neoclide/coc.nvim', { 'branch': 'release' }]]
-vim.cmd [[Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown', 'do': 'cd app & yarn install' }]]
-vim.cmd [[Plug 'chrisbra/Colorizer']]
-vim.cmd [[Plug 'tpope/vim-unimpaired']]
-
-vim.cmd [[Plug 'nvim-lua/plenary.nvim']]
-vim.cmd [[Plug 'lewis6991/gitsigns.nvim']]
-vim.cmd [[Plug 'numToStr/Comment.nvim']]
-vim.cmd [[Plug 'kevinhwang91/nvim-bqf', { 'for': 'qf' }]]
-vim.cmd [[Plug 'ibhagwan/fzf-lua']]
-
--- syntax highlighting
-vim.cmd [[Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }]]
-vim.cmd [[Plug 'nvim-treesitter/playground', { 'on': ['TSHighlightCapturesUnderCursor', 'TSPlaygroundToggle'] }]]
-vim.cmd [[Plug 'JoosepAlviste/nvim-ts-context-commentstring']]
-vim.cmd [[Plug 'p00f/nvim-ts-rainbow']]
-vim.cmd [[Plug 'andymass/vim-matchup']]
-vim.cmd [[Plug 'windwp/nvim-ts-autotag']]
-
--- testing
-vim.cmd [[Plug 'janko-m/vim-test']]
-
--- javascript
-vim.cmd [[Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx', 'typescript'], 'do': 'make install' }]]
-
--- golang
-vim.cmd [[Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }]]
-vim.fn['plug#end']()
+-- speed up startuptime by caching plugins
+-- TODO: remove `impatient` once https://github.com/neovim/neovim/pull/15436
+--       is merged
+require('impatient')
+require('plugins')
 
 function trim_white_space()
   local save = vim.fn.winsaveview()
@@ -96,40 +54,6 @@ vim.opt.inccommand = 'split'
 
 require('highlights')
 require('statusline')
-
--- emmet
-vim.g.user_emmet_leader_key = '<leader>e'
-
--- nerdtree
-vim.g.NERDTreeIgnore = {'node_modules'}
---    force quit if the only active buffer is nerdtree
-vim.api.nvim_command('autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif')
-
--- bullets
-vim.g.bullets_enabled_file_types = {
-  'markdown',
-  'text',
-  'gitcommit',
-  'scratch',
-}
-
--- vim-searchindex
-vim.g.searchindex_star_case = 0
-
--- coc
-vim.g.coc_global_extensions = {
-  'coc-json',
-  'coc-tsserver',
-  'coc-css',
-  'coc-prettier',
-  'coc-go',
-  'coc-emmet',
-  'coc-html',
-  'coc-snippets',
-  'coc-eslint',
-}
-vim.g.coc_snippet_next = '<c-j>'
-vim.g.coc_snippet_prev = '<c-k>'
 
 vim.api.nvim_set_keymap('n', '<space>', '<nop>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>rv', ':source $MYVIMRC<cr>', { noremap = true })
@@ -212,5 +136,3 @@ vim.api.nvim_set_keymap('i', '<c-b>', 'coc#float#has_scroll() ? "<c-r>=coc#float
 
 -- colorizer
 vim.api.nvim_set_keymap('n', '<leader>1', ':ColorToggle<cr>', { noremap = true, silent = true })
-
-require('modules')
