@@ -10,6 +10,7 @@ vim.cmd [[Plug 'Xuyuanp/nerdtree-git-plugin']]
 vim.cmd [[Plug 'mattn/emmet-vim']]
 vim.cmd [[Plug 'enricobacis/paste.vim']]
 vim.cmd [[Plug 'honza/vim-snippets']]
+vim.cmd [[Plug 'google/vim-searchindex']]
 vim.cmd [[Plug 'tpope/vim-repeat']]
 vim.cmd [[Plug 'tpope/vim-fugitive']]
 vim.cmd [[Plug 'tpope/vim-obsession']]
@@ -111,6 +112,9 @@ vim.g.bullets_enabled_file_types = {
   'gitcommit',
   'scratch',
 }
+
+-- vim-searchindex
+vim.g.searchindex_star_case = 0
 
 -- coc
 vim.g.coc_global_extensions = {
