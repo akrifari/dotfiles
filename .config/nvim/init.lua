@@ -4,24 +4,6 @@
 require('impatient')
 require('plugins')
 
-function trim_white_space()
-  local save = vim.fn.winsaveview()
-  vim.cmd [[%s/\s\+$//e]]
-  vim.fn.winrestview(save)
-end
-vim.api.nvim_command('autocmd BufWritePre * lua trim_white_space()')
-
-function show_documentation()
-  local filetype = vim.bo.filetype
-  if filetype == "vim" or filetype == "help" then
-    vim.api.nvim_command("h " .. vim.fn.expand("<cword>"))
-  elseif vim.fn["coc#rpc#ready"]() then
-    vim.fn.CocActionAsync("doHover")
-  else
-    vim.api.nvim_command("!" .. vim.bo.keywordprg .. " " .. vim.fn.expand("<cword>"))
-  end
-end
-
 vim.g.mapleader = ','
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -48,7 +30,6 @@ vim.opt.autoread = true
 vim.opt.updatetime = 100
 vim.opt.timeoutlen = 350
 vim.opt.termguicolors = true
-vim.opt.shortmess:append('c')
 vim.opt.signcolumn = 'yes'
 vim.opt.inccommand = 'split'
 
@@ -115,24 +96,6 @@ vim.api.nvim_set_keymap('n', '<leader>.', ':TestFile<cr>', { noremap = true, sil
 vim.api.nvim_set_keymap('n', '<leader>z', ':TestLast<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>x', ':TestSuite<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader><space>', ':TestVisit<cr>', { noremap = true, silent = true })
-
--- coc
-vim.api.nvim_set_keymap('n', 'K', ':lua show_documentation()<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<f2>', '<plug>(coc-rename)', { silent = true })
-vim.api.nvim_set_keymap('n', 'gd', '<plug>(coc-definition)', { silent = true })
-vim.api.nvim_set_keymap('n', 'gy', '<plug>(coc-type-definition)', { silent = true })
-vim.api.nvim_set_keymap('n', 'gi', '<plug>(coc-implementation)', { silent = true })
-vim.api.nvim_set_keymap('n', 'gr', '<plug>(coc-references)', { silent = true })
-vim.api.nvim_set_keymap('n', '[g', '<plug>(coc-diagnostic-prev)', { silent = true })
-vim.api.nvim_set_keymap('n', ']g', '<plug>(coc-diagnostic-next)', { silent = true })
-vim.api.nvim_set_keymap('v', '<c-j>', '<plug>(coc-snippets-select)', { silent = true })
-vim.api.nvim_set_keymap('i', '<c-l>', '<plug>(coc-snippets-expand)', { silent = true })
-vim.api.nvim_set_keymap('i', '<c-j>', '<plug>(coc-snippets-expand-jump)', { silent = true })
-vim.api.nvim_set_keymap('i', '<c-y>', 'coc#refresh()', { expr = true, noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<c-f>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "<c-f>"', { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap('n', '<c-b>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "<c-b>"', { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap('i', '<c-f>', 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>" : "<right>"', { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap('i', '<c-b>', 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<left>"', { noremap = true, silent = true, expr = true })
 
 -- colorizer
 vim.api.nvim_set_keymap('n', '<leader>1', ':ColorToggle<cr>', { noremap = true, silent = true })

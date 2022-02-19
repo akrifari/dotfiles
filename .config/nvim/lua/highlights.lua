@@ -19,24 +19,6 @@ function! MyHighlights() abort
   highlight TNTeal guifg=#1abc9c
   highlight TNBlue2 guifg=#0db9d7
 
-  " hint
-  highlight! link CocHintSign DiagnosticHint
-  highlight! link CocHintFloat DiagnosticHint
-
-  " info
-  highlight! link CocInfoSign DiagnosticInfo
-  highlight! link CocInfoFloat DiagnosticInfo
-
-  " warning
-  highlight! link WarningMsg DiagnosticWarn
-  highlight! link CocWarningSign DiagnosticWarn
-  highlight! link CocWarningFloat DiagnosticWarn
-
-  " error
-  highlight! link ErrorMsg DiagnosticError
-  highlight! link CocErrorSign DiagnosticError
-  highlight! link CocErrorFloat DiagnosticError
-
   " bump line number color by 30% (TNBlue -> #465986)
   highlight LineNr guifg=#465986
 endfunction

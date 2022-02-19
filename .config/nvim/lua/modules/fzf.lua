@@ -77,6 +77,20 @@ fzf_lua.setup {
     preview_layout = "vertical",
     preview_vertical = "up:60%",
   },
+  lsp = {
+    cwd_only          = false,
+    async_or_timeout  = 5000,
+    file_icons        = false,
+    git_icons         = false,
+    lsp_icons         = true,
+    severity          = "hint",
+    icons = {
+      ["Error"]       = { icon = "E", color = "red" },
+      ["Warning"]     = { icon = "W", color = "yellow" },
+      ["Information"] = { icon = "I", color = "blue" },
+      ["Hint"]        = { icon = "H", color = "magenta" },
+    },
+  },
 }
 
 local M = {}

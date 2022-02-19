@@ -101,31 +101,46 @@ packer.startup(function(use)
   -- LSP, formatter, auto completion, and snippets
   use {
     {
-      'neoclide/coc.nvim',
-      branch = 'release' ,
+      'neovim/nvim-lspconfig',
+      requires = {
+        'hrsh7th/cmp-nvim-lsp',
+        'b0o/schemastore.nvim',
+      },
       config = function()
-        vim.g.coc_global_extensions = {
-          'coc-json',
-          'coc-tsserver',
-          'coc-css',
-          'coc-prettier',
-          'coc-go',
-          'coc-emmet',
-          'coc-html',
-          'coc-snippets',
-          'coc-eslint',
-        }
-        vim.g.coc_snippet_next = '<c-j>'
-        vim.g.coc_snippet_prev = '<c-k>'
-      end
+        require 'modules.lsp'
+      end,
     },
-    { 'honza/vim-snippets' },
     {
-      'mattn/emmet-vim',
+      'filipdutescu/renamer.nvim',
+      branch = 'master',
+      requires = 'nvim-lua/plenary.nvim',
       config = function()
-        vim.g.user_emmet_leader_key = '<leader>e'
-      end
-    }
+        require('renamer').setup()
+      end,
+    },
+    {
+      'jose-elias-alvarez/null-ls.nvim',
+      config = function()
+        require 'modules.lsp.null-ls'
+      end,
+    },
+    {
+      'hrsh7th/nvim-cmp',
+      config = function()
+        require 'modules.lsp.cmp'
+      end,
+    },
+    { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+    {
+      'L3MON4D3/LuaSnip',
+      requires = 'rafamadriz/friendly-snippets',
+      after = 'nvim-cmp',
+      config = function()
+        require 'modules.lsp.luasnip'
+      end,
+    },
+    { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
   }
 
   -- syntax highlighting
@@ -181,7 +196,4 @@ packer.startup(function(use)
     ft = { 'javascript', 'javascript.jsx', 'typescript' },
     run = 'make install',
   }
-
-  -- golang
-  use { 'fatih/vim-go', ft = 'go', run = ':GoUpdateBinaries' }
 end)

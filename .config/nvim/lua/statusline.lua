@@ -56,14 +56,20 @@ end
 
 M.get_diagnostic_count = function(severity)
   local bufnr = vim.fn.bufnr ''
-  local ok, diagnostic = pcall(vim.api.nvim_buf_get_var, bufnr, 'coc_diagnostic_info')
+  local ok, diagnostic = pcall(vim.diagnostic.get, bufnr, { severity = severity })
   if not ok then
     return ''
   end
-  if diagnostic[severity] == 0 then
+
+  local diagnostic_count = 0
+  for _, _ in ipairs(diagnostic) do
+    diagnostic_count = diagnostic_count + 1
+  end
+  if diagnostic_count == 0 then
     return ''
   end
-  return '  ' .. diagnostic[severity]
+
+  return '  ' .. diagnostic_count
 end
 
 M.get_filetype = function()
@@ -126,10 +132,10 @@ M.set_active = function(self)
   local filetype = self.colors.magenta .. self:get_filetype()
   local file_status = self:get_file_status()
 
-  local coc_hint    = self.colors.teal .. self.get_diagnostic_count('hint')
-  local coc_info    = self.colors.blue2 .. self.get_diagnostic_count('information')
-  local coc_warning = self.colors.orange .. self.get_diagnostic_count('warning')
-  local coc_error   = self.colors.red1 .. self.get_diagnostic_count('error')
+  local lsp_error = self.colors.red1 .. self.get_diagnostic_count(vim.diagnostic.severity.ERROR)
+  local lsp_warning = self.colors.yellow .. self.get_diagnostic_count(vim.diagnostic.severity.WARN)
+  local lsp_info = self.colors.blue2 .. self.get_diagnostic_count(vim.diagnostic.severity.INFO)
+  local lsp_hint = self.colors.teal .. self.get_diagnostic_count(vim.diagnostic.severity.HINT)
 
   local git_added = self.colors.green .. self.get_gitsigns_status('added')
   local git_changed = self.colors.orange .. self.get_gitsigns_status('changed')
@@ -144,10 +150,10 @@ M.set_active = function(self)
     filepath,
     file_status,
     obsession,
-    coc_hint,
-    coc_info,
-    coc_warning,
-    coc_error,
+    lsp_hint,
+    lsp_info,
+    lsp_warning,
+    lsp_error,
     self.specifiers.field_alignment,
     git_added,
     git_changed,
