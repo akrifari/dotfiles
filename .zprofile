@@ -18,7 +18,9 @@ export GUI=1
 export NNN_OPENER=$HOME/.config/nnn/plugins/nuke
 export NNN_OPTS="dex"
 export NNN_COLORS="4321"
-export NNN_PLUG='f:fzopen;v:imgview'
+export NNN_PLUG_DEFAULT='f:fzopen;v:imgview;c:diffs;d:dragdrop'
+export NNN_PLUG_INLINE='x:!chmod u+x $nnn;t:-!tree -a $nnn;u:!unlink $nnn;q:!qrcp -k $nnn'
+export NNN_PLUG="$NNN_PLUG_DEFAULT;$NNN_PLUG_INLINE"
 export NNN_BMS='h:~;p:~/Pictures'
 BLK="03" CHR="03" DIR="04" EXE="02" REG="00" HARDLINK="06" SYMLINK="06" MISSING="07" ORPHAN="08" FIFO="06" SOCK="05" OTHER="07"
 export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
