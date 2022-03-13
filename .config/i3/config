@@ -211,6 +211,6 @@ bindsym XF86AudioMute               exec --no-startup-id pactl set-sink-mute 0 t
 bindsym XF86AudioRaiseVolume        exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume        exec --no-startup-id pactl set-sink-volume 0 -5%
 
-bindsym Control+space               exec --no-startup-id dunstctl close
-bindsym Control+Shift+space         exec --no-startup-id dunstctl close-all
-bindsym Control+grave               exec --no-startup-id dunstctl history-pop
+bindsym $alt+n                      exec --no-startup-id dunstctl close
+bindsym $alt+Shift+n                exec --no-startup-id dunstctl close-all
+bindsym $alt+grave                  exec --no-startup-id dunstctl history-pop
