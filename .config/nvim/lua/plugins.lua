@@ -94,7 +94,6 @@ packer.startup(function(use)
   }
   use {
     'kevinhwang91/nvim-bqf',
-    run = 'cd app & yarn install',
     ft = 'qf',
   }
 
