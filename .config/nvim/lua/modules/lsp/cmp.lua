@@ -21,9 +21,8 @@ cmp.setup {
     { name = 'buffer' },
     { name = 'luasnip' },
   },
-  documentation = {
-    border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-    winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
+  window = {
+    documentation = cmp.config.window.bordered(),
   },
   experimental = {
     ghost_text = true,
