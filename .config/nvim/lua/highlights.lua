@@ -1,40 +1,7 @@
-vim.cmd [[
-function! MyHighlights() abort
-  " statusline
-  highlight clear StatusLine
-  highlight clear StatusLineNC
-  highlight StatusLine ctermbg=NONE
-  highlight StatusLineNC ctermbg=NONE ctermfg=238 guifg=#424450
-
-  " tokyonight color pallete
-  highlight TNRed guifg=#f7768e
-  highlight TNRed1 guifg=#db4b4b
-  highlight TNGreen guifg=#9ece6a
-  highlight TNYellow guifg=#e0af68
-  highlight TNBlue guifg=#7aa2f7
-  highlight TNMagenta guifg=#bb9af7
-  highlight TNCyan guifg=#7dcfff
-  highlight TNGray guifg=#565f89
-  highlight TNOrange guifg=#ff9e64
-  highlight TNTeal guifg=#1abc9c
-  highlight TNBlue2 guifg=#0db9d7
-
-  " bump line number color by 30% (TNBlue -> #465986)
-  highlight LineNr guifg=#465986
-endfunction
-]]
-
-vim.cmd [[
-augroup MyColors
-  autocmd!
-  autocmd ColorScheme * call MyHighlights()
-augroup END
-]]
-
--- always set colorscheme after defining custom highlights otherwise the
--- statusline color will mess up
 local colors = require("tokyonight.colors").setup()
-vim.g.tokyonight_sidebars = {"qf", "nerdtree"}
+local util = require("tokyonight.util")
+
+vim.g.tokyonight_sidebars = { "qf", "nerdtree" }
 vim.g.tokyonight_colors = {
   gitSigns = {
     add = colors.green,
@@ -49,3 +16,24 @@ vim.g.tokyonight_colors = {
   }
 }
 vim.cmd [[colorscheme tokyonight]]
+
+local highlights = {
+  Statusline = { ctermbg = colors.none },
+  StatusLineNC = { ctermbg = colors.none, ctermfg = 0, fg = colors.none },
+  TNRed = { fg = colors.red },
+  TNRed1 = { fg = colors.red1 },
+  TNGreen = { fg = colors.green },
+  TNYellow = { fg = colors.yellow },
+  TNBlue = { fg = colors.blue },
+  TNMagenta = { fg = colors.magenta },
+  TNCyan = { fg = colors.cyan },
+  TNGray = { fg = colors.comment },
+  TNOrange = { fg = colors.orange },
+  TNTeal = { fg = colors.teal },
+  TNBlue2 = { fg = colors.blue2 },
+  LineNr = { fg = util.darken(colors.blue, 0.3) },
+}
+
+for group_name, opts in pairs(highlights) do
+  vim.api.nvim_set_hl(0, group_name, opts)
+end
