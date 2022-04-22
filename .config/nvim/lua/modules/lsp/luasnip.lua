@@ -1,13 +1,13 @@
-local ok, _ = pcall(require, 'luasnip')
+local ok, luasnip = pcall(require, 'luasnip')
 if not ok then
   return
 end
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
-local opts = { noremap = true }
-
-vim.api.nvim_set_keymap('i', '<c-j>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
-vim.api.nvim_set_keymap('i', '<c-k>', '<cmd>lua require("luasnip").jump(-1)<cr>', opts)
-vim.api.nvim_set_keymap('s', '<c-j>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
-vim.api.nvim_set_keymap('s', '<c-k>', '<cmd>lua require("luasnip").jump(-1)<cr>', opts)
+vim.keymap.set({ 'i', 's' }, '<c-j>', function()
+  return luasnip.jump(1)
+end)
+vim.keymap.set({ 'i', 's' }, '<c-k>', function()
+  return luasnip.jump(-1)
+end)

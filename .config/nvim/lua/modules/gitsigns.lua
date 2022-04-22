@@ -1,30 +1,51 @@
-local ok, gitsigns = pcall(require, 'gitsigns')
+local ok, gs = pcall(require, 'gitsigns')
 if not ok then
   return
 end
 
-gitsigns.setup {
-  keymaps = {
-    noremap = true,
-    buffer = true,
-    ['n ]c'] = { expr = true, "&diff ? ']c' : ':Gitsigns next_hunk<cr>'" },
-    ['n [c'] = { expr = true, "&diff ? '[c' : ':Gitsigns prev_hunk<cr>'" },
+gs.setup {
+  on_attach = function(bufnr)
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
 
-    ['n gp'] = ':Gitsigns preview_hunk<cr>',
-    ['n <leader>gs'] = ':Gitsigns stage_hunk<cr>',
-    ['n <leader>gS'] = ':Gitsigns stage_buffer<cr>',
-    ['n <leader>gu'] = ':Gitsigns undo_stage_hunk<cr>',
-    ['n <leader>gU'] = ':Gitsigns reset_buffer_index<cr>',
-    ['n <leader>gr'] = ':Gitsigns reset_hunk<cr>',
-    ['n <leader>gR'] = ':Gitsigns reset_buffer<cr>',
-    ['n <leader>gb'] = ':lua require"gitsigns".blame_line({full=true})<cr>',
-    ['n <leader>gB'] = ':Gitsigns toggle_current_line_blame<cr>',
+    map('n', ']c', function()
+      if vim.wo.diff then
+        return ']c'
+      end
+      vim.schedule(function()
+        gs.next_hunk()
+      end)
+      return '<ignore>'
+    end, { expr = true })
 
-    -- text objects
-    ['o ih'] = ':<c-u>Gitsigns select_hunk<cr>',
-    ['x ih'] = ':<c-u>Gitsigns select_hunk<cr>',
-  },
+    map('n', '[c', function()
+      if vim.wo.diff then
+        return '[c'
+      end
+      vim.schedule(function()
+        gs.prev_hunk()
+      end)
+      return '<ignore>'
+    end, { expr = true })
+
+    map('n', 'gp', gs.preview_hunk)
+    map({ 'n', 'v' }, '<leader>gs', gs.stage_hunk)
+    map('n', '<leader>gS', gs.stage_buffer)
+    map('n', '<leader>gu', gs.undo_stage_hunk)
+    map('n', '<leader>gU', gs.reset_buffer_index)
+    map({ 'n', 'v' }, '<leader>gr', gs.reset_hunk)
+    map('n', '<leader>gR', gs.reset_buffer)
+    map('n', '<leader>gb', function()
+      gs.blame_line { full = true }
+    end)
+    map('n', '<leader>gB', gs.toggle_current_line_blame)
+
+    map({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>')
+  end,
   current_line_blame_opts = {
-    delay = 100
-  }
+    delay = 100,
+  },
 }
