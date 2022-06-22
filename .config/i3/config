@@ -1,6 +1,7 @@
 # i3 config file
 
 set $mod Mod4
+set $alt Mod1
 
 # loaded from $HOME/.zprofile
 set $browser $BROWSER
