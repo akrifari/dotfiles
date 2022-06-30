@@ -83,7 +83,7 @@ label-urgent-padding = ${self.label-focused-padding}
 [module/wlan]
 type = internal/network
 interface = wlp3s0
-interval = 3.0
+interval = 1
 
 format-connected = <ramp-signal> <label-connected>
 label-connected = %essid:0:5:%
@@ -101,7 +101,7 @@ ramp-signal-2-foreground = ${xrdb:color2}
 [module/eth]
 type = internal/network
 interface = enp2s0
-interval = 3.0
+interval = 1
 
 format-connected-prefix = "eth "
 format-connected-prefix-foreground = ${xrdb:foreground}
