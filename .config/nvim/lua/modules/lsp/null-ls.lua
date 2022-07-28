@@ -11,9 +11,17 @@ null_ls.setup {
         PRETTIERD_DEFAULT_CONFIG = vim.fn.expand '~/.config/nvim/.prettierrc',
       },
     },
-    null_ls.builtins.formatting.eslint_d,
+    null_ls.builtins.formatting.eslint_d.with {
+      condition = function(utils)
+        return utils.root_has_file { '.eslintrc', '.eslintrc.js' }
+      end,
+    },
     null_ls.builtins.formatting.gofmt,
-    null_ls.builtins.diagnostics.eslint_d,
+    null_ls.builtins.diagnostics.eslint_d.with {
+      condition = function(utils)
+        return utils.root_has_file { '.eslintrc', '.eslintrc.js' }
+      end,
+    },
   },
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then
