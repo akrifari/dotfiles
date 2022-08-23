@@ -164,10 +164,20 @@ label = %percentage:2%%
 ramp-load-0 = 
 ramp-load-1 = 
 ramp-load-2 = 
+ramp-load-3 = 
+ramp-load-4 = 
+ramp-load-5 = 
+ramp-load-6 = 
+ramp-load-7 = 
 
 ramp-load-0-foreground = ${xrdb:color2}
-ramp-load-1-foreground = ${xrdb:color3}
-ramp-load-2-foreground = ${xrdb:color1}
+ramp-load-1-foreground = ${xrdb:color2}
+ramp-load-2-foreground = ${xrdb:color2}
+ramp-load-3-foreground = ${xrdb:color3}
+ramp-load-4-foreground = ${xrdb:color3}
+ramp-load-5-foreground = ${xrdb:color3}
+ramp-load-6-foreground = ${xrdb:color1}
+ramp-load-7-foreground = ${xrdb:color1}
 
 [module/memory]
 type = internal/memory
@@ -179,10 +189,20 @@ label = %percentage_used:2%%
 ramp-used-0 = 
 ramp-used-1 = 
 ramp-used-2 = 
+ramp-used-3 = 
+ramp-used-4 = 
+ramp-used-5 = 
+ramp-used-6 = 
+ramp-used-7 = 
 
 ramp-used-0-foreground = ${xrdb:color2}
-ramp-used-1-foreground = ${xrdb:color3}
-ramp-used-2-foreground = ${xrdb:color1}
+ramp-used-1-foreground = ${xrdb:color2}
+ramp-used-2-foreground = ${xrdb:color2}
+ramp-used-3-foreground = ${xrdb:color3}
+ramp-used-4-foreground = ${xrdb:color3}
+ramp-used-5-foreground = ${xrdb:color3}
+ramp-used-6-foreground = ${xrdb:color1}
+ramp-used-7-foreground = ${xrdb:color1}
 
 [module/temperature]
 type = internal/temperature
