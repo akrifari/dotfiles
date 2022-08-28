@@ -103,11 +103,18 @@ type = internal/network
 interface-type = wired
 interval = 1
 
-format-connected-prefix = "eth "
-format-connected-prefix-foreground = ${xrdb:foreground}
+format-connected = <ramp-signal> <label-connected>
 label-connected = %local_ip%
 
 format-disconnected =
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+
+ramp-signal-0-foreground = ${xrdb:color1}
+ramp-signal-1-foreground = ${xrdb:color3}
+ramp-signal-2-foreground = ${xrdb:color2}
 
 [module/date]
 type = internal/date
