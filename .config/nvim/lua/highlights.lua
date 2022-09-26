@@ -1,39 +1,41 @@
-local colors = require("tokyonight.colors").setup()
-local util = require("tokyonight.util")
+local colorscheme = require 'tokyonight'
+local colors = require('tokyonight.colors').setup()
+local util = require 'tokyonight.util'
 
-vim.g.tokyonight_sidebars = { "qf", "nerdtree" }
-vim.g.tokyonight_colors = {
-  gitSigns = {
-    add = colors.green,
-    change = colors.orange,
-    delete = colors.red,
-  },
-  git = {
-    add = colors.green,
-    change = colors.orange,
-    delete = colors.red,
-    conflict = colors.yellow,
-  }
-}
+colorscheme.setup {
+  style = 'storm',
+  sidebars = { 'qf', 'nerdtree' },
+  on_colors = function(c)
+    c.gitSigns = {
+      add = colors.green,
+      change = colors.orange,
+      delete = colors.red,
+    }
+    c.git = {
+      add = colors.green,
+      change = colors.orange,
+      delete = colors.red,
+      conflict = colors.yellow,
+    }
+  end,
+  on_highlights = function(hl, c)
+    hl.Statusline = { ctermbg = c.none }
+    hl.StatusLineNC = { ctermbg = c.none, ctermfg = 0, fg = c.none }
+    hl.TNRed = { fg = c.red }
+    hl.TNRed1 = { fg = c.red1 }
+    hl.TNGreen = { fg = c.green }
+    hl.TNYellow = { fg = c.yellow }
+    hl.TNBlue = { fg = c.blue }
+    hl.TNMagenta = { fg = c.magenta }
+    hl.TNCyan = { fg = c.cyan }
+    hl.TNGray = { fg = c.comment }
+    hl.TNOrange = { fg = c.orange }
+    hl.TNTeal = { fg = c.teal }
+    hl.TNBlue2 = { fg = c.blue2 }
+    hl.LineNr = { fg = util.darken(c.blue, 0.3) }
+  end
+})
+
+-- this line needs to be appeared after configuration above, otherwise the
+-- statusline colors customization in statusline.lua won't work as expected
 vim.cmd [[colorscheme tokyonight]]
-
-local highlights = {
-  Statusline = { ctermbg = colors.none },
-  StatusLineNC = { ctermbg = colors.none, ctermfg = 0, fg = colors.none },
-  TNRed = { fg = colors.red },
-  TNRed1 = { fg = colors.red1 },
-  TNGreen = { fg = colors.green },
-  TNYellow = { fg = colors.yellow },
-  TNBlue = { fg = colors.blue },
-  TNMagenta = { fg = colors.magenta },
-  TNCyan = { fg = colors.cyan },
-  TNGray = { fg = colors.comment },
-  TNOrange = { fg = colors.orange },
-  TNTeal = { fg = colors.teal },
-  TNBlue2 = { fg = colors.blue2 },
-  LineNr = { fg = util.darken(colors.blue, 0.3) },
-}
-
-for group_name, opts in pairs(highlights) do
-  vim.api.nvim_set_hl(0, group_name, opts)
-end
