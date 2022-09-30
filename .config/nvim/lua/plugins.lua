@@ -14,12 +14,12 @@ if not ok then
   return
 end
 
-vim.cmd [[
-  augroup PackerUserConfig
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup END
-]]
+local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+  command = 'source <afile> | PackerSync',
+  group = packer_group,
+  pattern = 'plugins.lua',
+})
 
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
@@ -79,7 +79,14 @@ packer.startup(function(use)
       cmd = { 'NERDTreeToggle', 'NERDTreeFind' },
       config = function()
         vim.g.NERDTreeIgnore = { 'node_modules' }
-        vim.api.nvim_command 'autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif'
+        vim.api.nvim_create_autocmd('BufEnter', {
+          callback = function()
+            if vim.fn.winnr '$' == 1 and vim.bo.filetype == 'nerdtree' then
+              vim.cmd 'quit'
+            end
+          end,
+          pattern = '*',
+        })
       end,
     },
     'Xuyuanp/nerdtree-git-plugin',

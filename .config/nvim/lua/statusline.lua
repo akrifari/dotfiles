@@ -16,7 +16,7 @@ M.colors = {
   teal = '%#TNTeal#',
   blue2 = '%#TNBlue2#',
 }
---
+
 M.specifiers = {
   field_truncation = '%<',
   field_alignment = '%=',
@@ -193,11 +193,27 @@ Statusline = setmetatable(M, {
   end,
 })
 
-vim.cmd [[
-  augroup Statusline
-    autocmd!
-    autocmd WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline('active')
-    autocmd WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline('inactive')
-    autocmd WinEnter,BufEnter,FileType nerdtree,NERD_tree_1 setlocal statusline=%!v:lua.Statusline('explorer')
-  augroup END
-]]
+local statusline_group = vim.api.nvim_create_augroup('Statusline', { clear = true })
+vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
+  callback = function()
+    vim.opt_local.statusline = "%!v:lua.Statusline('active')"
+  end,
+  group = statusline_group,
+  pattern = '*',
+})
+
+vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
+  callback = function()
+    vim.opt_local.statusline = "%!v:lua.Statusline('inactive')"
+  end,
+  group = statusline_group,
+  pattern = '*',
+})
+
+vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter', 'FileType' }, {
+  callback = function()
+    vim.opt_local.statusline = "%!v:lua.Statusline('explorer')"
+  end,
+  group = statusline_group,
+  pattern = { 'nerdtree', 'NERD_tree_1' },
+})
