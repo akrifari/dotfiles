@@ -197,6 +197,7 @@ local statusline_group = vim.api.nvim_create_augroup('Statusline', { clear = tru
 vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
   callback = function()
     vim.opt_local.statusline = "%!v:lua.Statusline('active')"
+    vim.opt_local.cursorline = true
   end,
   group = statusline_group,
   pattern = '*',
@@ -205,6 +206,7 @@ vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
 vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
   callback = function()
     vim.opt_local.statusline = "%!v:lua.Statusline('inactive')"
+    vim.opt_local.cursorline = false
   end,
   group = statusline_group,
   pattern = '*',

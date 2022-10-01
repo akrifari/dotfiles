@@ -19,8 +19,6 @@ colorscheme.setup {
     }
   end,
   on_highlights = function(hl, c)
-    hl.Statusline = { ctermbg = c.none }
-    hl.StatusLineNC = { ctermbg = c.none, ctermfg = 0, fg = c.none }
     hl.TNRed = { fg = c.red }
     hl.TNRed1 = { fg = c.red1 }
     hl.TNGreen = { fg = c.green }
@@ -33,8 +31,10 @@ colorscheme.setup {
     hl.TNTeal = { fg = c.teal }
     hl.TNBlue2 = { fg = c.blue2 }
     hl.LineNr = { fg = util.darken(c.blue, 0.3) }
+    -- override current line number color in favor of `set laststatus=3`
+    hl.CursorLineNr = { fg = c.blue }
   end
-})
+}
 
 -- this line needs to be appeared after configuration above, otherwise the
 -- statusline colors customization in statusline.lua won't work as expected
