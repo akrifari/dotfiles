@@ -27,7 +27,9 @@ null_ls.setup {
     if client.server_capabilities.documentFormattingProvider then
       local group = vim.api.nvim_create_augroup('LspFormatting', { clear = true })
       vim.api.nvim_create_autocmd('BufWritePre', {
-        callback = vim.lsp.buf.formatting_sync,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr })
+        end,
         buffer = bufnr,
         group = group,
       })
