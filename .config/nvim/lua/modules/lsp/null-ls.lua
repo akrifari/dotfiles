@@ -24,7 +24,7 @@ null_ls.setup {
     },
   },
   on_attach = function(client, bufnr)
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.documentFormattingProvider then
       local group = vim.api.nvim_create_augroup('LspFormatting', { clear = true })
       vim.api.nvim_create_autocmd('BufWritePre', {
         callback = vim.lsp.buf.formatting_sync,
