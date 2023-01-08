@@ -35,9 +35,10 @@ vim.keymap.set('v', 'J', ']egv', { remap = true })
 -- substitute text in selected region
 vim.keymap.set('v', '<leader>hr', ':<c-u>%s/\\%V/g<left><left>')
 
--- nerdtree
-vim.keymap.set('n', '<leader>t', '<cmd>NERDTreeToggle<cr>')
-vim.keymap.set('n', '<leader>ff', '<cmd>NERDTreeFind<cr>')
+-- nvim-tree
+vim.keymap.set('n', '<leader>t', '<cmd>NvimTreeToggle<cr>')
+vim.keymap.set('n', '<leader>ff', '<cmd>NvimTreeFindFile<cr>')
+vim.keymap.set('n', '<leader>ft', '<cmd>NvimTreeFocus<cr>')
 
 -- vim-fugitive
 vim.keymap.set('n', '<leader>gg', '<cmd>Git<cr>')

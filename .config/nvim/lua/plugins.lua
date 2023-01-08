@@ -73,22 +73,37 @@ packer.startup(function(use)
 
   -- file explorer
   use {
-    {
-      'scrooloose/nerdtree',
-      cmd = { 'NERDTreeToggle', 'NERDTreeFind' },
-      config = function()
-        vim.g.NERDTreeIgnore = { 'node_modules' }
-        vim.api.nvim_create_autocmd('BufEnter', {
-          callback = function()
-            if vim.fn.winnr '$' == 1 and vim.bo.filetype == 'nerdtree' then
-              vim.cmd 'quit'
-            end
-          end,
-          pattern = '*',
-        })
-      end,
-    },
-    'Xuyuanp/nerdtree-git-plugin',
+    'kyazdani42/nvim-tree.lua',
+    tag = 'nightly',
+    config = function()
+      require("nvim-tree").setup({
+        sort_by = "case_sensitive",
+        view = {
+          mappings = {
+            list = {
+              { key = "C", action = "cd" },
+              { key = "u", action = "dir_up" },
+              { key = "<c-s>", action = "split" },
+            },
+          },
+        },
+        renderer = {
+          group_empty = true,
+        },
+        filters = {
+          dotfiles = true,
+        },
+      })
+
+      vim.api.nvim_create_autocmd('BufEnter', {
+        callback = function()
+          if vim.fn.winnr '$' == 1 and vim.bo.filetype == 'NvimTree' then
+            vim.cmd 'quit'
+          end
+        end,
+        pattern = '*',
+      })
+    end
   }
 
   -- fuzzy finder

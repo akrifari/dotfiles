@@ -4,7 +4,7 @@ local util = require 'tokyonight.util'
 
 colorscheme.setup {
   style = 'storm',
-  sidebars = { 'qf', 'nerdtree' },
+  sidebars = { 'qf' },
   on_colors = function(c)
     c.gitSigns = {
       add = colors.green,
