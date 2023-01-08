@@ -175,7 +175,7 @@ M.set_inactive = function(self)
 end
 
 M.set_explorer = function(self)
-  local title = '%= NERD_tree_1 %='
+  local title = '%= NvimTree %='
   return self.colors.blue .. title
 end
 
@@ -217,5 +217,5 @@ vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter', 'FileType' }, {
     vim.opt_local.statusline = "%!v:lua.Statusline('explorer')"
   end,
   group = statusline_group,
-  pattern = { 'nerdtree', 'NERD_tree_1' },
+  pattern = { 'NvimTree*' },
 })
