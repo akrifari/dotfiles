@@ -27,7 +27,6 @@ U.disable_formatting = function(client)
   client.server_capabilities.documentRangeFormattingProvider = false
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-U.capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+U.capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 return U
