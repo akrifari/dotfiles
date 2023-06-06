@@ -24,9 +24,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  -- cache plugins
-  use 'lewis6991/impatient.nvim'
-
   -- colorscheme
   use { 'folke/tokyonight.nvim', branch = 'main' }
 
@@ -178,10 +175,6 @@ packer.startup(function(use)
       cmd = { 'TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor' },
     },
     { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' },
-    {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-      after = 'nvim-treesitter',
-    },
     { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
     { 'andymass/vim-matchup', after = 'nvim-treesitter' },
   }

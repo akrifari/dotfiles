@@ -1,7 +1,4 @@
--- speed up startuptime by caching plugins
--- TODO: remove `impatient` once https://github.com/neovim/neovim/pull/15436
---       is merged
-require('impatient')
+vim.loader.enable()
 require('plugins')
 
 vim.g.mapleader = ','
