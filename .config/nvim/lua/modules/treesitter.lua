@@ -22,11 +22,6 @@ nvim_treesitter.setup {
     enable = true,
     enable_autocmd = false,
   },
-  rainbow = {
-    enable = true,
-    extended_mode = false,
-    max_file_lines = nil,
-  },
   incremental_selection = {
     enable = true,
     keymaps = {
