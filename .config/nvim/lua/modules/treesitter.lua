@@ -9,12 +9,6 @@ nvim_treesitter.setup {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25,
-    persist_queries = false,
-  },
   indent = { enable = true },
   autotag = { enable = true },
   matchup = { enable = true },

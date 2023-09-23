@@ -169,11 +169,6 @@ packer.startup(function(use)
         require 'modules.treesitter'
       end,
     },
-    {
-      'nvim-treesitter/playground',
-      after = 'nvim-treesitter',
-      cmd = { 'TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor' },
-    },
     { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
     {
       'https://gitlab.com/HiPhish/rainbow-delimiters.nvim.git',
