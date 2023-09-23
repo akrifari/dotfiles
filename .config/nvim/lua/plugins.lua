@@ -54,9 +54,6 @@ packer.startup(function(use)
     end,
   }
 
-  -- code standard
-  use 'editorconfig/editorconfig-vim'
-
   -- git
   use {
     'tpope/vim-fugitive',
