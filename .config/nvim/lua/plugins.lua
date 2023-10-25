@@ -1,61 +1,53 @@
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.system {
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     'git',
     'clone',
-    'https://github.com/wbthomason/packer.nvim',
-    install_path,
-  }
-  vim.api.nvim_command 'packadd packer.nvim'
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local ok, packer = pcall(require, 'packer')
-if not ok then
-  return
-end
-
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-  command = 'source <afile> | PackerSync',
-  group = packer_group,
-  pattern = 'plugins.lua',
-})
-
-packer.startup(function(use)
-  use 'wbthomason/packer.nvim'
-
+local plugins = {
   -- colorscheme
-  use { 'folke/tokyonight.nvim', branch = 'main' }
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+  },
 
   -- misc
-  use 'jiangmiao/auto-pairs'
-  use 'chrisbra/Colorizer'
-  use 'enricobacis/paste.vim'
-  use 'tpope/vim-unimpaired'
-  use 'tpope/vim-obsession'
-  use {
+  'jiangmiao/auto-pairs',
+  'chrisbra/Colorizer',
+  'enricobacis/paste.vim',
+  'tpope/vim-unimpaired',
+  'tpope/vim-obsession',
+  {
     'google/vim-searchindex',
     config = function()
       vim.g.searchindex_star_case = 0
     end,
-  }
+  },
 
   -- editing texts
-  use {
+  {
     'tpope/vim-surround',
     'tpope/vim-repeat',
-  }
-  use { 'godlygeek/tabular', cmd = 'Tabularize' }
-  use {
+  },
+  { 'godlygeek/tabular', cmd = 'Tabularize' },
+  {
     'numToStr/Comment.nvim',
-    requires = 'JoosepAlviste/nvim-ts-context-commentstring',
+    dependencies = 'JoosepAlviste/nvim-ts-context-commentstring',
     config = function()
       require 'modules.comment'
     end,
-  }
+  },
 
   -- git
-  use {
+  {
     'tpope/vim-fugitive',
     {
       'lewis6991/gitsigns.nvim',
@@ -63,24 +55,16 @@ packer.startup(function(use)
         require 'modules.gitsigns'
       end,
     },
-  }
+  },
 
   -- file explorer
-  use {
+  {
     'kyazdani42/nvim-tree.lua',
-    tag = 'nightly',
+    version = '*',
+    lazy = false,
     config = function()
-      require("nvim-tree").setup({
-        sort_by = "case_sensitive",
-        view = {
-          mappings = {
-            list = {
-              { key = "C", action = "cd" },
-              { key = "u", action = "dir_up" },
-              { key = "<c-s>", action = "split" },
-            },
-          },
-        },
+      require('nvim-tree').setup({
+        sort_by = 'case_sensitive',
         renderer = {
           group_empty = true,
         },
@@ -98,25 +82,25 @@ packer.startup(function(use)
         pattern = '*',
       })
     end
-  }
+  },
 
   -- fuzzy finder
-  use {
+  {
     'ibhagwan/fzf-lua',
     config = function()
       require 'modules.fzf'
     end,
-  }
-  use {
+  },
+  {
     'kevinhwang91/nvim-bqf',
     ft = 'qf',
-  }
+  },
 
   -- LSP, formatter, auto completion, and snippets
-  use {
+  {
     {
       'neovim/nvim-lspconfig',
-      requires = {
+      dependencies = {
         'hrsh7th/cmp-nvim-lsp',
         'b0o/schemastore.nvim',
       },
@@ -127,7 +111,7 @@ packer.startup(function(use)
     {
       'filipdutescu/renamer.nvim',
       branch = 'master',
-      requires = 'nvim-lua/plenary.nvim',
+      dependencies = 'nvim-lua/plenary.nvim',
       config = function()
         require('renamer').setup()
       end,
@@ -140,45 +124,45 @@ packer.startup(function(use)
     },
     {
       'hrsh7th/nvim-cmp',
+      event = 'InsertEnter',
       config = function()
         require 'modules.lsp.cmp'
       end,
     },
-    { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-buffer', dependencies = 'nvim-cmp' },
+    { 'hrsh7th/cmp-path', dependencies = 'nvim-cmp' },
     {
       'L3MON4D3/LuaSnip',
-      requires = 'rafamadriz/friendly-snippets',
-      after = 'nvim-cmp',
+      dependencies = { 'rafamadriz/friendly-snippets', 'nvim-cmp' },
       config = function()
         require 'modules.lsp.luasnip'
       end,
     },
-    { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-  }
+    { 'saadparwaiz1/cmp_luasnip', dependencies = 'nvim-cmp' },
+  },
 
   -- syntax highlighting
-  use {
+  {
     {
       'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate',
+      build = ':TSUpdate',
       config = function()
         require 'modules.treesitter'
       end,
     },
-    { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
+    { 'windwp/nvim-ts-autotag', dependencies = 'nvim-treesitter' },
     {
       'https://gitlab.com/HiPhish/rainbow-delimiters.nvim.git',
-      after = 'nvim-treesitter',
+      dependencies = 'nvim-treesitter',
       config = function()
         require 'modules.rainbow-delimiters'
       end,
     },
-    { 'andymass/vim-matchup', after = 'nvim-treesitter' },
-  }
+    { 'andymass/vim-matchup', dependencies = 'nvim-treesitter' },
+  },
 
   -- testing
-  use {
+  {
     'janko-m/vim-test',
     cmd = {
       'TestFile',
@@ -187,24 +171,39 @@ packer.startup(function(use)
       'TestSuite',
       'TestVisit',
     },
-  }
+  },
 
   -- markdown
-  use {
+  {
     'iamcco/markdown-preview.nvim',
-    run = 'cd app & yarn install',
+    build = 'cd app & yarn install',
     ft = 'markdown',
     cmd = 'MarkdownPreview',
-  }
-  use {
+    init = function()
+      vim.g.mkdp_filetypes = { 'markdown' }
+    end
+  },
+  {
     'dkarter/bullets.vim',
     ft = { 'markdown', 'text', 'gitcommit', 'scratch' },
-  }
+  },
 
   -- javascript
-  use {
+  {
     'heavenshell/vim-jsdoc',
     ft = { 'javascript', 'javascript.jsx', 'typescript' },
-    run = 'make install',
+    build = 'make install',
+  },
+}
+
+local opts = {
+  ui = {
+    border = 'rounded'
   }
-end)
+}
+
+local ok, lazy = pcall(require, 'lazy')
+if not ok then
+  return
+end
+lazy.setup(plugins, opts)

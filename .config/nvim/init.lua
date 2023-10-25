@@ -1,5 +1,4 @@
 vim.loader.enable()
-require('plugins')
 
 vim.g.mapleader = ','
 vim.opt.laststatus = 3
@@ -30,6 +29,7 @@ vim.opt.termguicolors = true
 vim.opt.signcolumn = 'yes'
 vim.opt.inccommand = 'split'
 
+require('plugins')
 require('highlights')
 require('statusline')
 require('keymaps')
