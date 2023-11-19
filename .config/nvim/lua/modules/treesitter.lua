@@ -12,10 +12,6 @@ nvim_treesitter.setup {
   indent = { enable = true },
   autotag = { enable = true },
   matchup = { enable = true },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
   incremental_selection = {
     enable = true,
     keymaps = {
