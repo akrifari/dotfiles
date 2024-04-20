@@ -29,6 +29,12 @@ vim.opt.termguicolors = true
 vim.opt.signcolumn = 'yes'
 vim.opt.inccommand = 'split'
 
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank({ timeout = '30' })
+  end,
+})
+
 require('plugins')
 require('highlights')
 require('statusline')
