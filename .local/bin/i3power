@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Dependencies:
+# - rofi
+
 action=$(echo -e "poweroff\nreboot" \
   | rofi -sep '\n' -dmenu -p 'System please' -no-custom)
 [ -z "$action" ] && exit 0

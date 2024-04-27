@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Dependencies:
+# - rofi
+
 configfiles="
 alacritty       $HOME/.config/alacritty/alacritty.yml
 dunst           $HOME/.config/dunst/dunstrc

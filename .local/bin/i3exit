@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Dependencies:
+# - rofi
+
 selection=$(echo -e "yes\nno" | rofi -sep '\n' -dmenu -p 'Exit i3' -no-custom)
 
 case $selection in

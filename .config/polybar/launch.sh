@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Dependencies:
+# - polybar
+
 # terminate already running bar instances
 killall -q polybar
 

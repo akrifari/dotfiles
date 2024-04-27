@@ -1,5 +1,9 @@
 #!/usr/bin/sh
 
+# Dependencies:
+# - xorg-xrandr
+# - dunst
+
 monitor=$(xrandr | grep "eDP1" | cut -d " " -f 1)
 ext_monitor=$(xrandr | awk "/ connected/ && ! /$monitor/" | cut -d " " -f 1 | head -n 1)
 

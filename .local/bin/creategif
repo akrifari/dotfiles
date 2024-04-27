@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
 # Taken from https://redd.it/7ahbvv with a few modifications
+#
+# Dependencies:
+# - ffmpeg
+# - sxiv
 
 # stop recording
 pidof ffmpeg >/dev/null 2>&1 && killall -q ffmpeg && exit 0

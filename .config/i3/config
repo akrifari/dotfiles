@@ -1,5 +1,25 @@
 # i3 config file
 
+# Dependencies:
+# - powerline-fonts (https://github.com/powerline/fonts)
+# - polybar
+# - dunst
+# - libnotify
+# - xautolock
+# - slock
+# - feh
+# - htop
+# - nnn
+# - alsa-utils
+# - rofi
+# - rofimoji
+# - rofi-calc
+# - noto-fonts-emoji
+# - maim
+# - xclip
+# - xdotool
+# - xorg-xbacklight
+
 set $mod Mod4
 set $alt Mod1
 
