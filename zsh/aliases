@@ -15,8 +15,6 @@ alias ta="tmux attach -t"
 alias tls="tmux ls"
 alias tree="tree -I '*.git'"
 alias ts="sudo tlp start"
-alias tsh="tsp -h"
-alias tsv="tsp -v"
 alias vim="nvim"
 
 # vim: ft=zsh

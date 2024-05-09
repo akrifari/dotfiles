@@ -11,7 +11,6 @@ ZSH_THEME="fwalch"
 
 # utils
 source $ZSH/oh-my-zsh.sh
-source $HOME/zsh/functions
 source $HOME/zsh/aliases
 
 # history
