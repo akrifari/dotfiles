@@ -38,4 +38,4 @@ colorscheme.setup {
 
 -- this line needs to be appeared after configuration above, otherwise the
 -- statusline colors customization in statusline.lua won't work as expected
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd.colorscheme("tokyonight")
