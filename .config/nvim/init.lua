@@ -31,7 +31,7 @@ vim.opt.inccommand = 'split'
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    vim.highlight.on_yank({ timeout = '30' })
+    vim.highlight.on_yank({ timeout = '60' })
   end,
 })
 
