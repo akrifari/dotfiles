@@ -67,12 +67,12 @@ fzf_lua.setup {
       }
     },
     git_icons  = false,
-    file_icons = false,
+    file_icons = true,
   },
   grep = {
     multiprocess = true,
     search       = "",
-    file_icons   = false,
+    file_icons   = true,
     git_icons    = false,
     preview_layout = "vertical",
     preview_vertical = "up:60%",
