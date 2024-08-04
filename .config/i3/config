@@ -27,7 +27,7 @@ set $alt Mod1
 set $browser $BROWSER
 set $term $TERMINAL
 
-font pango:Meslo LG S DZ for Powerline 10
+font pango:Meslo LG S DZ for Powerline 9
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
