@@ -205,13 +205,6 @@ local plugins = {
     'bullets-vim/bullets.vim',
     ft = { 'markdown', 'text', 'gitcommit', 'scratch' },
   },
-
-  -- javascript
-  {
-    'heavenshell/vim-jsdoc',
-    ft = { 'javascript', 'javascript.jsx', 'typescript' },
-    build = 'make install',
-  },
 }
 
 local opts = {
