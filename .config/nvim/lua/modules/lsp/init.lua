@@ -6,7 +6,7 @@ end
 require 'modules.lsp.ui'
 
 local servers = {
-  tsserver = {
+  ts_ls = {
     -- run LSP in any directory
     root_dir = function()
       return vim.loop.cwd()
