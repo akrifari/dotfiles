@@ -67,6 +67,19 @@ local plugins = {
         sort_by = 'case_sensitive',
         renderer = {
           group_empty = true,
+          icons = {
+            glyphs = {
+              git = {
+                unstaged  = 'M',
+                staged    = 'S',
+                unmerged  = 'U',
+                renamed   = 'R',
+                untracked = '?',
+                deleted   = 'D',
+                ignored   = 'I',
+              }
+            },
+          }
         },
         filters = {
           dotfiles = true,
