@@ -185,8 +185,11 @@ local plugins = {
       vim.g.mkdp_filetypes = { 'markdown' }
     end
   },
+  -- NOTE:
+  -- Neovim's macro doesn't work properly if this plugin is enabled.
+  -- Try to disable this plugin if you're working with recursive macro
   {
-    'dkarter/bullets.vim',
+    'bullets-vim/bullets.vim',
     ft = { 'markdown', 'text', 'gitcommit', 'scratch' },
   },
 
