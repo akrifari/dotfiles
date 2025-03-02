@@ -74,8 +74,12 @@ fzf_lua.setup {
     search       = "",
     file_icons   = true,
     git_icons    = false,
-    preview_layout = "vertical",
-    preview_vertical = "up:60%",
+    winopts = {
+      preview = {
+        layout = "vertical",
+        vertical = "up:60%",
+      }
+    },
   },
   lsp = {
     cwd_only          = false,
