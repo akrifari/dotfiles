@@ -28,6 +28,7 @@ vim.opt.timeoutlen = 350
 vim.opt.termguicolors = true
 vim.opt.signcolumn = 'yes'
 vim.opt.inccommand = 'split'
+vim.opt.winborder = 'rounded'
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
