@@ -182,6 +182,13 @@ local plugins = {
       end,
     },
     { 'andymass/vim-matchup', dependencies = 'nvim-treesitter' },
+    {
+      'lukas-reineke/indent-blankline.nvim',
+      main = 'ibl',
+      config = function()
+        require('ibl').setup()
+      end,
+    },
   },
 
   -- testing
