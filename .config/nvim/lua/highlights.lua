@@ -19,17 +19,6 @@ colorscheme.setup {
     }
   end,
   on_highlights = function(hl, c)
-    hl.TNRed = { fg = c.red }
-    hl.TNRed1 = { fg = c.red1 }
-    hl.TNGreen = { fg = c.green }
-    hl.TNYellow = { fg = c.yellow }
-    hl.TNBlue = { fg = c.blue }
-    hl.TNMagenta = { fg = c.magenta }
-    hl.TNCyan = { fg = c.cyan }
-    hl.TNGray = { fg = c.comment }
-    hl.TNOrange = { fg = c.orange }
-    hl.TNTeal = { fg = c.teal }
-    hl.TNBlue2 = { fg = c.blue2 }
     hl.LineNr = { fg = util.darken(c.blue, 0.3) }
     -- override current line number color in favor of `set laststatus=3`
     hl.CursorLineNr = { fg = c.blue }

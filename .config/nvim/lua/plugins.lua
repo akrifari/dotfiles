@@ -32,6 +32,12 @@ local plugins = {
     end,
   },
 
+  -- statusline
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  },
+
   -- editing texts
   {
     'tpope/vim-surround',
