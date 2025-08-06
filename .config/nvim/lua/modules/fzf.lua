@@ -80,6 +80,9 @@ fzf_lua.setup {
         vertical = "up:60%",
       }
     },
+    actions = {
+      ['ctrl-h'] = { fzf_lua.actions.toggle_ignore },
+    },
   },
   lsp = {
     cwd_only          = false,
