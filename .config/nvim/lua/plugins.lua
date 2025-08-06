@@ -67,6 +67,7 @@ local plugins = {
         sort_by = 'case_sensitive',
         renderer = {
           group_empty = true,
+          hidden_display = "simple",
           icons = {
             git_placement = "right_align",
             glyphs = {
