@@ -55,7 +55,7 @@ fzf_lua.setup {
     }
   },
   builtin = {
-    winopts_fn = function()
+    winopts = function()
       return { fullscreen = vim.o.columns < 80 }
     end
   },
