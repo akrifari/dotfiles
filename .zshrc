@@ -24,5 +24,4 @@ setopt HIST_BEEP
 setopt EXTENDED_GLOB
 
 # fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source <(fzf --zsh)
