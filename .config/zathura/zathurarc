@@ -32,8 +32,7 @@ set notification-warning-fg   "#e0af68"
 set notification-error-bg     "#24283b"
 set notification-error-fg     "#f7768e"
 
-set highlight-active-color    "#7aa2f7"
-set highlight-color           "#9ece6a"
-set highlight-transparency    0.5
+set highlight-active-color    "rgba(122, 162, 247, 0.5)"
+set highlight-color           "rgba(158, 206, 106, 0.5)"
 
 # vim: ft=conf
